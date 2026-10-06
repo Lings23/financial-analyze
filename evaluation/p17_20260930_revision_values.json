@@ -1,0 +1,31 @@
+{
+  "status": "post_hoc_exploratory_not_in_pre_registered_accuracy_denominator",
+  "security": "SZSE:300122",
+  "report_period": "2024-12-31",
+  "basis": "consolidated cumulative CNY income statement",
+  "versions": [
+    {
+      "label": "original_2024_annual",
+      "f_ann_date": "2025-04-22",
+      "reference_label": "300122_2024_original_summary",
+      "reference_sha256": "3f742977322d9b166f606376becb4597a6dd630a637db3285c17c441fb137065",
+      "pdf_page_one_based": 8,
+      "metric_values_cny": {"revenue": "26069711361.44", "net_income_parent": "2018478513.91"}
+    },
+    {
+      "label": "corrected_2024_annual",
+      "f_ann_date": "2026-04-28",
+      "reference_label": "300122_correction_before_after",
+      "reference_sha256": "c55fbe422327818533fe53f0d9e079194c793980e0cd9567836e1e938b272fb8",
+      "pdf_page_one_based": 8,
+      "metric_values_cny": {"revenue": "26048900498.27", "net_income_parent": "2005803553.96"}
+    }
+  ],
+  "separate_later_comparator": {
+    "description": "2025 annual summary displays another adjusted 2024 comparative basis; do not equate it to the corrected 2024 annual statement",
+    "reference_label": "300122_2025_summary_with_2024_restated",
+    "reference_sha256": "b84f2aeaf04f5e8ee90123fc8e503dce8c5467bfa96654dc47ee829c631a2a35",
+    "pdf_page_one_based": 5,
+    "metric_values_cny": {"revenue": "26049233909.14", "net_income_parent": "1972494926.61"}
+  }
+}

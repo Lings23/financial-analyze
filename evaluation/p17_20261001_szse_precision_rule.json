@@ -1,0 +1,14 @@
+{
+  "original_plan_sha256": "8c69468ddf7a42e27d255ecb96fb2bd89bade68ca7137b8542a8a09346138c18",
+  "original_comparison_sha256": "68d90f26cbdd4d5d623ab961017b81f5630444e3f8bab0d3b3cc7430cba8caf7",
+  "reference_share_quantum": "100",
+  "volume_tolerance_shares": "50",
+  "rationale": "Official chart English volume unit is 100 shares; returned daily volume is an integer lot, so the existing half-printed-unit precision policy is 50 shares. Tushare normalized zero-lot-fraction share detail must not be expected from this rounded reference.",
+  "correction_after_capture": true,
+  "old_result_preserved": true,
+  "changed_fields": [
+    "volume"
+  ],
+  "full_share_precision_not_independently_verified": true,
+  "script_sha256": "b55859f1e156537b97c1955f2733c728c8d1064b0adcba529618e2be9fc3e456"
+}

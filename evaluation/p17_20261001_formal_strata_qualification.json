@@ -1,0 +1,178 @@
+{
+  "formal_plan_sha256": "e98a23c65a1f073ebcda264ad138076ff53b711400709ed46bdc894388b2e0f5",
+  "initial_comparison_sha256": "e0a41e6b66776b5497c0d6d3848eba3d0e08f2c05429abe4cc5b9ae72a17888d",
+  "scope_note": "Explicit post-capture QA qualification of dates, not a historical PIT availability upgrade; initial 72 missing cells preserved, no numerical score increment. BSE listing proof empty remains unverified.",
+  "listings": [
+    {
+      "symbol": "603207",
+      "listing_date": "2024-08-26",
+      "source": {
+        "record_id": "c2d04d4bf421e52b1d91a96e68a21b68d5a9d2615182960afc1afda9f24008eb",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2024-08-23/1220953312.PDF",
+        "pdf_sha256": "b48a2010c043719a0703933a9a199d0afbc25c99840fdf9a901b581c366593b5",
+        "path": ".artifacts\\p17_20261001\\formal\\strata\\603207_1220953312.pdf",
+        "title": "小方制药首次公开发行股票主板上市公告书",
+        "source_date": "2024-08-23",
+        "artifact_root": ".artifacts\\p17_20261001\\formal\\strata\\artifacts",
+        "scope": "p17-formal-strata-20261001",
+        "proofs": [
+          {
+            "page": 2,
+            "anchors": [
+              "股票将于2024年8月26日在上海证券交易所主板上市"
+            ]
+          },
+          {
+            "page": 10,
+            "anchors": [
+              "603207"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "688710",
+      "listing_date": "2024-09-03",
+      "source": {
+        "record_id": "d04577a9d0ad7bffbba838d767be14bed233ecae5b074158012e4b4d10a3c0e2",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2024-09-02/1221106737.PDF",
+        "pdf_sha256": "831197d471883816ea840fd1e7fca6844312a457e005237665dcafa99096d938",
+        "path": ".artifacts\\p17_20261001\\formal\\strata\\688710_1221106737.pdf",
+        "title": "益诺思首次公开发行股票科创板上市公告书",
+        "source_date": "2024-09-02",
+        "artifact_root": ".artifacts\\p17_20261001\\formal\\strata\\artifacts",
+        "scope": "p17-formal-strata-20261001",
+        "proofs": [
+          {
+            "page": 2,
+            "anchors": [
+              "股票将于2024年9月3日在上海证券交易所科创板上市"
+            ]
+          },
+          {
+            "page": 9,
+            "anchors": [
+              "688710"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "301600",
+      "listing_date": "2024-09-11",
+      "source": {
+        "record_id": "11dca56e9c9b85e76a1311f917b35a8bdd873685c1ef8fb2231141a1675e91c3",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2024-09-10/1221177459.PDF",
+        "pdf_sha256": "9982b31d64102eaa612997fe7b4b87550dea7d7dec3e6c85d9271e896dd48dcc",
+        "path": ".artifacts\\p17_20261001\\formal\\strata\\301600_1221177459.pdf",
+        "title": "首次公开发行股票并在创业板上市之上市公告书",
+        "source_date": "2024-09-10",
+        "artifact_root": ".artifacts\\p17_20261001\\formal\\strata\\artifacts",
+        "scope": "p17-formal-strata-20261001",
+        "proofs": [
+          {
+            "page": 2,
+            "anchors": [
+              "股票将于2024年9月11日在深圳证券交易所创业板上市"
+            ]
+          },
+          {
+            "page": 10,
+            "anchors": [
+              "301600"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "halts": [
+    {
+      "symbol": "600301",
+      "absent_dates": [
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18"
+      ],
+      "sources": [
+        {
+          "path": ".artifacts\\p17_20261001\\formal\\halt_export\\1225559574.pdf",
+          "pdf_sha256": "8f4e9a6101680c72d4a3e436ab29d6c993f33b48274eba30929978c29e5f4ba9",
+          "source_url": "https://static.cninfo.com.cn/finalpage/2026-09-12/1225559574.PDF",
+          "artifact_root": ".artifacts\\p17_20261001\\formal\\reference_artifacts",
+          "scope": "p17-formal-reference-20261001",
+          "proofs": [
+            {
+              "page": 1,
+              "anchors": [
+                "证券代码：600301",
+                "2026年9月14日（星期一）上午开市起停牌"
+              ]
+            }
+          ]
+        },
+        {
+          "record_id": "84099ac0bb1fc6f111a7f8ebf07f5fe91e5fd6b3a5445f5a96b7fc69725d4fd7",
+          "source_url": "https://static.cninfo.com.cn/finalpage/2026-09-19/1225571318.PDF",
+          "pdf_sha256": "2577251f9a0c7b28321c3c90cd89887b8c3c58d4982c689d4ad0d99b6dbe104c",
+          "path": ".artifacts\\p17_20261001\\formal\\strata\\600301_1225571318.pdf",
+          "title": "广西华锡有色金属股份有限公司关于控制权拟变更暨复牌的公告",
+          "source_date": "2026-09-19",
+          "artifact_root": ".artifacts\\p17_20261001\\formal\\strata\\artifacts",
+          "scope": "p17-formal-strata-20261001",
+          "proofs": [
+            {
+              "page": 1,
+              "anchors": [
+                "600301",
+                "2026/9/18",
+                "2026/9/21"
+              ]
+            },
+            {
+              "page": 2,
+              "anchors": [
+                "公司股票将于2026年9月21日（星期一）开市起复牌"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "symbol": "000016",
+      "absent_dates": [
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24"
+      ],
+      "sources": [
+        {
+          "path": ".artifacts\\p17_20261001\\formal\\halt_export\\1225569667.pdf",
+          "pdf_sha256": "0fab9cc732e20259a8577d5edc74ded63c1e4949a6f1dc1c8377e2741df15a68",
+          "source_url": "https://static.cninfo.com.cn/finalpage/2026-09-18/1225569667.PDF",
+          "artifact_root": ".artifacts\\p17_20261001\\formal\\reference_artifacts",
+          "scope": "p17-formal-reference-20261001",
+          "proofs": [
+            {
+              "page": 1,
+              "anchors": [
+                "证券代码：000016",
+                "2026年9月4日",
+                "公司股票将进入现金选择权派发、行权申报、行权清算交收阶段，不再交易。"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

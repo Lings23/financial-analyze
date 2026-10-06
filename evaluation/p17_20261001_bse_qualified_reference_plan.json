@@ -1,0 +1,199 @@
+{
+  "scope": "p17-bse-qualified-reference-20261001",
+  "original_plan_sha256": "7b2ba1042561835448c3b2abb70f78c9648c5d468aad11bbe856b7a9ac4aabc6",
+  "previous_comparison_sha256": "485da069d20f19fcf84991598347fc1d1b8a7ca16fc602f5182043781460ebd4",
+  "identity_manifest_path": "evaluation\\p17_20261001_bse_identity_qualification.json",
+  "identity_manifest_sha256": "913a3a7fbd1c6889c61c1fb8c300e790d2e2422a75451af4c409d3256b8849f8",
+  "min_interval_seconds": 2.5,
+  "requests": [
+    {
+      "code": "920110",
+      "exchange": "BSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-11",
+      "effective_provider_announcement_date": "2025-04-11",
+      "start_date": "2025-04-10",
+      "end_date": "2025-04-12",
+      "selector": "2024年年度报告",
+      "original_record_id": "1c4f3d8ef75f457a62335e244a327e648c890ad8a123047780a7c97fd81244a5",
+      "original_snapshot": "66acd24fe093c663fc3f21b6cf6c6393640b8808189a760ba7d97fee3d40b091",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920110",
+      "exchange": "BSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-26",
+      "effective_provider_announcement_date": "2025-04-26",
+      "start_date": "2025-04-25",
+      "end_date": "2025-04-27",
+      "selector": "季度报告",
+      "original_record_id": "4e43f07f49187c6a0b895f7b463bb601a2eb3ec27ac23dd84cec1684bfd71002",
+      "original_snapshot": "66acd24fe093c663fc3f21b6cf6c6393640b8808189a760ba7d97fee3d40b091",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920110",
+      "exchange": "BSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-27",
+      "effective_provider_announcement_date": "2025-08-27",
+      "start_date": "2025-08-26",
+      "end_date": "2025-08-28",
+      "selector": "2025年半年度报告",
+      "original_record_id": "8986b7d046745414e24e7766289688e0f796fedd7e7c6ef1a9d13c0daec3a58a",
+      "original_snapshot": "66acd24fe093c663fc3f21b6cf6c6393640b8808189a760ba7d97fee3d40b091",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920510",
+      "exchange": "BSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-03",
+      "effective_provider_announcement_date": "2025-04-03",
+      "start_date": "2025-04-02",
+      "end_date": "2025-04-04",
+      "selector": "2024年年度报告",
+      "original_record_id": "0eae116f52d2ca4d397863a2e7b47adb5c4ee0cc821d49659fd05df90db5eb46",
+      "original_snapshot": "af07a80e0fd4de70dcaca403043d7b7b9eaabc0e184b9e98d14d3d1ea7d4fed2",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920510",
+      "exchange": "BSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-24",
+      "effective_provider_announcement_date": "2025-04-24",
+      "start_date": "2025-04-23",
+      "end_date": "2025-04-25",
+      "selector": "季度报告",
+      "original_record_id": "409d2dedded2636ec97280d77a363929bb58e146b9c46120ad0755957fb05b72",
+      "original_snapshot": "af07a80e0fd4de70dcaca403043d7b7b9eaabc0e184b9e98d14d3d1ea7d4fed2",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920510",
+      "exchange": "BSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-27",
+      "effective_provider_announcement_date": "2025-08-27",
+      "start_date": "2025-08-26",
+      "end_date": "2025-08-28",
+      "selector": "2025年半年度报告",
+      "original_record_id": "92c80db8cef7dc999f468abaf5c8aff115b5008d7f3dfdd0a0ca68284e6e655b",
+      "original_snapshot": "af07a80e0fd4de70dcaca403043d7b7b9eaabc0e184b9e98d14d3d1ea7d4fed2",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920489",
+      "exchange": "BSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-26",
+      "effective_provider_announcement_date": "2025-04-26",
+      "start_date": "2025-04-25",
+      "end_date": "2025-04-27",
+      "selector": "2024年年度报告",
+      "original_record_id": "2710876104032883ec4d63dfae2f82f6bf918764e88657ba94366af74ceb6ab5",
+      "original_snapshot": "3918a4d70ccf0a6b2f3b119d43917282bf4ad1e4940038e97e8d7651b8bf519b",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920489",
+      "exchange": "BSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告",
+      "original_record_id": "3b98f266899fa77ff1cc380e167929f894ba75ffc65d4efcb2b4310ee9cc59ee",
+      "original_snapshot": "3918a4d70ccf0a6b2f3b119d43917282bf4ad1e4940038e97e8d7651b8bf519b",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920175",
+      "exchange": "BSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-17",
+      "effective_provider_announcement_date": "2025-04-17",
+      "start_date": "2025-04-16",
+      "end_date": "2025-04-18",
+      "selector": "2024年年度报告",
+      "original_record_id": "b1fe46d5dc23da8566584eef8389cf9325fe7348f120f1e86018d2c42c66f770",
+      "original_snapshot": "23cc8c6765a745dce63973cec8b941833162254897c3c1f2ca1fa28b1d8b7c58",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920175",
+      "exchange": "BSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告",
+      "original_record_id": "14f913daf848057355c5eb7c6dd911eff245623ae78281680dd75d1ec165d850",
+      "original_snapshot": "23cc8c6765a745dce63973cec8b941833162254897c3c1f2ca1fa28b1d8b7c58",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920175",
+      "exchange": "BSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-26",
+      "effective_provider_announcement_date": "2025-08-26",
+      "start_date": "2025-08-25",
+      "end_date": "2025-08-27",
+      "selector": "2025年半年度报告",
+      "original_record_id": "506522e57ca5b6c59cc1fc5cb75e3eefd1ca5d0bf7842180c8ad9165f23016ab",
+      "original_snapshot": "23cc8c6765a745dce63973cec8b941833162254897c3c1f2ca1fa28b1d8b7c58",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    }
+  ],
+  "registered_financial_cells": 225,
+  "reason": "Preserve original twelve failures and empty result; collect eleven BSE periods with explicitly qualified old/new code identity."
+}

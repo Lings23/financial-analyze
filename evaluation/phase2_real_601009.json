@@ -1,0 +1,23 @@
+{
+  "symbol": "601009",
+  "exchange": "SSE",
+  "as_of": "2026-10-01T15:25:05.838123+00:00",
+  "mode": "system",
+  "benchmark": null,
+  "bindings": [
+    {
+      "dataset": "market_daily",
+      "snapshot": "e1433771e349f4a7db39315f8d857bd99789cf201f930195f6b54079d90abafe",
+      "provider": "tushare",
+      "start": "2026-09-15",
+      "end": "2026-09-25"
+    },
+    {
+      "dataset": "financial_income",
+      "snapshot": "f5a8981b94c629c6489fb4a2760c60e590a95a12efc60f5975eed789279ca08c",
+      "provider": "tushare",
+      "start": "2024-12-31",
+      "end": "2025-06-30"
+    }
+  ]
+}

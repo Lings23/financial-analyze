@@ -1,0 +1,176 @@
+{
+  "schema": "cninfo-qualified-identity-v1",
+  "scope": "p17-bse-qualified-reference-20261001",
+  "proofs": [
+    {
+      "url": "https://www.bse.cn/service/code_mapping.html",
+      "title": "新旧代码对照表 - 北京证券交易所",
+      "observed_at": "2026-10-01T11:14:50.220Z",
+      "evidence_kind": "rendered_official_dom_projection",
+      "header": [
+        "序号",
+        "证券简称",
+        "上市日期",
+        "旧代码",
+        "新代码"
+      ],
+      "rows": [
+        [
+          "45",
+          "东方碳素",
+          "2023/6/30",
+          "832175",
+          "920175"
+        ],
+        [
+          "116",
+          "雷特科技",
+          "2022/12/6",
+          "832110",
+          "920110"
+        ],
+        [
+          "212",
+          "丰光精密",
+          "2020/12/28",
+          "430510",
+          "920510"
+        ],
+        [
+          "229",
+          "佳先股份",
+          "2020/7/27",
+          "430489",
+          "920489"
+        ]
+      ],
+      "observed_table_rows_including_note": 249,
+      "full_table_archived": false,
+      "http_response_bytes_archived": false,
+      "accepted_as_runtime_aliases": false
+    },
+    {
+      "url": "https://www.bse.cn/important_news/200026735.html",
+      "title": "关于北交所存量上市公司代码切换上线的通知",
+      "observed_at": "2026-10-01T11:17:34.254Z",
+      "statement": "自2025年10月9日起，本所将为存量股票启用新证券代码",
+      "evidence_kind": "rendered_official_dom_projection"
+    },
+    {
+      "url": "https://www.bse.cn/important_news/200025487.html",
+      "title": "关于发布北交所存量上市公司代码切换试点股票名单并实施配套业务安排的公告",
+      "observed_at": "2026-10-01T11:20:06.435Z",
+      "statement": "确定颖泰生物、艾融软件、龙竹科技、佳先股份、同享科技、球冠电缆6只股票进行试点切换",
+      "evidence_kind": "rendered_official_dom_projection"
+    },
+    {
+      "url": "https://www.bse.cn/important_news/200025603.html",
+      "title": "关于北交所存量上市公司代码切换试点上线的通知",
+      "observed_at": "2026-10-01T11:21:46.247Z",
+      "statement": "自2025年5月6日起，本所为试点股票启用新证券代码",
+      "evidence_kind": "rendered_official_dom_projection"
+    }
+  ],
+  "approved_requests": [
+    {
+      "code": "920110",
+      "old_code": "832110",
+      "org_id": "gfbj0832110",
+      "cutover_date": "2025-10-09",
+      "start_date": "2025-04-10",
+      "end_date": "2025-04-12",
+      "selector": "2024年年度报告"
+    },
+    {
+      "code": "920110",
+      "old_code": "832110",
+      "org_id": "gfbj0832110",
+      "cutover_date": "2025-10-09",
+      "start_date": "2025-04-25",
+      "end_date": "2025-04-27",
+      "selector": "季度报告"
+    },
+    {
+      "code": "920110",
+      "old_code": "832110",
+      "org_id": "gfbj0832110",
+      "cutover_date": "2025-10-09",
+      "start_date": "2025-08-26",
+      "end_date": "2025-08-28",
+      "selector": "2025年半年度报告"
+    },
+    {
+      "code": "920510",
+      "old_code": "430510",
+      "org_id": "gfbj0430510",
+      "cutover_date": "2025-10-09",
+      "start_date": "2025-04-02",
+      "end_date": "2025-04-04",
+      "selector": "2024年年度报告"
+    },
+    {
+      "code": "920510",
+      "old_code": "430510",
+      "org_id": "gfbj0430510",
+      "cutover_date": "2025-10-09",
+      "start_date": "2025-04-23",
+      "end_date": "2025-04-25",
+      "selector": "季度报告"
+    },
+    {
+      "code": "920510",
+      "old_code": "430510",
+      "org_id": "gfbj0430510",
+      "cutover_date": "2025-10-09",
+      "start_date": "2025-08-26",
+      "end_date": "2025-08-28",
+      "selector": "2025年半年度报告"
+    },
+    {
+      "code": "920489",
+      "old_code": "430489",
+      "org_id": "9900028040",
+      "cutover_date": "2025-05-06",
+      "start_date": "2025-04-25",
+      "end_date": "2025-04-27",
+      "selector": "2024年年度报告"
+    },
+    {
+      "code": "920489",
+      "old_code": "430489",
+      "org_id": "9900028040",
+      "cutover_date": "2025-05-06",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告"
+    },
+    {
+      "code": "920175",
+      "old_code": "832175",
+      "org_id": "gfbj0832175",
+      "cutover_date": "2025-10-09",
+      "start_date": "2025-04-16",
+      "end_date": "2025-04-18",
+      "selector": "2024年年度报告"
+    },
+    {
+      "code": "920175",
+      "old_code": "832175",
+      "org_id": "gfbj0832175",
+      "cutover_date": "2025-10-09",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告"
+    },
+    {
+      "code": "920175",
+      "old_code": "832175",
+      "org_id": "gfbj0832175",
+      "cutover_date": "2025-10-09",
+      "start_date": "2025-08-25",
+      "end_date": "2025-08-27",
+      "selector": "2025年半年度报告"
+    }
+  ],
+  "review": "Four observed official DOM code rows and separate pilot/general effective-date statements; explicit requests only. No historical availability upgrade or inferred suffix mapping."
+}

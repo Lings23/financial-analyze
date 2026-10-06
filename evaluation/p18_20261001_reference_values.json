@@ -1,0 +1,22 @@
+{
+  "basis": "Official PDF values transcribed and visually checked; selected after collection, not a blind statistical accuracy sample",
+  "financial": [
+    {"code":"000001","dataset":"financial_balance","period":"2024-12-31","label":"cninfo_000001_2024_annual","sha256":"77d98b2636f31c0a546728637d99da85d00c4d1783e1372b090a753ad46e14f1","pdf_page":122,"multiplier":"1000000","values":{"total_assets":"5769270"}},
+    {"code":"000001","dataset":"financial_balance","period":"2024-12-31","label":"cninfo_000001_2024_annual","sha256":"77d98b2636f31c0a546728637d99da85d00c4d1783e1372b090a753ad46e14f1","pdf_page":123,"multiplier":"1000000","values":{"total_liabilities":"5274428","total_equity":"494842"}},
+    {"code":"000001","dataset":"financial_cashflow","period":"2024-12-31","label":"cninfo_000001_2024_annual","sha256":"77d98b2636f31c0a546728637d99da85d00c4d1783e1372b090a753ad46e14f1","pdf_page":134,"multiplier":"1000000","values":{"operating_cashflow":"63336"}},
+    {"code":"000001","dataset":"financial_cashflow","period":"2024-12-31","label":"cninfo_000001_2024_annual","sha256":"77d98b2636f31c0a546728637d99da85d00c4d1783e1372b090a753ad46e14f1","pdf_page":135,"multiplier":"1000000","values":{"investing_cashflow":"-31859","financing_cashflow":"-73933","cash_net_change":"-41273","cash_begin":"298219","cash_end":"256946"}},
+    {"code":"600000","dataset":"financial_cashflow","period":"2024-12-31","label":"cninfo_600000_2024_annual_summary","sha256":"3b536506c825aae740533c63fc14a5daee438c6ea7b2a221fe051029816aa438","pdf_page":3,"multiplier":"1000000","values":{"operating_cashflow":"-333654"}},
+    {"code":"600000","dataset":"financial_balance","period":"2024-12-31","label":"cninfo_600000_2024_annual_summary","sha256":"3b536506c825aae740533c63fc14a5daee438c6ea7b2a221fe051029816aa438","pdf_page":3,"multiplier":"1000000","values":{"total_assets":"9461880","total_liabilities":"8717099","equity_parent":"736329"}},
+    {"code":"300750","dataset":"financial_balance","period":"2024-12-31","label":"cninfo_300750_2024_annual_summary","sha256":"50849921257d46f7111dcac6a575743cea4d45672b9dfe2b0b2229bfbf7c2f23","pdf_page":4,"multiplier":"1000","values":{"total_assets":"786658123","equity_parent":"246930033"}},
+    {"code":"300750","dataset":"financial_cashflow","period":"2024-12-31","label":"cninfo_300750_2024_annual_summary","sha256":"50849921257d46f7111dcac6a575743cea4d45672b9dfe2b0b2229bfbf7c2f23","pdf_page":4,"multiplier":"1000","values":{"operating_cashflow":"96990345"}}
+  ],
+  "calendar": {
+    "start":"2026-09-28","end":"2026-10-09",
+    "open_dates":["2026-09-28","2026-09-29","2026-09-30","2026-10-08","2026-10-09"],
+    "references": {
+      "SSE":"https://www.sse.com.cn/disclosure/announcement/general/c/c_20260915_10832273.shtml",
+      "SZSE":"https://www.szse.cn/www/disclosure/notice/general/t20260917_622911.html"
+    },
+    "basis":"Exchange holiday notices independently checked on 2026-10-01; references are QA evidence, not additional runtime providers"
+  }
+}

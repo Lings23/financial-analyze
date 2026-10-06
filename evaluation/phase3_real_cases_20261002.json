@@ -1,0 +1,3304 @@
+{
+  "kind": "real_frozen_snapshot_bounded_research_offline",
+  "scope": "p17-formal-20261001",
+  "source_run_sha256": "08007ae3f345bbb9aa13746485f58d010733737421e787f027d380640927e382",
+  "source_plan_sha256": "e98a23c65a1f073ebcda264ad138076ff53b711400709ed46bdc894388b2e0f5",
+  "base_corpus_sha256": "ce801f30b5ef8a1fe33711c8d27df6549f6e248fb031aefffce0caf897e00d7d",
+  "cases": [
+    {
+      "id": "601009-2024-09-18",
+      "request": {
+        "symbol": "601009",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "635b3b99ee38f2e1823a2d9e8dafa6c9347820c541f7baf5109294718df5b890",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "f5a8981b94c629c6489fb4a2760c60e590a95a12efc60f5975eed789279ca08c",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          31,
+          334
+        ],
+        "observed_max_drawdown": [
+          5,
+          268
+        ],
+        "financial_income.net_income_parent": [
+          12619215000,
+          1
+        ],
+        "financial_income.revenue": [
+          28480211000,
+          1
+        ],
+        "financial_income.total_revenue": [
+          28480211000,
+          1
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "1828d198760a688a8afac12a600a5145752168c39297c8c7b61aa60c03d11f0a",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "601009-2026-09-15",
+      "request": {
+        "symbol": "601009",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "e1433771e349f4a7db39315f8d857bd99789cf201f930195f6b54079d90abafe",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "f5a8981b94c629c6489fb4a2760c60e590a95a12efc60f5975eed789279ca08c",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          -21,
+          1216
+        ],
+        "observed_max_drawdown": [
+          43,
+          1216
+        ],
+        "financial_income.net_income_parent": [
+          12619215000,
+          1
+        ],
+        "financial_income.revenue": [
+          28480211000,
+          1
+        ],
+        "financial_income.total_revenue": [
+          28480211000,
+          1
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "a17e6827dded73d6615f8f2ae6a479483627a228943cf7b886642874aa611ac0",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "601528-2024-09-18",
+      "request": {
+        "symbol": "601528",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "eafc683521c3b5cf8f146ffdd36fae81975a19bf3c269dfbd2fb589fadf3bdd8",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "271a6ad2c0b88fb053b6e46603c3f55537e6937010abfca78a0ccdda613dc762",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          13,
+          55
+        ],
+        "observed_max_drawdown": [
+          0,
+          1
+        ],
+        "financial_income.net_income_parent": [
+          889637000,
+          1
+        ],
+        "financial_income.revenue": [
+          2258607000,
+          1
+        ],
+        "financial_income.total_revenue": [
+          2258607000,
+          1
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "842a0196c2dc41cf330a12df8ab948a105d97d8dc1c5dcb19ca515aab2313025",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "601528-2026-09-15",
+      "request": {
+        "symbol": "601528",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "aaf8c2e575809bcf2bcd63f642192f0604876599788f085cf852e41ef13b40fe",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "271a6ad2c0b88fb053b6e46603c3f55537e6937010abfca78a0ccdda613dc762",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          -9,
+          506
+        ],
+        "observed_max_drawdown": [
+          3,
+          127
+        ],
+        "financial_income.net_income_parent": [
+          889637000,
+          1
+        ],
+        "financial_income.revenue": [
+          2258607000,
+          1
+        ],
+        "financial_income.total_revenue": [
+          2258607000,
+          1
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "4b7d9d53e81c38f50d1431c274ddfa4ab3c52d093c1fe96ba4b99272440e2bb9",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "603207-2024-09-18",
+      "request": {
+        "symbol": "603207",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "6694d22ed603b45679ce60f552aca7278add0942020b1a6f928ce66c70476611",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "25aed3cde367a318fb392007f98f70e2aec6d1098b5a676731247790525d0066",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          545,
+          2086
+        ],
+        "observed_max_drawdown": [
+          55,
+          2176
+        ],
+        "financial_income.net_income_parent": [
+          3020531283,
+          25
+        ],
+        "financial_income.revenue": [
+          26978966743,
+          100
+        ],
+        "financial_income.total_revenue": [
+          26978966743,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "754150aa7260ff6d9009d0a9be5d44fe941747f2f15be8ca1f88ab8c3f8d2716",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "603207-2026-09-15",
+      "request": {
+        "symbol": "603207",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "bb896297ad8adef899407ac1b3b9d6c7a4b61505fb60cb7c9ec8bb81c5a0ad07",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "25aed3cde367a318fb392007f98f70e2aec6d1098b5a676731247790525d0066",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          48,
+          2377
+        ],
+        "observed_max_drawdown": [
+          22,
+          507
+        ],
+        "financial_income.net_income_parent": [
+          3020531283,
+          25
+        ],
+        "financial_income.revenue": [
+          26978966743,
+          100
+        ],
+        "financial_income.total_revenue": [
+          26978966743,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "b07c7cdca64ac17d743e774b479423b6464dfdbef90cf866c587b06b71ce2c47",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "688710-2024-09-18",
+      "request": {
+        "symbol": "688710",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "09eaf1671fc1db534575eaf0584e74de8f798233511c708d6a05c993f7643d14",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "18569ceb4140777d0dcecf6ab7063069589d904da158c83ecb6e61b7c2e7a589",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          898,
+          2295
+        ],
+        "observed_max_drawdown": [
+          1,
+          2427
+        ],
+        "financial_income.net_income_parent": [
+          -759476211,
+          50
+        ],
+        "financial_income.revenue": [
+          9380714154,
+          25
+        ],
+        "financial_income.total_revenue": [
+          9380714154,
+          25
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "3fe2c61617d103888fad1145ecb043973899aedebcbe52679d0d4a04870dbfa7",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "688710-2026-09-15",
+      "request": {
+        "symbol": "688710",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "57220322289a7d8a6a8a788acbef39d954857ed417da698e37c6271c90835b76",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "18569ceb4140777d0dcecf6ab7063069589d904da158c83ecb6e61b7c2e7a589",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          271,
+          2129
+        ],
+        "observed_max_drawdown": [
+          877,
+          10477
+        ],
+        "financial_income.net_income_parent": [
+          -759476211,
+          50
+        ],
+        "financial_income.revenue": [
+          9380714154,
+          25
+        ],
+        "financial_income.total_revenue": [
+          9380714154,
+          25
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "92090bc9312397b31aa4646e0d2bcf8d54ba93b498536595aff67c8d0c22f665",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "301600-2024-09-18",
+      "request": {
+        "symbol": "301600",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "68cdc6ba09253d2aed8ae8247b196fab834a036d069449e999c11d22ebb2c682",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "0147471c09dae0378ba707d56d56b8347c697eeb1cae2c5409e23582c2227fc2",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          126,
+          359
+        ],
+        "observed_max_drawdown": [
+          139,
+          2513
+        ],
+        "financial_income.net_income_parent": [
+          4691250469,
+          50
+        ],
+        "financial_income.revenue": [
+          9013067061,
+          20
+        ],
+        "financial_income.total_revenue": [
+          9013067061,
+          20
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "48b47df8181bc530e16d1d9e336688b0da5bb18b4df8315e26e49d3d0372bc42",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "301600-2026-09-15",
+      "request": {
+        "symbol": "301600",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "0e82d2242821c68da25ec766a3d1450ef7392b05b2d2cad3acef32e455063529",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "0147471c09dae0378ba707d56d56b8347c697eeb1cae2c5409e23582c2227fc2",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          417,
+          7433
+        ],
+        "observed_max_drawdown": [
+          22,
+          807
+        ],
+        "financial_income.net_income_parent": [
+          4691250469,
+          50
+        ],
+        "financial_income.revenue": [
+          9013067061,
+          20
+        ],
+        "financial_income.total_revenue": [
+          9013067061,
+          20
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "fab179572d9578bd3bfca593dea58301e745b224f5b273ce80a2e0936c0073ef",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "920016-2024-09-18",
+      "request": {
+        "symbol": "920016",
+        "exchange": "BSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "137026f735aeab156f8508357924aa888e581d4dde70e7e96f2fb8478a833fb1",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "3f7d4e94dc9254da1df4fbcf9fc4504e676c33ee95f8a308855b3e99f841ffe2",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          149,
+          256
+        ],
+        "observed_max_drawdown": [
+          232,
+          1941
+        ],
+        "financial_income.net_income_parent": [
+          937815561,
+          100
+        ],
+        "financial_income.revenue": [
+          2543812377,
+          25
+        ],
+        "financial_income.total_revenue": [
+          2543812377,
+          25
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "4fad60e791d0dee645694b68504ea8edb49cbb010d1d2ac7d2c3c766e9222873",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "920016-2026-09-15",
+      "request": {
+        "symbol": "920016",
+        "exchange": "BSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "6ff8686136ea0a78c6d012473cacfb55701a58f7f64b39c7581a899e2cdb7a07",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "3f7d4e94dc9254da1df4fbcf9fc4504e676c33ee95f8a308855b3e99f841ffe2",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          -20,
+          1449
+        ],
+        "observed_max_drawdown": [
+          114,
+          1543
+        ],
+        "financial_income.net_income_parent": [
+          937815561,
+          100
+        ],
+        "financial_income.revenue": [
+          2543812377,
+          25
+        ],
+        "financial_income.total_revenue": [
+          2543812377,
+          25
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "efd86dbc982550785f357e603f733483f332a180ce922c842e962ecc7d9d9fef",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "600301-2024-09-18",
+      "request": {
+        "symbol": "600301",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "523bceb1cbdb0a33511d2db57034ae7af6fb0e0a01af2d13a8fc0c9716fcd64d",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "ba6bfe1069c27abff54ca229c48ea6b2b64b7d82fa135b849a3e7efa40738648",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          347,
+          1415
+        ],
+        "observed_max_drawdown": [
+          31,
+          1479
+        ],
+        "financial_income.net_income_parent": [
+          38187024171,
+          100
+        ],
+        "financial_income.revenue": [
+          278738442709,
+          100
+        ],
+        "financial_income.total_revenue": [
+          278738442709,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "932430f15caff4f92def6fd0d717eef428023975d75b3c401894c25142a73e13",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "600301-2026-09-15",
+      "request": {
+        "symbol": "600301",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "9096e9d2fa8cb3a11cc04009fd7ce9357a6606759c9ce14acd4cd6437c5216e7",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "ba6bfe1069c27abff54ca229c48ea6b2b64b7d82fa135b849a3e7efa40738648",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          -232,
+          4997
+        ],
+        "observed_max_drawdown": [
+          232,
+          4997
+        ],
+        "financial_income.net_income_parent": [
+          38187024171,
+          100
+        ],
+        "financial_income.revenue": [
+          278738442709,
+          100
+        ],
+        "financial_income.total_revenue": [
+          278738442709,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "08ad31902c3ca36b1eebbcff9e40c75da937e336c2ffe52fd0f86cc078d6e131",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "000016-2024-09-18",
+      "request": {
+        "symbol": "000016",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "855899c3b082d81931d1bc28914124e10a099a37ad839a60f86fa5bf1e95c9e6",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "72d82370b2f9184b5b451687e83a3086e0bc553ccdada5cbe04b7ed350f816b1",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          73,
+          258
+        ],
+        "observed_max_drawdown": [
+          3,
+          290
+        ],
+        "financial_income.net_income_parent": [
+          -38332801943,
+          100
+        ],
+        "financial_income.revenue": [
+          524750784927,
+          100
+        ],
+        "financial_income.total_revenue": [
+          524750784927,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "3c0456cebb168d673a4043ceec1fb8a6bc0ff87ae8df99c85fb61a72f48090c9",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "000016-2026-09-15",
+      "request": {
+        "symbol": "000016",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "855899c3b082d81931d1bc28914124e10a099a37ad839a60f86fa5bf1e95c9e6",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "72d82370b2f9184b5b451687e83a3086e0bc553ccdada5cbe04b7ed350f816b1",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "financial_income.net_income_parent": [
+          -38332801943,
+          100
+        ],
+        "financial_income.revenue": [
+          524750784927,
+          100
+        ],
+        "financial_income.total_revenue": [
+          524750784927,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "ce169c240c7a4decae8a0779a7c90abc9bfcc522ad3bb399c6114b2751adad2c",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "688184-2024-09-18",
+      "request": {
+        "symbol": "688184",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "c35a6cf85c94fcec2a7e8f62670fd28d133469dc222f3f9bd77ea74b857fe374",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "b79d27fc3e5c255db3cc88aca0e1521db3bdfd7e9e86686cac0e382365b11529",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          346,
+          1099
+        ],
+        "observed_max_drawdown": [
+          4,
+          1109
+        ],
+        "financial_income.net_income_parent": [
+          -3960766289,
+          25
+        ],
+        "financial_income.revenue": [
+          5980009762,
+          25
+        ],
+        "financial_income.total_revenue": [
+          5980009762,
+          25
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "fe048924a7da0ed4ea57f8ade7c10d2fceec96fcedad89e618027eb3103e656b",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "688184-2026-09-15",
+      "request": {
+        "symbol": "688184",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "8afcbd90cec25afe678c6407c6b80f220866256d395f5f2de3b103bee68ade9a",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "b79d27fc3e5c255db3cc88aca0e1521db3bdfd7e9e86686cac0e382365b11529",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          31,
+          1045
+        ],
+        "observed_max_drawdown": [
+          1,
+          270
+        ],
+        "financial_income.net_income_parent": [
+          -3960766289,
+          25
+        ],
+        "financial_income.revenue": [
+          5980009762,
+          25
+        ],
+        "financial_income.total_revenue": [
+          5980009762,
+          25
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "d3265db37399453bd69544a1417a05a87827d2bd7cdb3b583f3149176342bcc7",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "920110-2024-09-18",
+      "request": {
+        "symbol": "920110",
+        "exchange": "BSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "7b842e98893a248535f939a1835249cdc40f4fea766bb2a7babdd3666d8714d1",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "66acd24fe093c663fc3f21b6cf6c6393640b8808189a760ba7d97fee3d40b091",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          256,
+          739
+        ],
+        "observed_max_drawdown": [
+          3,
+          1489
+        ],
+        "financial_income.net_income_parent": [
+          507402511,
+          25
+        ],
+        "financial_income.revenue": [
+          450337574,
+          5
+        ],
+        "financial_income.total_revenue": [
+          450337574,
+          5
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "02c7fb93a19ac665441dc20ab3581fb5e875e2d09070b2372153b215d6e74e87",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "920110-2026-09-15",
+      "request": {
+        "symbol": "920110",
+        "exchange": "BSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "2ed27d9baf1dd093ce98b3ecb345678a083d0d5d15dfbc87fa948a1a0b5f259b",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "66acd24fe093c663fc3f21b6cf6c6393640b8808189a760ba7d97fee3d40b091",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          -7,
+          2539
+        ],
+        "observed_max_drawdown": [
+          83,
+          2615
+        ],
+        "financial_income.net_income_parent": [
+          507402511,
+          25
+        ],
+        "financial_income.revenue": [
+          450337574,
+          5
+        ],
+        "financial_income.total_revenue": [
+          450337574,
+          5
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "39a86effea2a5900fb5d3f91849aeba740ce2514e58945be071deb21fe813141",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "603615-2024-09-18",
+      "request": {
+        "symbol": "603615",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "f4450db3ba5e1c39b154183b3db58c76ce3d66de3db8e719daca85aed3854339",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "b0f908ac34293c831504294f4d3c6cc46933fcb0ede4f25fd602438059560111",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          371,
+          1186
+        ],
+        "observed_max_drawdown": [
+          7,
+          1202
+        ],
+        "financial_income.net_income_parent": [
+          -366609079,
+          100
+        ],
+        "financial_income.revenue": [
+          7481742971,
+          20
+        ],
+        "financial_income.total_revenue": [
+          7481742971,
+          20
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "1e721e3edf53bfc0635fc2f0f93497eaa3aab8562e1b85886794ea160c2330fe",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "603615-2026-09-15",
+      "request": {
+        "symbol": "603615",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "3c1ceb894b5e0a10a2c42649fe3cec02d28059ed4cce9e64330cdca8d0e83dbe",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "b0f908ac34293c831504294f4d3c6cc46933fcb0ede4f25fd602438059560111",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          -31,
+          1913
+        ],
+        "observed_max_drawdown": [
+          59,
+          1000
+        ],
+        "financial_income.net_income_parent": [
+          -366609079,
+          100
+        ],
+        "financial_income.revenue": [
+          7481742971,
+          20
+        ],
+        "financial_income.total_revenue": [
+          7481742971,
+          20
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "0ea6bdb5c463cd2151c9a5a9363a5178985360c2ed17be8d247735b34831af25",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "600500-2024-09-18",
+      "request": {
+        "symbol": "600500",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "b615313c30b4cd496686c0d546f53e187f3b1ca55b22063dfebc494aa4708a30",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "d56379e137f8932531e81f118e49beedd043c2ad787c5b98142c2d7e748d968d",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          95,
+          364
+        ],
+        "observed_max_drawdown": [
+          9,
+          377
+        ],
+        "financial_income.net_income_parent": [
+          -88584342391,
+          100
+        ],
+        "financial_income.revenue": [
+          1217637835453,
+          50
+        ],
+        "financial_income.total_revenue": [
+          1217637835453,
+          50
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "6984f4f01303f3458d08c6ff330205e385dc8ab885a2a934e8304af9f05fc4f7",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "600500-2026-09-15",
+      "request": {
+        "symbol": "600500",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "ea9c9cd3362ec80cb0c038c3694bef1979d6df535a3ea7cbaa0957ddebb1ca78",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "d56379e137f8932531e81f118e49beedd043c2ad787c5b98142c2d7e748d968d",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          7,
+          548
+        ],
+        "observed_max_drawdown": [
+          16,
+          201
+        ],
+        "financial_income.net_income_parent": [
+          -88584342391,
+          100
+        ],
+        "financial_income.revenue": [
+          1217637835453,
+          50
+        ],
+        "financial_income.total_revenue": [
+          1217637835453,
+          50
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "2f9e9ac01159cb43b96308d5b770e46be6c3c476ac261de366a567ff95107531",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "603681-2024-09-18",
+      "request": {
+        "symbol": "603681",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "740aa02d575307dbd9212ef503b09ea8430526dde1bbbd5dcc3e63ca6298126a",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "ea6d9049757c8fe91c4eb2878da2ee4753ec37023c7a67061fb8be15142fe0d6",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          272,
+          985
+        ],
+        "observed_max_drawdown": [
+          5,
+          507
+        ],
+        "financial_income.net_income_parent": [
+          769453076,
+          25
+        ],
+        "financial_income.revenue": [
+          65053709529,
+          20
+        ],
+        "financial_income.total_revenue": [
+          65053709529,
+          20
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "8859c8c67a73cad4c7e33fec7cd5b24707a5cd09899b09e3483c3e6dd2112eaa",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "603681-2026-09-15",
+      "request": {
+        "symbol": "603681",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "5f89ba239f6b0bd3a5d32832bc9cd517f420e9295c9874ac596bfc6be2b3e9c7",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "ea6d9049757c8fe91c4eb2878da2ee4753ec37023c7a67061fb8be15142fe0d6",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          61,
+          932
+        ],
+        "observed_max_drawdown": [
+          19,
+          983
+        ],
+        "financial_income.net_income_parent": [
+          769453076,
+          25
+        ],
+        "financial_income.revenue": [
+          65053709529,
+          20
+        ],
+        "financial_income.total_revenue": [
+          65053709529,
+          20
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "f0589787ae4ce82091e84936a86726d46f588a4c56d339568e42fa4194eb0587",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "688570-2024-09-18",
+      "request": {
+        "symbol": "688570",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "d487d26e31c21df87811ab76f65fb66b6775e48de6215041ed8d648378e2a3ba",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "10b68b8428d7e398e1d63f8bf05bf3fa9e48d5c549b5dc1958c2e07a31e8dcaa",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          240,
+          731
+        ],
+        "observed_max_drawdown": [
+          21,
+          1504
+        ],
+        "financial_income.net_income_parent": [
+          6951565547,
+          100
+        ],
+        "financial_income.revenue": [
+          65200567443,
+          100
+        ],
+        "financial_income.total_revenue": [
+          65200567443,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "746e91f376cb13ed795c158e9b89ef017f5e44bb846dc21ea8d04c6cc652e371",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "688570-2026-09-15",
+      "request": {
+        "symbol": "688570",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "d9381299a56ee6d1df350101cfb94280d4c40f52722e7679cd3738d0fd9afc7d",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "10b68b8428d7e398e1d63f8bf05bf3fa9e48d5c549b5dc1958c2e07a31e8dcaa",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          3,
+          131
+        ],
+        "observed_max_drawdown": [
+          1,
+          1451
+        ],
+        "financial_income.net_income_parent": [
+          6951565547,
+          100
+        ],
+        "financial_income.revenue": [
+          65200567443,
+          100
+        ],
+        "financial_income.total_revenue": [
+          65200567443,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "7e26fc4f315bd6b656a097192deee500673d8585ccf76c8bbe91d98b80637206",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "688320-2024-09-18",
+      "request": {
+        "symbol": "688320",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "90a5468ca58f04b8fde11f51d7b427ce80731ea4c960554ad11fef59d459aef2",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "77ca32138b1096ba8f0d4f6e048a4084fdf1a42dc33f72e124c5b71bb1f0ffd9",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          227,
+          545
+        ],
+        "observed_max_drawdown": [
+          17,
+          2218
+        ],
+        "financial_income.net_income_parent": [
+          -3816229377,
+          100
+        ],
+        "financial_income.revenue": [
+          10171087839,
+          20
+        ],
+        "financial_income.total_revenue": [
+          10171087839,
+          20
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "3ff06664a7ca047e7884307a8d9302757f68497fe3f6ab0eb55b1c0d39fb92a1",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "688320-2026-09-15",
+      "request": {
+        "symbol": "688320",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "15b1caf2d052475e1ed5420ec3ddec08adee49c01e01ff0f6901b58dbabd0bad",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "77ca32138b1096ba8f0d4f6e048a4084fdf1a42dc33f72e124c5b71bb1f0ffd9",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          108,
+          515
+        ],
+        "observed_max_drawdown": [
+          3,
+          1654
+        ],
+        "financial_income.net_income_parent": [
+          -3816229377,
+          100
+        ],
+        "financial_income.revenue": [
+          10171087839,
+          20
+        ],
+        "financial_income.total_revenue": [
+          10171087839,
+          20
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "a182a33bd8ae0b8964c3e544e3cd94b91fb494c59202b019e1b9d0f1a8ad519c",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "688315-2024-09-18",
+      "request": {
+        "symbol": "688315",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "0d845e1d91c88c2bdc88d3b62e9a1ec53f35315b9af5bf55ea923cc6f7ad3852",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "387b1d292db9376793f5f16def8592a9f32344f7a395223ae37f999599bd0b82",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          133,
+          305
+        ],
+        "observed_max_drawdown": [
+          27,
+          938
+        ],
+        "financial_income.net_income_parent": [
+          7872961847,
+          100
+        ],
+        "financial_income.revenue": [
+          20801641241,
+          20
+        ],
+        "financial_income.total_revenue": [
+          20801641241,
+          20
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "8bffc462553ec8ab007477a610b68958c7b5eea68a0f656e68dae8a1219f0d63",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "688315-2026-09-15",
+      "request": {
+        "symbol": "688315",
+        "exchange": "SSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "ad58221448be97908ff2a4113c23eb5f3a8debfacdfd6e1c270c334e91334996",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "387b1d292db9376793f5f16def8592a9f32344f7a395223ae37f999599bd0b82",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          237,
+          443
+        ],
+        "observed_max_drawdown": [
+          0,
+          1
+        ],
+        "financial_income.net_income_parent": [
+          7872961847,
+          100
+        ],
+        "financial_income.revenue": [
+          20801641241,
+          20
+        ],
+        "financial_income.total_revenue": [
+          20801641241,
+          20
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "b0abd146d7cebe3792beabaa55238552e8541f95bc2f5599ea6016321a2e3dab",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "002363-2024-09-18",
+      "request": {
+        "symbol": "002363",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "d9df10ae749e5b13078869a125009fc324e15a2f52ea86b532f87028eb9d4761",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "c97ff82d400f5046d412ba9c6483a81e3673325d3344ce1482e42b6f507cda48",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          24,
+          113
+        ],
+        "observed_max_drawdown": [
+          1,
+          579
+        ],
+        "financial_income.net_income_parent": [
+          157386284,
+          5
+        ],
+        "financial_income.revenue": [
+          103675473999,
+          100
+        ],
+        "financial_income.total_revenue": [
+          103675473999,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "d2486dd834eaa66e9ae86ca8d77b3ca0384ca74b3152dbff69361ec479f9ee40",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "002363-2026-09-15",
+      "request": {
+        "symbol": "002363",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "d644367d46215a0b23f46cec5e62ffeccf179ae63f36096f5e764f40700eb4f0",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "c97ff82d400f5046d412ba9c6483a81e3673325d3344ce1482e42b6f507cda48",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          11,
+          334
+        ],
+        "observed_max_drawdown": [
+          9,
+          679
+        ],
+        "financial_income.net_income_parent": [
+          157386284,
+          5
+        ],
+        "financial_income.revenue": [
+          103675473999,
+          100
+        ],
+        "financial_income.total_revenue": [
+          103675473999,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "0806054e6295717e5c82ce04dcd344b0db8875c05be4e349c8d75215f4b45dc6",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "000997-2024-09-18",
+      "request": {
+        "symbol": "000997",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "1158d2f7409d9b796d7edc95ab035b16d920a14c19ed837a8d6f87aa029b28f4",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "a7780a49b7dd3562bcc7d22d9f2a9a573870e66c75f8236a29bf0c987b2e2a83",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          490,
+          1221
+        ],
+        "observed_max_drawdown": [
+          11,
+          1305
+        ],
+        "financial_income.net_income_parent": [
+          5953573191,
+          10
+        ],
+        "financial_income.revenue": [
+          77014921371,
+          20
+        ],
+        "financial_income.total_revenue": [
+          401975955183,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "f3f66190f15cbebd756598da08ad59f40ae3fee0e160dca897e71078a2a41659",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "000997-2026-09-15",
+      "request": {
+        "symbol": "000997",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "c79219857c3d750ba1f5eceb05d51daca60192d558d49c61b2155421a430faef",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "a7780a49b7dd3562bcc7d22d9f2a9a573870e66c75f8236a29bf0c987b2e2a83",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          1,
+          216
+        ],
+        "observed_max_drawdown": [
+          52,
+          2005
+        ],
+        "financial_income.net_income_parent": [
+          5953573191,
+          10
+        ],
+        "financial_income.revenue": [
+          77014921371,
+          20
+        ],
+        "financial_income.total_revenue": [
+          401975955183,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "42faa257818c4e011c77d782ff5505588838af891e3f45c01132e8e0cd09469f",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "000531-2024-09-18",
+      "request": {
+        "symbol": "000531",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "9a12ac72c8f6f8903e7efd8e7f9a0acf054d0c850fe442c95974dfa83cf48996",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "e9df79668e0037b26f8c7786ec2f12c1dfe6ade68b807e469373deefe3a8fb93",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          106,
+          455
+        ],
+        "observed_max_drawdown": [
+          1,
+          153
+        ],
+        "financial_income.net_income_parent": [
+          21672521231,
+          100
+        ],
+        "financial_income.revenue": [
+          103516447077,
+          50
+        ],
+        "financial_income.total_revenue": [
+          103516447077,
+          50
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "2279a548e90aa9d6e3c50677f243b0a6c4a64e9c03d33cc9ba7a451ab0e8d621",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "000531-2026-09-15",
+      "request": {
+        "symbol": "000531",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "02b8abc2a5a8cb7fe8c30975b2ae47b8556c953d4d7b5e877d231f1297cf6455",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "e9df79668e0037b26f8c7786ec2f12c1dfe6ade68b807e469373deefe3a8fb93",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          -25,
+          579
+        ],
+        "observed_max_drawdown": [
+          25,
+          579
+        ],
+        "financial_income.net_income_parent": [
+          21672521231,
+          100
+        ],
+        "financial_income.revenue": [
+          103516447077,
+          50
+        ],
+        "financial_income.total_revenue": [
+          103516447077,
+          50
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "83a1ce204a40b8461df1ab1b3f7219d9c4d4f3d4a073184a23fca962fd6f0316",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "300733-2024-09-18",
+      "request": {
+        "symbol": "300733",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "9209570fe5831e321f307d659c46c5323ccec760dbf0a9dd6f0afc1671ac1aa3",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "4332b230983a8c60b1eafeea0fab688184a0f52ced4d5f5509f80e3122168f24",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          229,
+          908
+        ],
+        "observed_max_drawdown": [
+          8,
+          917
+        ],
+        "financial_income.net_income_parent": [
+          1396488692,
+          25
+        ],
+        "financial_income.revenue": [
+          86546334033,
+          100
+        ],
+        "financial_income.total_revenue": [
+          86546334033,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "a4774774ccb863d3410e37c4f8c521001ac3f4e5ad440866a80ec10d431469c8",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "300733-2026-09-15",
+      "request": {
+        "symbol": "300733",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "8e5e415d0ee9f9bb8411e0a871d4bbb8850780654de7805fba8bdaf97cf1c673",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "4332b230983a8c60b1eafeea0fab688184a0f52ced4d5f5509f80e3122168f24",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          75,
+          1264
+        ],
+        "observed_max_drawdown": [
+          75,
+          1414
+        ],
+        "financial_income.net_income_parent": [
+          1396488692,
+          25
+        ],
+        "financial_income.revenue": [
+          86546334033,
+          100
+        ],
+        "financial_income.total_revenue": [
+          86546334033,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "9c4d908209886bf6d233eaa2cb7b95f736904e2f4a079e0353ac203a48471201",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "300021-2024-09-18",
+      "request": {
+        "symbol": "300021",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "e2f994d48bb68e0eec824bacb55940680cdeaf960c69c847e3fd70f7a1d74eec",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "821b7115f8f8720804911bc62c868f877b4cdc56125eb4d3c52e944509c5269c",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          13,
+          43
+        ],
+        "observed_max_drawdown": [
+          2,
+          311
+        ],
+        "financial_income.net_income_parent": [
+          1259405967,
+          100
+        ],
+        "financial_income.revenue": [
+          127614497373,
+          100
+        ],
+        "financial_income.total_revenue": [
+          127614497373,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "6c210df8533133f10eb3ddd22f30df5cd381118305368b697e679cbbf5d8d5db",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "300021-2026-09-15",
+      "request": {
+        "symbol": "300021",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "a104058320a86918d7f0be2f6f18953af993fe330f44789d5629f4c72ebd3237",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "821b7115f8f8720804911bc62c868f877b4cdc56125eb4d3c52e944509c5269c",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          3,
+          379
+        ],
+        "observed_max_drawdown": [
+          6,
+          197
+        ],
+        "financial_income.net_income_parent": [
+          1259405967,
+          100
+        ],
+        "financial_income.revenue": [
+          127614497373,
+          100
+        ],
+        "financial_income.total_revenue": [
+          127614497373,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "2ffc371221a0d5bb9589ab4e5d1e79312d6c30b6ef542f805f2dce645ef852f7",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "300269-2024-09-18",
+      "request": {
+        "symbol": "300269",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "20aacf6ee092551b8916af7d2bb9c242c0c4be513930a9d2197d4c3bacfa9412",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "98e869e8fc35d1ce682bb5ed2b98699aa0922e24641063822f03632c7cc474ad",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          115,
+          274
+        ],
+        "observed_max_drawdown": [
+          0,
+          1
+        ],
+        "financial_income.net_income_parent": [
+          -108554577,
+          50
+        ],
+        "financial_income.revenue": [
+          4838889359,
+          20
+        ],
+        "financial_income.total_revenue": [
+          4838889359,
+          20
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "dc4ede849126f1dbd039fca9975f4258c9e2ec671b8174d7ef976c620f70115c",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "300269-2026-09-15",
+      "request": {
+        "symbol": "300269",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "41fb30ac2d85e859fd7f137c3c8b5762c62cb7eab9b80352fe1ec19665e208e7",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "98e869e8fc35d1ce682bb5ed2b98699aa0922e24641063822f03632c7cc474ad",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          -11,
+          465
+        ],
+        "observed_max_drawdown": [
+          19,
+          473
+        ],
+        "financial_income.net_income_parent": [
+          -108554577,
+          50
+        ],
+        "financial_income.revenue": [
+          4838889359,
+          20
+        ],
+        "financial_income.total_revenue": [
+          4838889359,
+          20
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "a0c929bdd11600f5d780084d75e1d0a590285973b631aba9a629569776356f4c",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "920510-2024-09-18",
+      "request": {
+        "symbol": "920510",
+        "exchange": "BSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "06865a28bb09630d09ddf38a5c5be78fdbe7f25b3b32c1b85bfd277d1402c19a",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "af07a80e0fd4de70dcaca403043d7b7b9eaabc0e184b9e98d14d3d1ea7d4fed2",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          505,
+          994
+        ],
+        "observed_max_drawdown": [
+          10,
+          499
+        ],
+        "financial_income.net_income_parent": [
+          -15021919,
+          10
+        ],
+        "financial_income.revenue": [
+          10148934677,
+          100
+        ],
+        "financial_income.total_revenue": [
+          10148934677,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "5ce0cb38e3edc600e87ef0989be428258d13a0971067a648a1f369425dda5d34",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "920510-2026-09-15",
+      "request": {
+        "symbol": "920510",
+        "exchange": "BSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "c94f5fdd6e4123bc84ba40061532e89feed3f98eec758ab6b897073ac10eafc8",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "af07a80e0fd4de70dcaca403043d7b7b9eaabc0e184b9e98d14d3d1ea7d4fed2",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          142,
+          1959
+        ],
+        "observed_max_drawdown": [
+          53,
+          2041
+        ],
+        "financial_income.net_income_parent": [
+          -15021919,
+          10
+        ],
+        "financial_income.revenue": [
+          10148934677,
+          100
+        ],
+        "financial_income.total_revenue": [
+          10148934677,
+          100
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "42adf81e89aa819dbe92a9e8bb8d9b0b88fa80fc51bd30dcabd97b9328db10b9",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "920489-2024-09-18",
+      "request": {
+        "symbol": "920489",
+        "exchange": "BSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "992c5179709b734762672e6f2ac9d6229f8689711d97cbc3a99aeaa924bdb958",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "3918a4d70ccf0a6b2f3b119d43917282bf4ad1e4940038e97e8d7651b8bf519b",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          183,
+          677
+        ],
+        "observed_max_drawdown": [
+          51,
+          677
+        ],
+        "financial_income.net_income_parent": [
+          573850279,
+          100
+        ],
+        "financial_income.revenue": [
+          6658699773,
+          25
+        ],
+        "financial_income.total_revenue": [
+          6658699773,
+          25
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "88ca5dbfb681b7f354a664cc67b1722b2c8b180747dde46c76de380eed06e880",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "920489-2026-09-15",
+      "request": {
+        "symbol": "920489",
+        "exchange": "BSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "d1e249a5e5f41d992c2ff08ee580e7466ebd4cbf583273b3210300bc3f9f3ecf",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "3918a4d70ccf0a6b2f3b119d43917282bf4ad1e4940038e97e8d7651b8bf519b",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          65,
+          1181
+        ],
+        "observed_max_drawdown": [
+          18,
+          641
+        ],
+        "financial_income.net_income_parent": [
+          573850279,
+          100
+        ],
+        "financial_income.revenue": [
+          6658699773,
+          25
+        ],
+        "financial_income.total_revenue": [
+          6658699773,
+          25
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "c22e42e1229c6d7f0bc94a55dae9044b670da9d5b1569a0f1e567d9ca80309ff",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "920175-2024-09-18",
+      "request": {
+        "symbol": "920175",
+        "exchange": "BSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "1b5ca3c7dfccae928ba48571ce498b74041b9dfc3a9df93be94ee6e1a5e94921",
+            "provider": "tushare",
+            "start": "2024-09-18",
+            "end": "2024-09-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "23cc8c6765a745dce63973cec8b941833162254897c3c1f2ca1fa28b1d8b7c58",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          9,
+          22
+        ],
+        "observed_max_drawdown": [
+          5,
+          556
+        ],
+        "financial_income.net_income_parent": [
+          -1429784721,
+          25
+        ],
+        "financial_income.revenue": [
+          3208937678,
+          25
+        ],
+        "financial_income.total_revenue": [
+          3208937678,
+          25
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "31346516657cee93a717317a3e04fceff95b4b533baff8b9b17ff31f930618a6",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    },
+    {
+      "id": "920175-2026-09-15",
+      "request": {
+        "symbol": "920175",
+        "exchange": "BSE",
+        "as_of": "2026-10-01T09:03:39.907484+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "f8755df8016b4a9111b34fbaa56983116f9c839a78fed42b987ea3f4893d855e",
+            "provider": "tushare",
+            "start": "2026-09-15",
+            "end": "2026-09-25"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "23cc8c6765a745dce63973cec8b941833162254897c3c1f2ca1fa28b1d8b7c58",
+            "provider": "tushare",
+            "start": "2024-12-31",
+            "end": "2025-06-30"
+          }
+        ],
+        "benchmark": null,
+        "objective": "single_stock_research",
+        "hypotheses": [
+          "mechanical_adjustment",
+          "market_direction",
+          "financial_deterioration",
+          "cashflow_divergence",
+          "event_chronology"
+        ],
+        "event_record_id": null
+      },
+      "expected": {
+        "observed_price_change": [
+          19,
+          745
+        ],
+        "observed_max_drawdown": [
+          11,
+          393
+        ],
+        "financial_income.net_income_parent": [
+          -1429784721,
+          25
+        ],
+        "financial_income.revenue": [
+          3208937678,
+          25
+        ],
+        "financial_income.total_revenue": [
+          3208937678,
+          25
+        ]
+      },
+      "expected_status": "partial",
+      "input_hash": "d89170642c1135bc07b4a50b671157998abc40b0928bef4abe512a9f44107c6b",
+      "expected_hypotheses": {
+        "mechanical_adjustment": "insufficient",
+        "market_direction": "insufficient",
+        "financial_deterioration": "insufficient",
+        "cashflow_divergence": "insufficient",
+        "event_chronology": "insufficient"
+      }
+    }
+  ],
+  "model": "disabled",
+  "causal_ground_truth": false,
+  "live_model_quality_certified": false
+}

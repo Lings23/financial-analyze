@@ -1,0 +1,133 @@
+{
+  "scope": "p17-szse-archive-reference-20261001",
+  "created_at": "2026-10-01T12:06:30.426175+00:00",
+  "url": "https://www.szse.cn/api/report/ShowReport/data",
+  "page_url": "https://www.szse.cn/market/trend/archive/index.html",
+  "params": {
+    "SHOWTYPE": "JSON",
+    "CATALOGID": "1815_stock",
+    "TABKEY": "tab1",
+    "PAGENO": "1"
+  },
+  "groups": [
+    {
+      "label": "formal",
+      "original_scope": "p17-formal-20261001",
+      "snapshot_id": "23cc8c6765a745dce63973cec8b941833162254897c3c1f2ca1fa28b1d8b7c58",
+      "run_path": ".artifacts/p17_20261001/formal/run.json",
+      "original_artifacts": ".artifacts/p17_20261001/formal/artifacts",
+      "codes": [
+        "301600",
+        "000016",
+        "002363",
+        "000997",
+        "000531",
+        "300733",
+        "300021",
+        "300269"
+      ],
+      "dates": [
+        "2024-09-18",
+        "2024-09-19",
+        "2024-09-20",
+        "2024-09-23",
+        "2024-09-24",
+        "2024-09-25",
+        "2024-09-26",
+        "2024-09-27",
+        "2024-09-30"
+      ],
+      "window": {
+        "start": "2024-09-18",
+        "end": "2024-09-30",
+        "dates": [
+          "2024-09-18",
+          "2024-09-19",
+          "2024-09-20",
+          "2024-09-23",
+          "2024-09-24",
+          "2024-09-25",
+          "2024-09-26",
+          "2024-09-27",
+          "2024-09-30"
+        ]
+      },
+      "finished_at": "2026-10-01T09:03:38.907484+00:00"
+    },
+    {
+      "label": "original",
+      "original_scope": "p17-validation-20260930",
+      "snapshot_id": "2b30fc0aa2d93ec968847e0092e78d3e6e64bdd3e151fc8731e8334df71c2e59",
+      "finished_at": "2026-09-30T01:00:02.381740+00:00",
+      "original_artifacts": ".artifacts/p17_20260930/artifacts",
+      "codes": [
+        "000001",
+        "300750"
+      ],
+      "dates": [
+        "2024-09-18",
+        "2024-09-19",
+        "2024-09-20",
+        "2024-09-23",
+        "2024-09-24",
+        "2024-09-25",
+        "2024-09-26",
+        "2024-09-27",
+        "2024-09-30"
+      ],
+      "window": {
+        "start": "2024-09-18",
+        "end": "2024-09-30"
+      }
+    }
+  ],
+  "rules": {
+    "open": {
+      "source_field": "ks",
+      "multiplier": "1",
+      "tolerance": "0.005"
+    },
+    "close": {
+      "source_field": "ss",
+      "multiplier": "1",
+      "tolerance": "0.005"
+    },
+    "high": {
+      "source_field": "zg",
+      "multiplier": "1",
+      "tolerance": "0.005"
+    },
+    "low": {
+      "source_field": "zd",
+      "multiplier": "1",
+      "tolerance": "0.005"
+    },
+    "volume": {
+      "source_field": "cjgs",
+      "multiplier": "10000",
+      "tolerance": "50"
+    },
+    "amount": {
+      "source_field": "cjje",
+      "multiplier": "10000",
+      "tolerance": "50"
+    }
+  },
+  "min_interval_seconds": 2.5,
+  "logical_requests": 90,
+  "registered_cells": 540,
+  "overall_deadline_seconds": 420,
+  "source_sha256": {
+    "evaluation\\p17_20261001_formal_plan.json": "e98a23c65a1f073ebcda264ad138076ff53b711400709ed46bdc894388b2e0f5",
+    "evaluation\\p17_20261001_szse_reference_plan.json": "8c69468ddf7a42e27d255ecb96fb2bd89bade68ca7137b8542a8a09346138c18",
+    ".artifacts\\p17_20261001\\szse_history_discovery\\archive-metadata.json": "24edb7f602d32fd16eb48853eda994e29f50f201049f089038453c96996ab5fb",
+    ".artifacts\\p17_20261001\\szse_history_discovery\\page.html": "d12209740871e566a9f4f34c0214d225098313d8f3a96b5c15c18a52ad3edb0c",
+    ".artifacts\\p17_20261001\\szse_history_discovery\\archive-page.html": "2869271b18f479730f4772331694f4f4a025241fe2d2a8b3fc52075c342c7422",
+    ".artifacts\\p17_20261001\\szse_history_discovery\\res-min-assets-script0.js": "e5466cb1981aee69592030da07ba279d0e3c05ebc273014670a30fce3e4381d9",
+    ".artifacts\\p17_20261001\\szse_history_discovery\\archive-probe.json": "76f0e1a06a8486b003d99b1369bf47005a83de1c58d41faa4a537978e7e7d2e5",
+    "D:\\workspace\\financial analyze\\scripts\\collect_p17_szse_archive.py": "d945d8fbb4cd50d68e24913786a4873ed6f1e1fdda5d4d7198846bbf6be5c7cc"
+  },
+  "rule_basis": "Official archive table prints prices to 0.01 CNY, volume to 0.01 ten-thousand shares and amount to 0.01 ten-thousand CNY; half-print-step tolerance fixed before provider-value comparison. Footer covers all trading methods.",
+  "probe_seen_before_freeze": "002363/2024-09-18 official row only; not a blind statistical certification",
+  "phase1_complete": false
+}

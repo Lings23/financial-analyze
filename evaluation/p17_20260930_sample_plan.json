@@ -1,0 +1,35 @@
+{
+  "plan_version": "2026-09-30-v1",
+  "purpose": "P1.7 real-source acceptance pilot; pre-registered before live retrieval",
+  "scope": "p17-validation-20260930",
+  "datasets": ["market_daily", "financial_income"],
+  "securities": [
+    {"symbol": "600000", "exchange": "SSE", "stratum": "main-board bank"},
+    {"symbol": "688590", "exchange": "SSE", "stratum": "STAR industrial"},
+    {"symbol": "000001", "exchange": "SZSE", "stratum": "main-board bank"},
+    {"symbol": "300750", "exchange": "SZSE", "stratum": "ChiNext industrial"},
+    {"symbol": "600519", "exchange": "SSE", "stratum": "main-board consumer"},
+    {"symbol": "920118", "exchange": "BSE", "stratum": "BSE availability probe"}
+  ],
+  "daily_windows": [
+    {"start": "2024-09-18", "end": "2024-09-30", "stratum": "historical"},
+    {"start": "2026-09-15", "end": "2026-09-25", "stratum": "recent"}
+  ],
+  "financial_periods": ["2024-12-31", "2025-06-30"],
+  "reference_rules": {
+    "market_daily": "Official exchange historical records or issuer filing table hosted by an exchange; compare only fields explicitly printed in that original source",
+    "financial_income": "Original issuer annual/interim filing from CNINFO or exchange; compare only same consolidated cumulative report type and same disclosed version",
+    "missing_reference": "Record uncomparable; do not substitute another aggregator or remove from registered sample"
+  },
+  "value_rules": {
+    "price": "Exact decimal after source-disclosed precision",
+    "volume": "Tushare lots times 100; compare to reference shares at its printed precision",
+    "amount": "Tushare thousands of CNY times 1000; compare at reference printed precision",
+    "financial": "Convert source disclosed unit to CNY; compare within half of source's last printed unit only when report type and version match"
+  },
+  "gates": {
+    "numerical_accuracy_suggested": 0.995,
+    "critical_pit_authorization_integrity_errors_allowed": 0,
+    "pilot_is_not_formal_statistical_certification": true
+  }
+}

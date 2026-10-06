@@ -1,0 +1,511 @@
+{
+  "version": "20261001-v1",
+  "created_at": "2026-10-01T09:00:08.281654+00:00",
+  "scope": "p17-formal-20261001",
+  "reference_scope": "p17-formal-reference-20261001",
+  "seed": "phase1-formal-20261001-v1",
+  "population_sources": [
+    {
+      "root": ".artifacts\\p17_20261001\\formal_discovery\\artifacts",
+      "scope": "p17-formal-discovery-20261001",
+      "artifact_id": "69088cb30cf6a907ee6d5b50f8d0aeca7fc1af3191443b00146220a4722b7a63",
+      "run_path": ".artifacts\\p17_20261001\\formal_discovery\\run.json",
+      "run_sha256": "e98c5e4a9dee6e3984a8390b4b81be4d99740d8899e06c7b0296aa01873149d2"
+    },
+    {
+      "root": ".artifacts\\p17_20261001\\formal_discovery\\artifacts",
+      "scope": "p17-formal-discovery-20261001",
+      "artifact_id": "229eb0f8c942dbaa1ac998504f04a943ec5498df97226bc4d4b9c7bcecc0cf1e",
+      "run_path": ".artifacts\\p17_20261001\\formal_discovery\\run.json",
+      "run_sha256": "e98c5e4a9dee6e3984a8390b4b81be4d99740d8899e06c7b0296aa01873149d2"
+    },
+    {
+      "root": ".artifacts\\p17_20261001\\formal_discovery\\artifacts",
+      "scope": "p17-formal-discovery-20261001",
+      "artifact_id": "7217b67d4ac352aff51267cd50461c538a3ebff62dfdcb44edf0a85051935555",
+      "run_path": ".artifacts\\p17_20261001\\formal_discovery\\run.json",
+      "run_sha256": "e98c5e4a9dee6e3984a8390b4b81be4d99740d8899e06c7b0296aa01873149d2"
+    },
+    {
+      "root": ".artifacts\\p17_20261001\\formal_discovery\\liquidity_2026-09-24\\decimal_fixed\\artifacts",
+      "scope": "p17-formal-discovery-20261001",
+      "artifact_id": "1a17fe73eaf487357925f0884b4195726146983fd211ac2f827645ed3df55e0f",
+      "run_path": ".artifacts\\p17_20261001\\formal_discovery\\liquidity_2026-09-24\\decimal_fixed\\run.json",
+      "run_sha256": "9dabce0759681fdec94aa5cb627d5aa79bd639d55cfc9600543428fb542733fa"
+    }
+  ],
+  "current_population_count": 5572,
+  "eligible_count": 5291,
+  "board_draw_pool_counts": {
+    "SSE:主板": 1657,
+    "SSE:科创板": 571,
+    "SZSE:主板": 1466,
+    "SZSE:创业板": 1340,
+    "BSE:北交所": 247
+  },
+  "selection_bias": "Currently L-listed stocks only; surviving-universe bias, current names/industry, SHA deterministic draw not iid certification. No whole-market confidence bound claimed.",
+  "pilot_excluded": [
+    "000001.SZ",
+    "300750.SZ",
+    "600000.SH",
+    "600519.SH",
+    "688590.SH",
+    "920118.BJ"
+  ],
+  "securities": [
+    {
+      "ts_code": "601009.SH",
+      "symbol": "601009",
+      "name": "南京银行",
+      "exchange": "SSE",
+      "market": "主板",
+      "industry": "银行",
+      "list_date": "20070719",
+      "stratum": "bank",
+      "selection_note": "Two SHA-ranked current bank-industry records; current industry is not historical classification"
+    },
+    {
+      "ts_code": "601528.SH",
+      "symbol": "601528",
+      "name": "瑞丰银行",
+      "exchange": "SSE",
+      "market": "主板",
+      "industry": "银行",
+      "list_date": "20210625",
+      "stratum": "bank",
+      "selection_note": "Two SHA-ranked current bank-industry records; current industry is not historical classification"
+    },
+    {
+      "ts_code": "603207.SH",
+      "symbol": "603207",
+      "name": "小方制药",
+      "exchange": "SSE",
+      "market": "主板",
+      "industry": "化学制药",
+      "list_date": "20240826",
+      "stratum": "new_listing",
+      "selection_note": "Latest metadata listing date between 2024-06-01 and first window; official listing-date proof pending"
+    },
+    {
+      "ts_code": "688710.SH",
+      "symbol": "688710",
+      "name": "益诺思",
+      "exchange": "SSE",
+      "market": "科创板",
+      "industry": "生物制药",
+      "list_date": "20240903",
+      "stratum": "new_listing",
+      "selection_note": "Latest metadata listing date between 2024-06-01 and first window; official listing-date proof pending"
+    },
+    {
+      "ts_code": "301600.SZ",
+      "symbol": "301600",
+      "name": "慧翰股份",
+      "exchange": "SZSE",
+      "market": "创业板",
+      "industry": "通信设备",
+      "list_date": "20240911",
+      "stratum": "new_listing",
+      "selection_note": "Latest metadata listing date between 2024-06-01 and first window; official listing-date proof pending"
+    },
+    {
+      "ts_code": "920016.BJ",
+      "symbol": "920016",
+      "name": "中草香料",
+      "exchange": "BSE",
+      "market": "北交所",
+      "industry": "日用化工",
+      "list_date": "20240913",
+      "stratum": "new_listing",
+      "selection_note": "Latest metadata listing date between 2024-06-01 and first window; official listing-date proof pending"
+    },
+    {
+      "ts_code": "600301.SH",
+      "symbol": "600301",
+      "name": "华锡有色",
+      "exchange": "SSE",
+      "market": "主板",
+      "industry": "小金属",
+      "list_date": "20000712",
+      "stratum": "halt_candidate",
+      "selection_note": "Fixed SSE/SZSE stock-halt candidates from suspend_d plus CNINFO titles; actual dates require PDF proof"
+    },
+    {
+      "ts_code": "000016.SZ",
+      "symbol": "000016",
+      "name": "*ST康佳A",
+      "exchange": "SZSE",
+      "market": "主板",
+      "industry": "家用电器",
+      "list_date": "19920327",
+      "stratum": "halt_candidate",
+      "selection_note": "Fixed SSE/SZSE stock-halt candidates from suspend_d plus CNINFO titles; actual dates require PDF proof"
+    },
+    {
+      "ts_code": "688184.SH",
+      "symbol": "688184",
+      "name": "ST帕瓦",
+      "exchange": "SSE",
+      "market": "科创板",
+      "industry": "电气设备",
+      "list_date": "20220919",
+      "stratum": "low_volume_proxy",
+      "selection_note": "Lowest positive Tushare volume on 2026-09-24 in current eligible exchange population; selection metadata, not independent truth"
+    },
+    {
+      "ts_code": "920110.BJ",
+      "symbol": "920110",
+      "name": "雷特科技",
+      "exchange": "BSE",
+      "market": "北交所",
+      "industry": "电气设备",
+      "list_date": "20221206",
+      "stratum": "low_volume_proxy",
+      "selection_note": "Lowest positive Tushare volume on 2026-09-24 in current eligible exchange population; selection metadata, not independent truth"
+    },
+    {
+      "ts_code": "603615.SH",
+      "symbol": "603615",
+      "name": "茶花股份",
+      "exchange": "SSE",
+      "market": "主板",
+      "industry": "家居用品",
+      "list_date": "20170213",
+      "stratum": "board_draw:SSE:主板",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "600500.SH",
+      "symbol": "600500",
+      "name": "中化国际",
+      "exchange": "SSE",
+      "market": "主板",
+      "industry": "塑料",
+      "list_date": "20000301",
+      "stratum": "board_draw:SSE:主板",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "603681.SH",
+      "symbol": "603681",
+      "name": "永冠新材",
+      "exchange": "SSE",
+      "market": "主板",
+      "industry": "化工原料",
+      "list_date": "20190326",
+      "stratum": "board_draw:SSE:主板",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "688570.SH",
+      "symbol": "688570",
+      "name": "天玛智控",
+      "exchange": "SSE",
+      "market": "科创板",
+      "industry": "专用机械",
+      "list_date": "20230605",
+      "stratum": "board_draw:SSE:科创板",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "688320.SH",
+      "symbol": "688320",
+      "name": "禾川科技",
+      "exchange": "SSE",
+      "market": "科创板",
+      "industry": "电器仪表",
+      "list_date": "20220428",
+      "stratum": "board_draw:SSE:科创板",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "688315.SH",
+      "symbol": "688315",
+      "name": "诺禾致源",
+      "exchange": "SSE",
+      "market": "科创板",
+      "industry": "医疗保健",
+      "list_date": "20210413",
+      "stratum": "board_draw:SSE:科创板",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "002363.SZ",
+      "symbol": "002363",
+      "name": "隆基机械",
+      "exchange": "SZSE",
+      "market": "主板",
+      "industry": "汽车配件",
+      "list_date": "20100305",
+      "stratum": "board_draw:SZSE:主板",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "000997.SZ",
+      "symbol": "000997",
+      "name": "新大陆",
+      "exchange": "SZSE",
+      "market": "主板",
+      "industry": "IT设备",
+      "list_date": "20000807",
+      "stratum": "board_draw:SZSE:主板",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "000531.SZ",
+      "symbol": "000531",
+      "name": "穗恒运A",
+      "exchange": "SZSE",
+      "market": "主板",
+      "industry": "火力发电",
+      "list_date": "19940106",
+      "stratum": "board_draw:SZSE:主板",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "300733.SZ",
+      "symbol": "300733",
+      "name": "西菱动力",
+      "exchange": "SZSE",
+      "market": "创业板",
+      "industry": "汽车配件",
+      "list_date": "20180116",
+      "stratum": "board_draw:SZSE:创业板",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "300021.SZ",
+      "symbol": "300021",
+      "name": "大禹节水",
+      "exchange": "SZSE",
+      "market": "创业板",
+      "industry": "建筑工程",
+      "list_date": "20091030",
+      "stratum": "board_draw:SZSE:创业板",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "300269.SZ",
+      "symbol": "300269",
+      "name": "联建光电",
+      "exchange": "SZSE",
+      "market": "创业板",
+      "industry": "元器件",
+      "list_date": "20111012",
+      "stratum": "board_draw:SZSE:创业板",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "920510.BJ",
+      "symbol": "920510",
+      "name": "丰光精密",
+      "exchange": "BSE",
+      "market": "北交所",
+      "industry": "机械基件",
+      "list_date": "20201228",
+      "stratum": "board_draw:BSE:北交所",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "920489.BJ",
+      "symbol": "920489",
+      "name": "佳先股份",
+      "exchange": "BSE",
+      "market": "北交所",
+      "industry": "化工原料",
+      "list_date": "20200727",
+      "stratum": "board_draw:BSE:北交所",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "920175.BJ",
+      "symbol": "920175",
+      "name": "东方碳素",
+      "exchange": "BSE",
+      "market": "北交所",
+      "industry": "化工原料",
+      "list_date": "20230630",
+      "stratum": "board_draw:BSE:北交所",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    }
+  ],
+  "daily_windows": [
+    {
+      "start": "2024-09-18",
+      "end": "2024-09-30",
+      "dates": [
+        "2024-09-18",
+        "2024-09-19",
+        "2024-09-20",
+        "2024-09-23",
+        "2024-09-24",
+        "2024-09-25",
+        "2024-09-26",
+        "2024-09-27",
+        "2024-09-30"
+      ]
+    },
+    {
+      "start": "2026-09-15",
+      "end": "2026-09-25",
+      "dates": [
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24"
+      ]
+    }
+  ],
+  "calendar_note": "Same frozen pilot sessions; 2026-09-25 official Mid-Autumn closure, not a missing daily observation.",
+  "financial_periods": [
+    "2024-12-31",
+    "2025-03-31",
+    "2025-06-30"
+  ],
+  "financial_fields": [
+    "revenue",
+    "total_revenue",
+    "net_income_parent"
+  ],
+  "potential_market_cells": 2550,
+  "financial_cells": 225,
+  "missing_rules": "All registered security/date/field and financial period/field cells remain enumerated. Missing provider, missing reference, NULL, and unproved halt are distinct; no replacement or denominator removal. Officially proved non-trading halt may later be a separately reported expected absence, never numeric match.",
+  "financial_reference_rules": "CNINFO/exchange original consolidated cumulative type-1 report of same version, exact printed field and units; no revenue/total-revenue alias. No reference means unverified.",
+  "historical_pit_note": "Ordinary Tushare values observed_at. Historical-version qualification is a separate gate, not provided by historical dates here.",
+  "min_interval_seconds": 2.5,
+  "max_attempts": 1,
+  "attempt_timeout": 15,
+  "total_timeout": 20,
+  "sse_reference": {
+    "params": {
+      "select": "date,open,high,low,close,volume,amount",
+      "begin": -600,
+      "end": -1
+    },
+    "renderer_path": ".artifacts\\p17_20261001\\exchange_discovery\\script4.js",
+    "renderer_sha256": "ee28d5e01af35592aa5d1be1e6900608645616878eb725fc0317b8db6a51c34f",
+    "page_url": "https://www.sse.com.cn/star/market/stocklist/info/index/index.shtml?COMPANY_CODE=688002",
+    "fields": {
+      "open": {
+        "position": 1,
+        "unit": "CNY/share",
+        "tolerance": "0.005"
+      },
+      "high": {
+        "position": 2,
+        "unit": "CNY/share",
+        "tolerance": "0.005"
+      },
+      "low": {
+        "position": 3,
+        "unit": "CNY/share",
+        "tolerance": "0.005"
+      },
+      "close": {
+        "position": 4,
+        "unit": "CNY/share",
+        "tolerance": "0.005"
+      },
+      "volume": {
+        "position": 5,
+        "unit": "share",
+        "tolerance": "0.5"
+      },
+      "amount": {
+        "position": 6,
+        "unit": "CNY",
+        "tolerance": "0.5"
+      }
+    }
+  },
+  "szse_reference": {
+    "url": "https://www.szse.cn/api/market/ssjjhq/getHistoryData",
+    "page_url": "https://www.szse.cn/market/index.html",
+    "params": {
+      "marketId": 1,
+      "cycleType": 32
+    },
+    "source_sha256": {
+      ".artifacts\\p17_20261001\\exchange_discovery\\script3.js": "af8a35fcfbd58fb4f7cf11c6ceeec262b85f6ec2b52d11d8c9923b28c407bdab",
+      ".artifacts\\p17_20261001\\exchange_discovery\\script6.js": "eebde357d093a18f59506deab8d0cc93c0899df45000f5bfd4eab3c54fced0f0",
+      ".artifacts\\p17_20261001\\exchange_discovery\\script7.js": "e28672ab8862634207b4950cc415eac355c5b8532fc5aa35192b48bb79d29dec"
+    },
+    "fields": {
+      "open": {
+        "position": 1,
+        "multiplier": "1",
+        "tolerance": "0.005"
+      },
+      "close": {
+        "position": 2,
+        "multiplier": "1",
+        "tolerance": "0.005"
+      },
+      "low": {
+        "position": 3,
+        "multiplier": "1",
+        "tolerance": "0.005"
+      },
+      "high": {
+        "position": 4,
+        "multiplier": "1",
+        "tolerance": "0.005"
+      },
+      "volume": {
+        "position": 7,
+        "multiplier": "100",
+        "tolerance": "50"
+      },
+      "amount": {
+        "position": 8,
+        "multiplier": "1",
+        "tolerance": "0.5"
+      }
+    }
+  },
+  "bse_reference": {
+    "status": "not_available",
+    "note": "No verified accessible official historical endpoint; keep all cells unverified"
+  },
+  "halt_pdf_references": [
+    {
+      "adjunctUrl": "finalpage/2026-09-18/1225569667.PDF",
+      "announcementId": "1225569667",
+      "announcementTime": 1789660800000,
+      "announcementTitle": "关于公司股票停牌的进展公告",
+      "secCode": "000016"
+    },
+    {
+      "adjunctUrl": "finalpage/2026-09-16/1225564724.PDF",
+      "announcementId": "1225564724",
+      "announcementTime": 1789488000000,
+      "announcementTitle": "广西华锡有色金属股份有限公司关于筹划控制权变更进展暨继续停牌的公告",
+      "secCode": "600301"
+    },
+    {
+      "adjunctUrl": "finalpage/2026-09-12/1225559574.PDF",
+      "announcementId": "1225559574",
+      "announcementTime": 1789142400000,
+      "announcementTitle": "广西华锡有色金属股份有限公司关于筹划控制权变更暨停牌的公告",
+      "secCode": "600301"
+    }
+  ],
+  "gates": {
+    "suggested_numeric_accuracy": "0.995",
+    "require_reported_missing_strata": true,
+    "whole_phase1_complete": false
+  },
+  "code_sha256": {
+    "scripts/prepare_p17_formal_plan.py": "ff2c849456773f50e0e95496226d4e490eb30a49d9137a3909e6249dc997c3eb",
+    "scripts/run_p17_formal.py": "3bfaad0e5efb06cda9c79bed360476d8dfcc0885f8a6304464f2d97939cd24a5",
+    "scripts/check_p17_formal_market.py": "a73519da97d6b07b82d2bc550f3bca98eb55e78e7358aeb7bf137f52a120ac0c",
+    "scripts/exchange_http.py": "1dda61fca46744b12e5590d44d296c4effc0481f3114cd88f9cca321653796f1",
+    "src/stock_research/providers/tushare.py": "c2c64a2b75a9541c7cf22a4715ec4a79118f24564c4dc1fa2872b503dfb6738a",
+    "src/stock_research/providers/executor.py": "b2991149f25790ef9cac4e1c35ff34c9aaf8d7d5e83293d238016f30f2a56799",
+    "src/stock_research/service.py": "6d24407549b46cb8e1bc4bce12968b720281c9dc3f524d434f279e20682ef89b"
+  }
+}

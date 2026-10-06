@@ -1,0 +1,629 @@
+{
+  "basis": "Independent official PDF text transcriptions; selected representative pages rendered and visually reviewed. Reference extension after original capture, not a new blind/random sample. Bank total_revenue aliases remain uncomparable.",
+  "financial": [
+    {
+      "code": "600000",
+      "period": "2024-12-31",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_supplement\\600000_2024-12-31_1222948223.pdf",
+        "record_id": "62728853355309458f51d0b74c5218d7d70b65212f473be551a76f73c3f06459",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-03-29/1222948223.PDF",
+        "title": "上海浦东发展银行股份有限公司2024年年度报告摘要",
+        "sha256": "3b536506c825aae740533c63fc14a5daee438c6ea7b2a221fe051029816aa438",
+        "source_index_artifact": "ba0b6d94cc90121be5ac829fc740d0396954540c27a393cf22af0491214c9e87",
+        "source_date": "2025-03-29",
+        "captured_at": "2026-09-30T17:40:48.016181+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "170748",
+          "multiplier": "1000000",
+          "pdf_page": 3,
+          "tolerance_cny": "500000"
+        },
+        "net_income_parent": {
+          "printed": "45257",
+          "multiplier": "1000000",
+          "pdf_page": 3,
+          "tolerance_cny": "500000"
+        }
+      },
+      "uncomparable_fields": [
+        {
+          "field": "total_revenue",
+          "reason": "Bank filing has no separate total_revenue line; provider alias is not independent truth"
+        }
+      ]
+    },
+    {
+      "code": "600000",
+      "period": "2025-03-31",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\600000_2025-03-31_1223418954.pdf",
+        "record_id": "4b55c5c3580313a68c10cd14c54ada5873caac62bfb6ea4d082f23819f433ede",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-30/1223418954.PDF",
+        "title": "上海浦东发展银行股份有限公司2025年第一季度报告",
+        "sha256": "642bb007b4b9e5db11a768da50cd22b4ad9c0ed736067f5353b83e3b18c7a91f",
+        "source_index_artifact": "d516562608740d0d924c0fe86c3c6fba932924101dc337d6940af9634469c84b",
+        "source_date": "2025-04-30",
+        "captured_at": "2026-09-30T17:31:20.505958+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "45922",
+          "multiplier": "1000000",
+          "pdf_page": 1,
+          "tolerance_cny": "500000"
+        },
+        "net_income_parent": {
+          "printed": "17598",
+          "multiplier": "1000000",
+          "pdf_page": 1,
+          "tolerance_cny": "500000"
+        }
+      },
+      "uncomparable_fields": [
+        {
+          "field": "total_revenue",
+          "reason": "Bank filing has no separate total_revenue line; provider alias is not independent truth"
+        }
+      ]
+    },
+    {
+      "code": "600000",
+      "period": "2025-06-30",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\600000_2025-06-30_1224598139.pdf",
+        "record_id": "adfb7d203c62ee81be5902187f680b9629113741a2adb1f0cd40d258a70613af",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-08-28/1224598139.PDF",
+        "title": "上海浦东发展银行股份有限公司2025年半年度报告",
+        "sha256": "faa6eeab6e087b317fb33458d9d3baff6b4b632c38cad1de26bb4d419ba12f8e",
+        "source_index_artifact": "fb71e582562ab6e75a14d2ffbae2b00ec91deceae469e9341ed5fc55f59c00a4",
+        "source_date": "2025-08-28",
+        "captured_at": "2026-09-30T17:31:24.502095+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "90559",
+          "multiplier": "1000000",
+          "pdf_page": 7,
+          "tolerance_cny": "500000"
+        },
+        "net_income_parent": {
+          "printed": "29737",
+          "multiplier": "1000000",
+          "pdf_page": 7,
+          "tolerance_cny": "500000"
+        }
+      },
+      "uncomparable_fields": [
+        {
+          "field": "total_revenue",
+          "reason": "Bank filing has no separate total_revenue line; provider alias is not independent truth"
+        }
+      ]
+    },
+    {
+      "code": "000001",
+      "period": "2024-12-31",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\000001_2024-12-31_1222806505.pdf",
+        "record_id": "3661a22b1edca0aa7399bbaf7368681e50bc3ce1d821a09cbb7750ce4a95371f",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-03-15/1222806505.PDF",
+        "title": "2024年年度报告",
+        "sha256": "77d98b2636f31c0a546728637d99da85d00c4d1783e1372b090a753ad46e14f1",
+        "source_index_artifact": "9538582c0e9708a3f18c4060125cee0d250724fa92fec9895b35378a5dd867e3",
+        "source_date": "2025-03-15",
+        "captured_at": "2026-09-30T17:31:36.714957+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "146695",
+          "multiplier": "1000000",
+          "pdf_page": 16,
+          "tolerance_cny": "500000"
+        },
+        "net_income_parent": {
+          "printed": "44508",
+          "multiplier": "1000000",
+          "pdf_page": 16,
+          "tolerance_cny": "500000"
+        }
+      },
+      "uncomparable_fields": [
+        {
+          "field": "total_revenue",
+          "reason": "Bank filing has no separate total_revenue line; provider alias is not independent truth"
+        }
+      ]
+    },
+    {
+      "code": "000001",
+      "period": "2025-03-31",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\000001_2025-03-31_1223145614.pdf",
+        "record_id": "456032026e3a2ccdf353aab82a9310465d4647b0a5704c41d3d5178198fb1cbf",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-19/1223145614.PDF",
+        "title": "2025年第一季度报告",
+        "sha256": "5d5fb8b7637c8ef163273107e36332d347f682515b64f95519a9f976d25e1908",
+        "source_index_artifact": "3c180a22212b249c2fa89df76e098c2855877c17b354b0deddce4dbe47f9424a",
+        "source_date": "2025-04-19",
+        "captured_at": "2026-09-30T17:31:37.984334+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "33709",
+          "multiplier": "1000000",
+          "pdf_page": 3,
+          "tolerance_cny": "500000"
+        },
+        "net_income_parent": {
+          "printed": "14096",
+          "multiplier": "1000000",
+          "pdf_page": 3,
+          "tolerance_cny": "500000"
+        }
+      },
+      "uncomparable_fields": [
+        {
+          "field": "total_revenue",
+          "reason": "Bank filing has no separate total_revenue line; provider alias is not independent truth"
+        }
+      ]
+    },
+    {
+      "code": "000001",
+      "period": "2025-06-30",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\000001_2025-06-30_1224558635.pdf",
+        "record_id": "61cbf35f6317e4a2cf762893283b2da2e0645c8a4d9fc29cde7bbd813a8f2225",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-08-23/1224558635.PDF",
+        "title": "2025年半年度报告",
+        "sha256": "a4d593e4d2102a682b52e1fc6acf3c5d2815f6a1a0b7ae3dc77fa4fb76bb3617",
+        "source_index_artifact": "8d57f769d224e7e3d4de0f06e7c1b35168d75a57e6b04e6810bea8eff5788ac3",
+        "source_date": "2025-08-23",
+        "captured_at": "2026-09-30T17:31:41.019555+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "69385",
+          "multiplier": "1000000",
+          "pdf_page": 11,
+          "tolerance_cny": "500000"
+        },
+        "net_income_parent": {
+          "printed": "24870",
+          "multiplier": "1000000",
+          "pdf_page": 11,
+          "tolerance_cny": "500000"
+        }
+      },
+      "uncomparable_fields": [
+        {
+          "field": "total_revenue",
+          "reason": "Bank filing has no separate total_revenue line; provider alias is not independent truth"
+        }
+      ]
+    },
+    {
+      "code": "600519",
+      "period": "2024-12-31",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\600519_2024-12-31_1222993920.pdf",
+        "record_id": "163ab61c929bc92ff62cf87e6637cd39a1dc79c1ed963c4d6f997aca6bcf1608",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-03/1222993920.PDF",
+        "title": "贵州茅台2024年年度报告",
+        "sha256": "5299f4940e2ce4e91084b73dc457d558b9d335fa76fbfee6227e4254eb7f4a30",
+        "source_index_artifact": "4c4925ef7c78e5e85f88f229feb3106dded6097ee1b767fcb85bab1e9d684e7b",
+        "source_date": "2025-04-03",
+        "captured_at": "2026-09-30T17:31:27.537748+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "170899152276.34",
+          "multiplier": "1",
+          "pdf_page": 63,
+          "tolerance_cny": "0.005"
+        },
+        "total_revenue": {
+          "printed": "174144069958.25",
+          "multiplier": "1",
+          "pdf_page": 63,
+          "tolerance_cny": "0.005"
+        },
+        "net_income_parent": {
+          "printed": "86228146421.62",
+          "multiplier": "1",
+          "pdf_page": 64,
+          "tolerance_cny": "0.005"
+        }
+      },
+      "uncomparable_fields": []
+    },
+    {
+      "code": "600519",
+      "period": "2025-03-31",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\600519_2025-03-31_1223413786.pdf",
+        "record_id": "4139a3afabfd016d0f96408efbc28c13740734a3cad5ab1471ad568cdeca5316",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-30/1223413786.PDF",
+        "title": "贵州茅台2025年第一季度报告",
+        "sha256": "f3197b2a4ef7b617bec762b99613eecaf8ea27d1950d4bed5e9ce5f1943d1128",
+        "source_index_artifact": "bb5c8d4e5c9cffe01ab780f33dd1ceffa53ccff5dae0ef288f41966659285942",
+        "source_date": "2025-04-30",
+        "captured_at": "2026-09-30T17:31:28.508220+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "50600957885.78",
+          "multiplier": "1",
+          "pdf_page": 8,
+          "tolerance_cny": "0.005"
+        },
+        "total_revenue": {
+          "printed": "51443450583.77",
+          "multiplier": "1",
+          "pdf_page": 8,
+          "tolerance_cny": "0.005"
+        },
+        "net_income_parent": {
+          "printed": "26847474238.76",
+          "multiplier": "1",
+          "pdf_page": 9,
+          "tolerance_cny": "0.005"
+        }
+      },
+      "uncomparable_fields": []
+    },
+    {
+      "code": "600519",
+      "period": "2025-06-30",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\600519_2025-06-30_1224462930.pdf",
+        "record_id": "5b1f9197ce48d4861e8e131ef3ce84486f91a0b7caf7a3ad154a276f38631268",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-08-13/1224462930.PDF",
+        "title": "贵州茅台2025年半年度报告",
+        "sha256": "c80fb7180169469053c396e65315414368bcfa9f1f1d4e3bf793c8fb327e6b0c",
+        "source_index_artifact": "9f17cfea24ef2878652c03c1e6e0bc638190ec2b5f24647a25367a1c1b3638ee",
+        "source_date": "2025-08-13",
+        "captured_at": "2026-09-30T17:31:30.702085+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "89389354416.84",
+          "multiplier": "1",
+          "pdf_page": 28,
+          "tolerance_cny": "0.005"
+        },
+        "total_revenue": {
+          "printed": "91093762553.97",
+          "multiplier": "1",
+          "pdf_page": 28,
+          "tolerance_cny": "0.005"
+        },
+        "net_income_parent": {
+          "printed": "45402962298.10",
+          "multiplier": "1",
+          "pdf_page": 29,
+          "tolerance_cny": "0.005"
+        }
+      },
+      "uncomparable_fields": []
+    },
+    {
+      "code": "688590",
+      "period": "2024-12-31",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\688590_2024-12-31_1223366936.pdf",
+        "record_id": "d90b58ee1b4e8f5ead8239b62feddaefb293ff45fc989a3cf446bacae1ce12b9",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-29/1223366936.PDF",
+        "title": "2024年年度报告",
+        "sha256": "f221ba2abc8abff702361f9a20c014e38a3d9eb834d5a0e229ce08322c08c35e",
+        "source_index_artifact": "02fcce9485b34900e7abe6c6aa7adf091c9ae01c1b4110514a17b501f5b17bb0",
+        "source_date": "2025-04-29",
+        "captured_at": "2026-09-30T17:31:31.941072+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "1995198312.45",
+          "multiplier": "1",
+          "pdf_page": 106,
+          "tolerance_cny": "0.005"
+        },
+        "total_revenue": {
+          "printed": "1995198312.45",
+          "multiplier": "1",
+          "pdf_page": 106,
+          "tolerance_cny": "0.005"
+        },
+        "net_income_parent": {
+          "printed": "8092740.19",
+          "multiplier": "1",
+          "pdf_page": 107,
+          "tolerance_cny": "0.005"
+        }
+      },
+      "uncomparable_fields": []
+    },
+    {
+      "code": "688590",
+      "period": "2025-03-31",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\688590_2025-03-31_1223411212.pdf",
+        "record_id": "5b6b16dbe9d76931404f074fa388936fa0371a228d5ccc362fc3f0943764fda9",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-30/1223411212.PDF",
+        "title": "2025年第一季度报告",
+        "sha256": "961d95a3ec917d3030153c17dab87bb526311dc3613f058ae7bbd28c12769d8d",
+        "source_index_artifact": "79c9ab7bd6653bad1bdf9003535d17d65d9ccaade0d053976340fc920bca8f41",
+        "source_date": "2025-04-30",
+        "captured_at": "2026-09-30T17:31:33.106787+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "434173272.66",
+          "multiplier": "1",
+          "pdf_page": 7,
+          "tolerance_cny": "0.005"
+        },
+        "total_revenue": {
+          "printed": "434173272.66",
+          "multiplier": "1",
+          "pdf_page": 7,
+          "tolerance_cny": "0.005"
+        },
+        "net_income_parent": {
+          "printed": "15727920.77",
+          "multiplier": "1",
+          "pdf_page": 8,
+          "tolerance_cny": "0.005"
+        }
+      },
+      "uncomparable_fields": []
+    },
+    {
+      "code": "688590",
+      "period": "2025-06-30",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\688590_2025-06-30_1224618572.pdf",
+        "record_id": "a5554edff265edc23fc84d9437dcb4029d0b624efc6f344ee17d9503bc01eb9b",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-08-30/1224618572.PDF",
+        "title": "2025年半年度报告",
+        "sha256": "e34b2cffb7d3185747a6435883fbfac1a950fa9e6fb7ab45bf0df786e5623c34",
+        "source_index_artifact": "13d529adeff0303b1fb8a5d928f281d76131216d0afb68de30b89b95499fcf69",
+        "source_date": "2025-08-30",
+        "captured_at": "2026-09-30T17:31:35.535255+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "897090773.93",
+          "multiplier": "1",
+          "pdf_page": 63,
+          "tolerance_cny": "0.005"
+        },
+        "total_revenue": {
+          "printed": "897090773.93",
+          "multiplier": "1",
+          "pdf_page": 63,
+          "tolerance_cny": "0.005"
+        },
+        "net_income_parent": {
+          "printed": "30353059.13",
+          "multiplier": "1",
+          "pdf_page": 64,
+          "tolerance_cny": "0.005"
+        }
+      },
+      "uncomparable_fields": []
+    },
+    {
+      "code": "300750",
+      "period": "2024-12-31",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\300750_2024-12-31_1222806982.pdf",
+        "record_id": "7a066604a5851fc7193956e65637841c24891b722a2ebd630cff46e20a48ae2e",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-03-15/1222806982.PDF",
+        "title": "2024年年度报告",
+        "sha256": "b4f1713d7b821eb076c102711d177fe942ccc2bc8dd171ae5d7a95799a65b0ad",
+        "source_index_artifact": "0d2aa8e2d0df1f13743167f194e02b23104f95f82555e999ef6f9168d2c90580",
+        "source_date": "2025-03-15",
+        "captured_at": "2026-09-30T17:31:42.959089+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "362012554",
+          "multiplier": "1000",
+          "pdf_page": 119,
+          "tolerance_cny": "500"
+        },
+        "total_revenue": {
+          "printed": "362012554",
+          "multiplier": "1000",
+          "pdf_page": 119,
+          "tolerance_cny": "500"
+        },
+        "net_income_parent": {
+          "printed": "50744682",
+          "multiplier": "1000",
+          "pdf_page": 120,
+          "tolerance_cny": "500"
+        }
+      },
+      "uncomparable_fields": []
+    },
+    {
+      "code": "300750",
+      "period": "2025-03-31",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_supplement\\300750_2025-03-31_1223094849.pdf",
+        "record_id": "3b68682c0012ef95c70289e6a138b7fdca80d2c7279c736338263942df123708",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-15/1223094849.PDF",
+        "title": "2025年一季度报告",
+        "sha256": "55e17a28dc23b45def5d8383aa9c084b90110ef51ab5afa209856545ee2e62a0",
+        "source_index_artifact": "00d491bc571b7d48a4ad4474b54422b674bc9fbfb605fd73fdb22d1f030bc568",
+        "source_date": "2025-04-15",
+        "captured_at": "2026-09-30T17:40:49.869056+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "84704589",
+          "multiplier": "1000",
+          "pdf_page": 8,
+          "tolerance_cny": "500"
+        },
+        "total_revenue": {
+          "printed": "84704589",
+          "multiplier": "1000",
+          "pdf_page": 8,
+          "tolerance_cny": "500"
+        },
+        "net_income_parent": {
+          "printed": "13962558",
+          "multiplier": "1000",
+          "pdf_page": 9,
+          "tolerance_cny": "500"
+        }
+      },
+      "uncomparable_fields": []
+    },
+    {
+      "code": "300750",
+      "period": "2025-06-30",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_extension\\300750_2025-06-30_1224342874.pdf",
+        "record_id": "562780eba2fb363dc9740cd885d194d628c4ac9e65cdba35c85448e0e54a0fe2",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-07-31/1224342874.PDF",
+        "title": "2025年半年度报告",
+        "sha256": "94da19aaaf50205fa69d8afa9598262e1c785159c34c42f459bd1104fa14c46f",
+        "source_index_artifact": "d24a5d80ad58c66d58239b60e9688302de0cfa6eab1e47d73dfec5f31bcd1bc7",
+        "source_date": "2025-07-31",
+        "captured_at": "2026-09-30T17:31:45.702183+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "178886253",
+          "multiplier": "1000",
+          "pdf_page": 68,
+          "tolerance_cny": "500"
+        },
+        "total_revenue": {
+          "printed": "178886253",
+          "multiplier": "1000",
+          "pdf_page": 68,
+          "tolerance_cny": "500"
+        },
+        "net_income_parent": {
+          "printed": "30485139",
+          "multiplier": "1000",
+          "pdf_page": 69,
+          "tolerance_cny": "500"
+        }
+      },
+      "uncomparable_fields": []
+    },
+    {
+      "code": "920118",
+      "period": "2024-12-31",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_supplement\\920118_2024-12-31_1223349253.pdf",
+        "record_id": "25a0ff0b3ad632e42f66b3de0430126f267ba75643dc865d204235b89192d458",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-25/1223349253.PDF",
+        "title": "2024年年度报告",
+        "sha256": "5ddd81edd2e30a74f082501c0b499872167b8a8ff4ced67688ff1f33ee5d1c8f",
+        "source_index_artifact": "245e6f4ee27c0d66d876f3d2a828a77b1d409a355ed025438b75fe4bc0f486c8",
+        "source_date": "2025-04-25",
+        "captured_at": "2026-09-30T17:40:42.560797+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "1594275116.92",
+          "multiplier": "1",
+          "pdf_page": 81,
+          "tolerance_cny": "0.005"
+        },
+        "total_revenue": {
+          "printed": "1594275116.92",
+          "multiplier": "1",
+          "pdf_page": 81,
+          "tolerance_cny": "0.005"
+        },
+        "net_income_parent": {
+          "printed": "70510477.50",
+          "multiplier": "1",
+          "pdf_page": 82,
+          "tolerance_cny": "0.005"
+        }
+      },
+      "uncomparable_fields": []
+    },
+    {
+      "code": "920118",
+      "period": "2025-03-31",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_supplement\\920118_2025-03-31_1223349280.pdf",
+        "record_id": "bfa59fcb693f0c3780fcb377a97a13c194c553b453539eca3ae06bcce9d8e075",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-25/1223349280.PDF",
+        "title": "2025年一季度报告",
+        "sha256": "8a0fe2fb1d366c16a499e9109bc93c5fdf1b3368ec53948154d9ca177bb0cb0c",
+        "source_index_artifact": "4a6cea484bb85f323728b363f61dadd429afe2c4e54568aa50d0f64a216c24d4",
+        "source_date": "2025-04-25",
+        "captured_at": "2026-09-30T17:40:44.437758+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "293798577.27",
+          "multiplier": "1",
+          "pdf_page": 14,
+          "tolerance_cny": "0.005"
+        },
+        "total_revenue": {
+          "printed": "293798577.27",
+          "multiplier": "1",
+          "pdf_page": 14,
+          "tolerance_cny": "0.005"
+        },
+        "net_income_parent": {
+          "printed": "3046477.43",
+          "multiplier": "1",
+          "pdf_page": 15,
+          "tolerance_cny": "0.005"
+        }
+      },
+      "uncomparable_fields": []
+    },
+    {
+      "code": "920118",
+      "period": "2025-06-30",
+      "source": {
+        "path": ".artifacts\\p17_20261001\\reference_supplement\\920118_2025-06-30_1224597287.pdf",
+        "record_id": "c1468c89eed36ad04ead11253f63770d9bfbab5d3dcc05e57a3d3924cf0f917e",
+        "source_url": "https://static.cninfo.com.cn/finalpage/2025-08-27/1224597287.PDF",
+        "title": "2025年半年度报告",
+        "sha256": "e9d39faf6aa146e157cb11c65a2a27654c71c16d5b984aae1492ea61f68c4eaf",
+        "source_index_artifact": "8450ea44fc5ffc0ddb77061ea10b54a5707a74cd718c541aef508c1dcee73965",
+        "source_date": "2025-08-27",
+        "captured_at": "2026-09-30T17:40:47.194219+00:00"
+      },
+      "values": {
+        "revenue": {
+          "printed": "757414421.35",
+          "multiplier": "1",
+          "pdf_page": 38,
+          "tolerance_cny": "0.005"
+        },
+        "total_revenue": {
+          "printed": "757414421.35",
+          "multiplier": "1",
+          "pdf_page": 38,
+          "tolerance_cny": "0.005"
+        },
+        "net_income_parent": {
+          "printed": "13754958.23",
+          "multiplier": "1",
+          "pdf_page": 39,
+          "tolerance_cny": "0.005"
+        }
+      },
+      "uncomparable_fields": []
+    }
+  ]
+}

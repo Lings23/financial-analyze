@@ -1,0 +1,27 @@
+{
+  "version": "synthetic-l1-l2-v1",
+  "provenance": "Hand-specified arithmetic examples; synthetic mechanism cases, not real financial ground truth or live LLM validation.",
+  "tolerance": "1e-28",
+  "cases": [
+    {"id":"up", "prices":["100","110","120"], "change":"0.2", "drawdown":"0"},
+    {"id":"down", "prices":["100","90","80"], "change":"-0.2", "drawdown":"0.2"},
+    {"id":"flat", "prices":["100","100","100"], "change":"0", "drawdown":"0"},
+    {"id":"recovery", "prices":["100","50","100"], "change":"0", "drawdown":"0.5"},
+    {"id":"peak", "prices":["100","125","100"], "change":"0", "drawdown":"0.2"},
+    {"id":"two", "prices":["80","100"], "change":"0.25", "drawdown":"0"},
+    {"id":"penny", "prices":["0.1","0.125","0.1"], "change":"0", "drawdown":"0.2"},
+    {"id":"decimal", "prices":["10.25","12.3","8.2"], "change":"-0.2", "drawdown":"0.3333333333333333333333333333333333"},
+    {"id":"early_peak", "prices":["120","90","100"], "change":"-0.1666666666666666666666666666666667", "drawdown":"0.25"},
+    {"id":"late_peak", "prices":["100","80","120"], "change":"0.2", "drawdown":"0.2"},
+    {"id":"multiple_peaks", "prices":["100","120","96","150","120"], "change":"0.2", "drawdown":"0.2"},
+    {"id":"large", "prices":["1000000000","1250000000","500000000"], "change":"-0.5", "drawdown":"0.6"},
+    {"id":"fraction", "prices":["3","4","2"], "change":"-0.3333333333333333333333333333333333", "drawdown":"0.5"},
+    {"id":"double", "prices":["10","20"], "change":"1", "drawdown":"0"},
+    {"id":"half", "prices":["20","10"], "change":"-0.5", "drawdown":"0.5"},
+    {"id":"one", "prices":["100"], "change":null, "drawdown":null},
+    {"id":"none", "prices":[], "change":null, "drawdown":null},
+    {"id":"missing_middle", "prices":["100",null,"120"], "change":null, "drawdown":null},
+    {"id":"zero", "prices":["100","0","120"], "change":null, "drawdown":null},
+    {"id":"negative", "prices":["100","-1","120"], "change":null, "drawdown":null}
+  ]
+}

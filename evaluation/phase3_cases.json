@@ -1,0 +1,31 @@
+{
+  "version": "phase3-bounded-synthetic-v1",
+  "kind": "synthetic_mechanism_not_financial_ground_truth",
+  "default_prices": ["100", "120", "90"],
+  "default_price_change": "-0.1",
+  "default_drawdown": "0.25",
+  "cases": [
+    {"id":"L3-financial-flat-profit","level":"L3","profile":"financial","hypothesis":"financial_deterioration","expected":"unsupported"},
+    {"id":"L3-financial-both-decline","level":"L3","profile":"decline","hypothesis":"financial_deterioration","expected":"supported"},
+    {"id":"L3-financial-conflict","level":"L3","profile":"conflict","hypothesis":"financial_deterioration","expected":"conflicted"},
+    {"id":"L3-no-prior-period","level":"L3","profile":"no_prior","hypothesis":"financial_deterioration","expected":"insufficient"},
+    {"id":"L3-nonpositive-base","level":"L3","profile":"zero_base","hypothesis":"financial_deterioration","expected":"insufficient"},
+    {"id":"L3-cashflow-divergence","level":"L3","profile":"cash_negative","hypothesis":"cashflow_divergence","expected":"supported"},
+    {"id":"L3-cashflow-positive","level":"L3","profile":"cash_positive","hypothesis":"cashflow_divergence","expected":"unsupported"},
+    {"id":"L3-cashflow-period-mismatch","level":"L3","profile":"cash_mismatch","hypothesis":"cashflow_divergence","expected":"insufficient"},
+    {"id":"L3-benchmark-same-direction","level":"L3","profile":"benchmark_same","hypothesis":"market_direction","expected":"supported"},
+    {"id":"L3-benchmark-opposite","level":"L3","profile":"benchmark_opposite","hypothesis":"market_direction","expected":"unsupported"},
+    {"id":"L3-benchmark-dates-mismatch","level":"L3","profile":"benchmark_mismatch","hypothesis":"market_direction","expected":"insufficient"},
+    {"id":"L3-benchmark-zero-stock-change","level":"L3","profile":"benchmark_same","prices":["100","100","100"],"price_change":"0","drawdown":"0","hypothesis":"market_direction","expected":"insufficient"},
+    {"id":"L3-factor-changes-result","level":"L3","profile":"factor_change","hypothesis":"mechanical_adjustment","expected":"supported"},
+    {"id":"L3-factor-constant","level":"L3","profile":"factor_constant","hypothesis":"mechanical_adjustment","expected":"unsupported"},
+    {"id":"L3-factor-not-supplied","level":"L3","profile":"financial","hypothesis":"mechanical_adjustment","expected":"insufficient"},
+    {"id":"L5-release-after-close","level":"L5","profile":"event_exact","hypothesis":"event_chronology","expected":"supported","event_change":"-0.25"},
+    {"id":"L5-date-conservative-boundary","level":"L5","profile":"event_date","hypothesis":"event_chronology","expected":"supported","event_change":"-0.1"},
+    {"id":"L5-observation-not-release","level":"L5","profile":"event_observed","hypothesis":"event_chronology","expected":"insufficient","event_change":null},
+    {"id":"L5-invisible-anchor","level":"L5","profile":"event_hidden","hypothesis":"event_chronology","expected":"insufficient","event_change":null},
+    {"id":"L5-no-post-event-close","level":"L5","profile":"event_exact","prices":["100","120"],"price_change":"0.2","drawdown":"0","hypothesis":"event_chronology","expected":"insufficient","event_change":null},
+    {"id":"L3-missing-price-not-zero","level":"L3","profile":"financial","prices":["100",null,"90"],"price_change":null,"drawdown":null,"hypothesis":"mechanical_adjustment","expected":"insufficient"},
+    {"id":"L5-no-anchor-requested","level":"L5","profile":"financial","hypothesis":"event_chronology","expected":"insufficient","event_change":null}
+  ]
+}

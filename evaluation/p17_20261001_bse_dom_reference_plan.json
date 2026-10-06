@@ -1,0 +1,138 @@
+{
+  "scope": "p17-bse-dom-reference-20261001",
+  "created_at": "2026-10-01T13:03:19.215825+00:00",
+  "original_scope": "p17-formal-20261001",
+  "snapshot_id": "23cc8c6765a745dce63973cec8b941833162254897c3c1f2ca1fa28b1d8b7c58",
+  "original_finished_at": "2026-10-01T09:03:38.907484+00:00",
+  "original_artifacts": ".artifacts/p17_20261001/formal/artifacts",
+  "securities": [
+    {
+      "ts_code": "920016.BJ",
+      "symbol": "920016",
+      "name": "中草香料",
+      "exchange": "BSE",
+      "market": "北交所",
+      "industry": "日用化工",
+      "list_date": "20240913",
+      "stratum": "new_listing",
+      "selection_note": "Latest metadata listing date between 2024-06-01 and first window; official listing-date proof pending"
+    },
+    {
+      "ts_code": "920110.BJ",
+      "symbol": "920110",
+      "name": "雷特科技",
+      "exchange": "BSE",
+      "market": "北交所",
+      "industry": "电气设备",
+      "list_date": "20221206",
+      "stratum": "low_volume_proxy",
+      "selection_note": "Lowest positive Tushare volume on 2026-09-24 in current eligible exchange population; selection metadata, not independent truth"
+    },
+    {
+      "ts_code": "920510.BJ",
+      "symbol": "920510",
+      "name": "丰光精密",
+      "exchange": "BSE",
+      "market": "北交所",
+      "industry": "机械基件",
+      "list_date": "20201228",
+      "stratum": "board_draw:BSE:北交所",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "920489.BJ",
+      "symbol": "920489",
+      "name": "佳先股份",
+      "exchange": "BSE",
+      "market": "北交所",
+      "industry": "化工原料",
+      "list_date": "20200727",
+      "stratum": "board_draw:BSE:北交所",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    },
+    {
+      "ts_code": "920175.BJ",
+      "symbol": "920175",
+      "name": "东方碳素",
+      "exchange": "BSE",
+      "market": "北交所",
+      "industry": "化工原料",
+      "list_date": "20230630",
+      "stratum": "board_draw:BSE:北交所",
+      "selection_note": "First three by SHA256(seed|board|ts_code), excluding pilot and previously selected special strata"
+    }
+  ],
+  "windows": [
+    {
+      "start": "2024-09-18",
+      "end": "2024-09-30",
+      "dates": [
+        "2024-09-18",
+        "2024-09-19",
+        "2024-09-20",
+        "2024-09-23",
+        "2024-09-24",
+        "2024-09-25",
+        "2024-09-26",
+        "2024-09-27",
+        "2024-09-30"
+      ]
+    },
+    {
+      "start": "2026-09-15",
+      "end": "2026-09-25",
+      "dates": [
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24"
+      ]
+    }
+  ],
+  "registered_security_days": 85,
+  "registered_cells": 510,
+  "source_basis": "Actual official company daily-K rendered tooltip, with company/date/labels/units. Limited DOM projection, never original HTTP bytes or full-market completeness.",
+  "rules": {
+    "open": {
+      "tolerance": "0.005",
+      "unit": "CNY"
+    },
+    "close": {
+      "tolerance": "0.005",
+      "unit": "CNY"
+    },
+    "high": {
+      "tolerance": "0.005",
+      "unit": "CNY"
+    },
+    "low": {
+      "tolerance": "0.005",
+      "unit": "CNY"
+    },
+    "volume": {
+      "tolerance": "50",
+      "multiplier": "10000",
+      "source_unit": "万股"
+    },
+    "amount": {
+      "tolerance": "50",
+      "multiplier": "10000",
+      "source_unit": "万元"
+    }
+  },
+  "precision_basis": "Half printed final step; no proof of rounding/truncation and no post hoc tolerance enlargement.",
+  "probe_seen_before_freeze": "920510/2026-09-15 six official tooltip values; not compared with Tushare before this plan.",
+  "historical_identity_required_for_2024": true,
+  "historical_publication_not_upgraded": true,
+  "baseline_sha256": {
+    "evaluation\\p17_20261001_formal_plan.json": "e98a23c65a1f073ebcda264ad138076ff53b711400709ed46bdc894388b2e0f5",
+    ".artifacts\\p17_20261001\\formal\\run.json": "08007ae3f345bbb9aa13746485f58d010733737421e787f027d380640927e382",
+    ".artifacts\\p17_20261001\\formal\\comparison.json": "e0a41e6b66776b5497c0d6d3848eba3d0e08f2c05429abe4cc5b9ae72a17888d",
+    ".artifacts\\p17_20261001\\szse_archive\\extension.json": "ea4c30bab022e719c6b9ba12c76681e4f686a7211fa000be658d84b396ddae81"
+  },
+  "phase1_complete": false
+}

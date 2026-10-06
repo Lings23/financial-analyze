@@ -1,0 +1,45 @@
+{
+  "plan_sha256": "2b933b08a0578cdd883d20b6e4949bc69b58c0bbf9e86794cd942d5352f27e43",
+  "collection_sha256": "05cfda45b48045a5e9c30e21bf565837c11ef233cbb699aee2572fe27d98f2ea",
+  "source_pdf_sha256": "db0c15f35d6d687696b568873a42e6966d9cfc8d8eae0e7ae9dd4e7c1d55876e",
+  "source_record_id": "12b5024d2974247f7965efccbba254cea49c589dd8dbca7cd20829fbc1d0100e",
+  "previous_comparison_sha256": "b2170479cc6ea70df91e40694c99d13547205ecc69c7b5ccf67288f1f10f00ab",
+  "review": "2025 annual report explicitly states prior financial data are error-corrected on page 9; independent second numeric column 2024 of consolidated annual income statement pages 91-92. Both pages visually reviewed before provider value comparison. Do not backdate this restated version.",
+  "column_index": 1,
+  "header_page": 91,
+  "multiplier": "1",
+  "tolerance_cny": "0.005",
+  "page_anchors": {
+    "9": [
+      "本报告中涉及以前年度的财务数据均为差错更正后的金额"
+    ],
+    "91": [
+      "康佳集团股份有限公司2025年年度报告全文",
+      "合并利润表",
+      "单位：元",
+      "2025年度",
+      "2024年度"
+    ],
+    "92": [
+      "（二）按所有权归属分类",
+      "归属于母公司股东的净利润"
+    ]
+  },
+  "values": {
+    "revenue": {
+      "printed": "11,114,763,969.59",
+      "pdf_page": 91,
+      "row_excerpt": "其中：营业收入                  9,835,474,916.53   11,114,763,969.59"
+    },
+    "total_revenue": {
+      "printed": "11,114,763,969.59",
+      "pdf_page": 91,
+      "row_excerpt": "一、营业总收入                   9,835,474,916.53   11,114,763,969.59"
+    },
+    "net_income_parent": {
+      "printed": "-3,725,557,221.78",
+      "pdf_page": 92,
+      "row_excerpt": "1.归属于母公司股东的净利润                   -12,582,399,856.80   -3,725,557,221.78"
+    }
+  }
+}

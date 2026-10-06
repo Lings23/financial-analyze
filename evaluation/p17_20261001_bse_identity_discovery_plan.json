@@ -1,0 +1,42 @@
+{
+  "scope": "p17-bse-identity-discovery-20261001",
+  "requests": [
+    {
+      "code": "920110",
+      "start": "2025-01-01",
+      "end": "2025-10-10",
+      "selector": "证券代码"
+    },
+    {
+      "code": "920510",
+      "start": "2025-01-01",
+      "end": "2025-10-10",
+      "selector": "证券代码"
+    },
+    {
+      "code": "920489",
+      "start": "2025-01-01",
+      "end": "2025-10-10",
+      "selector": "证券代码"
+    },
+    {
+      "code": "920175",
+      "start": "2025-01-01",
+      "end": "2025-10-10",
+      "selector": "证券代码"
+    },
+    {
+      "code": "000016",
+      "start": "2026-04-28",
+      "end": "2026-04-30",
+      "selector": "2025年年度报告"
+    }
+  ],
+  "reason": "Official code-change identity evidence and restated comparative-period report discovery; no aliases or financial facts accepted.",
+  "max_pages": 1,
+  "page_size": 100,
+  "timeout_seconds": 12,
+  "min_interval_seconds": 2.5,
+  "single_attempt_per_request": true,
+  "accept_historical_identity": false
+}

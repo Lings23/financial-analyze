@@ -1,0 +1,60 @@
+{
+  "basis": "Manually transcribed and visually checked against the listed official-hosted PDF pages on 2026-09-30; these are real-source references, not synthetic fixtures",
+  "market_daily": {
+    "security": "SSE:688590",
+    "reference_label": "sse_688590_historical_price_2024_09",
+    "reference_sha256": "42b311879a30d0e6e3e6d7e9f3b1c33bdc3ac094c8090fada3446fb3fb8468e1",
+    "pdf_page_one_based": 23,
+    "printed_page": "7-3-22",
+    "basis": "unadjusted price as printed; close CNY/share, volume shares, amount CNY",
+    "rows": [
+      {"date": "2024-09-18", "close": "9.71", "volume": "4309095", "amount": "41860606"},
+      {"date": "2024-09-19", "close": "9.95", "volume": "5014287", "amount": "49706716"},
+      {"date": "2024-09-20", "close": "10.05", "volume": "5777419", "amount": "57909962"},
+      {"date": "2024-09-23", "close": "10.18", "volume": "6134840", "amount": "62644053"},
+      {"date": "2024-09-24", "close": "10.66", "volume": "8572360", "amount": "89338702"},
+      {"date": "2024-09-25", "close": "10.96", "volume": "9842267", "amount": "108201167"},
+      {"date": "2024-09-26", "close": "11.25", "volume": "7802631", "amount": "86146071"},
+      {"date": "2024-09-27", "close": "12.03", "volume": "6251182", "amount": "72885402"},
+      {"date": "2024-09-30", "close": "14.44", "volume": "19165267", "amount": "262352314"}
+    ]
+  },
+  "financial_income": [
+    {
+      "security": "SSE:600000",
+      "period": "2024-12-31",
+      "reference_label": "cninfo_600000_2024_annual_summary",
+      "reference_sha256": "3b536506c825aae740533c63fc14a5daee438c6ea7b2a221fe051029816aa438",
+      "pdf_page_one_based": 5,
+      "printed_unit": "CNY million",
+      "metric_values": {"revenue": "170748", "net_income_parent": "45257"}
+    },
+    {
+      "security": "SZSE:000001",
+      "period": "2024-12-31",
+      "reference_label": "cninfo_000001_2024_annual",
+      "reference_sha256": "77d98b2636f31c0a546728637d99da85d00c4d1783e1372b090a753ad46e14f1",
+      "pdf_page_one_based": 16,
+      "printed_unit": "CNY million",
+      "metric_values": {"revenue": "146695", "net_income_parent": "44508"}
+    },
+    {
+      "security": "SZSE:300750",
+      "period": "2024-12-31",
+      "reference_label": "cninfo_300750_2024_annual_summary",
+      "reference_sha256": "50849921257d46f7111dcac6a575743cea4d45672b9dfe2b0b2229bfbf7c2f23",
+      "pdf_page_one_based": 4,
+      "printed_unit": "CNY thousand",
+      "metric_values": {"revenue": "362012554", "net_income_parent": "50744682"}
+    },
+    {
+      "security": "SSE:600519",
+      "period": "2024-12-31",
+      "reference_label": "cninfo_600519_2024_annual_summary",
+      "reference_sha256": "a7210a641289973f3f7fc4d4a2f3097f18346c5c621af1cc9960e4c9131642db",
+      "pdf_page_one_based": 4,
+      "printed_unit": "CNY",
+      "metric_values": {"revenue": "170899152276.34", "net_income_parent": "86228146421.62"}
+    }
+  ]
+}

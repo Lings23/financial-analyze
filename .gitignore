@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.env.*
+!.env.example
+.artifacts/
+.runtime/
+build/
+dist/
+test_api.txt
+test_api.*.txt
+cninfo_key.txt
+cninfo_key.*.txt
+tushare.txt
+tushare.*.txt

@@ -1,0 +1,396 @@
+{
+  "scope": "p17-quota-20261001",
+  "configured_calls_per_minute": 24,
+  "min_interval_seconds": 2.5,
+  "requests": [
+    {
+      "round": 1,
+      "code": "600000",
+      "exchange": "SSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "600000",
+      "exchange": "SSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "600000",
+      "exchange": "SSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "688590",
+      "exchange": "SSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "688590",
+      "exchange": "SSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "688590",
+      "exchange": "SSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "000001",
+      "exchange": "SZSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "000001",
+      "exchange": "SZSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "000001",
+      "exchange": "SZSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "300750",
+      "exchange": "SZSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "300750",
+      "exchange": "SZSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "300750",
+      "exchange": "SZSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "600519",
+      "exchange": "SSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "600519",
+      "exchange": "SSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "600519",
+      "exchange": "SSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "920118",
+      "exchange": "BSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "920118",
+      "exchange": "BSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 1,
+      "code": "920118",
+      "exchange": "BSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "600000",
+      "exchange": "SSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "600000",
+      "exchange": "SSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "600000",
+      "exchange": "SSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "688590",
+      "exchange": "SSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "688590",
+      "exchange": "SSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "688590",
+      "exchange": "SSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "000001",
+      "exchange": "SZSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "000001",
+      "exchange": "SZSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "000001",
+      "exchange": "SZSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "300750",
+      "exchange": "SZSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "300750",
+      "exchange": "SZSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "300750",
+      "exchange": "SZSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "600519",
+      "exchange": "SSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "600519",
+      "exchange": "SSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "600519",
+      "exchange": "SSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "920118",
+      "exchange": "BSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "920118",
+      "exchange": "BSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 2,
+      "code": "920118",
+      "exchange": "BSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "600000",
+      "exchange": "SSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "600000",
+      "exchange": "SSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "600000",
+      "exchange": "SSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "688590",
+      "exchange": "SSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "688590",
+      "exchange": "SSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "688590",
+      "exchange": "SSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "000001",
+      "exchange": "SZSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "000001",
+      "exchange": "SZSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "000001",
+      "exchange": "SZSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "300750",
+      "exchange": "SZSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "300750",
+      "exchange": "SZSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "300750",
+      "exchange": "SZSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "600519",
+      "exchange": "SSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "600519",
+      "exchange": "SSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "600519",
+      "exchange": "SSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "920118",
+      "exchange": "BSE",
+      "dataset": "financial_income",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "920118",
+      "exchange": "BSE",
+      "dataset": "financial_balance",
+      "period": "2024-12-31"
+    },
+    {
+      "round": 3,
+      "code": "920118",
+      "exchange": "BSE",
+      "dataset": "financial_cashflow",
+      "period": "2024-12-31"
+    }
+  ],
+  "max_attempts": 1,
+  "max_source_calls": 54,
+  "stop_on_first_failure": true,
+  "maximum_account_quota_not_claimed": true,
+  "code_sha256": {
+    "scripts/run_p17_quota.py": "50139efd3fea2207cd07568624048c460a6c943ed5c73c0b125466e2cfb6e309",
+    "src/stock_research/providers/tushare.py": "c2c64a2b75a9541c7cf22a4715ec4a79118f24564c4dc1fa2872b503dfb6738a",
+    "src/stock_research/providers/tushare_domains.py": "5d33cd785d4bb0c71a840179cccbf1891ded942df307b5dfe889cc0f7054dd56",
+    "src/stock_research/providers/executor.py": "b2991149f25790ef9cac4e1c35ff34c9aaf8d7d5e83293d238016f30f2a56799",
+    "src/stock_research/service.py": "6d24407549b46cb8e1bc4bce12968b720281c9dc3f524d434f279e20682ef89b"
+  }
+}

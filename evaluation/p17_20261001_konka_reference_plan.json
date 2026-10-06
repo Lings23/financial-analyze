@@ -1,0 +1,27 @@
+{
+  "scope": "p17-konka-comparative-reference-20261001",
+  "original_plan_sha256": "7b2ba1042561835448c3b2abb70f78c9648c5d468aad11bbe856b7a9ac4aabc6",
+  "discovery_run_sha256": "17d73d04b0bfc6e0f304701ad430e9ecf5de4d4ba1a303771cdfa4137c0dafc7",
+  "reason": "2024 financial period has effective provider f_ann_date 2026-04-29; official 2025 annual report indexed in this window. Inspect explicit 2024 comparative column independently before scoring. Preserve original 2024-title empty response.",
+  "min_interval_seconds": 2.5,
+  "original_financial_denominator": 225,
+  "requests": [
+    {
+      "code": "000016",
+      "exchange": "SZSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-15",
+      "effective_provider_announcement_date": "2026-04-29",
+      "start_date": "2026-04-28",
+      "end_date": "2026-04-30",
+      "selector": "2025年年度报告",
+      "original_record_id": "8c9b48b3ad278aa344c2ef67046c8b30556264c13b2033332051bee3206b0e9b",
+      "original_snapshot": "72d82370b2f9184b5b451687e83a3086e0bc553ccdada5cbe04b7ed350f816b1",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+exclude test_api.txt
+global-exclude test_api.*.txt
+exclude cninfo_key.txt
+global-exclude cninfo_key.*.txt
+exclude .env
+exclude tushare.txt
+global-exclude tushare.*.txt

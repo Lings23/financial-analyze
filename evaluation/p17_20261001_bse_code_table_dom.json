@@ -1,0 +1,17 @@
+{
+  "url": "https://www.bse.cn/service/code_mapping.html",
+  "title": "新旧代码对照表 - 北京证券交易所",
+  "observed_at": "2026-10-01T11:14:50.220Z",
+  "evidence_kind": "rendered_official_dom_projection",
+  "header": ["序号", "证券简称", "上市日期", "旧代码", "新代码"],
+  "rows": [
+    ["45", "东方碳素", "2023/6/30", "832175", "920175"],
+    ["116", "雷特科技", "2022/12/6", "832110", "920110"],
+    ["212", "丰光精密", "2020/12/28", "430510", "920510"],
+    ["229", "佳先股份", "2020/7/27", "430489", "920489"]
+  ],
+  "observed_table_rows_including_note": 249,
+  "full_table_archived": false,
+  "http_response_bytes_archived": false,
+  "accepted_as_runtime_aliases": false
+}

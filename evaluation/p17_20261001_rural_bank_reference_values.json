@@ -1,0 +1,37 @@
+{
+  "plan_sha256": "bab15c528d6daa94a6205d9d8fdc4a28a3c2ee5e375e6f3d57735501ba2d05d5",
+  "collection_sha256": "d208cfd7b8fc35f89c6cb116297caade5f97ba42ba8ba6c47ce4cc4e18e0c0f3",
+  "source_pdf_sha256": "578328c67e486507d620bf08e5084f70d757464284c0866dc576c6f99aa2b61f",
+  "source_record_id": "7faf824a02ff2146c0a43b36b4a73d633b4124de2c5523ff851943de729091cf",
+  "previous_comparison_sha256": "18d99f4b40da5a75777984ede340142edd43934d8de92d2122cdb48938c63a1e",
+  "review": "Original summary current-year column, annual group scope confirmed by page 8; page 3 visually reviewed before provider numeric comparison. No total_revenue alias qualification.",
+  "multiplier": "1000",
+  "tolerance_cny": "500",
+  "page_anchors": {
+    "3": [
+      "2024 年年度报告摘要",
+      "主要会计数据",
+      "单位：千元",
+      "币种：人民币",
+      "2024年",
+      "2023年",
+      "2022年"
+    ],
+    "8": [
+      "集团实现营业收入",
+      "实现归属于上市公司股东的净利润"
+    ]
+  },
+  "values": {
+    "revenue": {
+      "printed": "4,384,966",
+      "pdf_page": 3,
+      "row_excerpt": "营业收入                 4,384,966    3,803,578        15.29      3,524,998"
+    },
+    "net_income_parent": {
+      "printed": "1,921,704",
+      "pdf_page": 3,
+      "row_excerpt": "归属于上市公司股东的净利润        1,921,704    1,727,121        11.27      1,527,864"
+    }
+  }
+}

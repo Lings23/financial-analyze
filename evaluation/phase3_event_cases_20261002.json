@@ -1,0 +1,227 @@
+{
+  "kind": "real_qualified_date_anchor_offline",
+  "scope": "p17-qualified-cninfo-20261001",
+  "cases": [
+    {
+      "id": "public-boundary-1",
+      "request": {
+        "symbol": "300122",
+        "exchange": "SZSE",
+        "as_of": "2025-04-22T23:59:59.999999+08:00",
+        "mode": "public",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "c2716e80c4dfe082203f4f19ccaffa61622642fc75fc53e27e369bfe199ab55a",
+            "provider": "cninfo",
+            "start": "2025-04-18",
+            "end": "2025-04-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "c2716e80c4dfe082203f4f19ccaffa61622642fc75fc53e27e369bfe199ab55a",
+            "provider": "cninfo",
+            "start": "2024-12-31",
+            "end": "2024-12-31"
+          }
+        ],
+        "benchmark": null,
+        "objective": "event_review",
+        "hypotheses": [
+          "event_chronology"
+        ],
+        "event_record_id": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expected_anchor": "insufficient",
+      "expected_values": {},
+      "expected_release_date": null
+    },
+    {
+      "id": "public-boundary-2",
+      "request": {
+        "symbol": "300122",
+        "exchange": "SZSE",
+        "as_of": "2025-04-23T00:00:00+08:00",
+        "mode": "public",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "c2716e80c4dfe082203f4f19ccaffa61622642fc75fc53e27e369bfe199ab55a",
+            "provider": "cninfo",
+            "start": "2025-04-18",
+            "end": "2025-04-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "c2716e80c4dfe082203f4f19ccaffa61622642fc75fc53e27e369bfe199ab55a",
+            "provider": "cninfo",
+            "start": "2024-12-31",
+            "end": "2024-12-31"
+          }
+        ],
+        "benchmark": null,
+        "objective": "event_review",
+        "hypotheses": [
+          "event_chronology"
+        ],
+        "event_record_id": "ea32f85d701f86ebdfab4599c3efa95d08c61c644197f0656f03a697429fdf5e"
+      },
+      "expected_anchor": "verified",
+      "expected_values": {
+        "net_income_parent": "2018478513.91",
+        "revenue": "26069711361.44"
+      },
+      "expected_release_date": "2025-04-22"
+    },
+    {
+      "id": "public-boundary-3",
+      "request": {
+        "symbol": "300122",
+        "exchange": "SZSE",
+        "as_of": "2026-04-28T23:59:59.999999+08:00",
+        "mode": "public",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "c2716e80c4dfe082203f4f19ccaffa61622642fc75fc53e27e369bfe199ab55a",
+            "provider": "cninfo",
+            "start": "2025-04-18",
+            "end": "2025-04-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "c2716e80c4dfe082203f4f19ccaffa61622642fc75fc53e27e369bfe199ab55a",
+            "provider": "cninfo",
+            "start": "2024-12-31",
+            "end": "2024-12-31"
+          }
+        ],
+        "benchmark": null,
+        "objective": "event_review",
+        "hypotheses": [
+          "event_chronology"
+        ],
+        "event_record_id": "ea32f85d701f86ebdfab4599c3efa95d08c61c644197f0656f03a697429fdf5e"
+      },
+      "expected_anchor": "verified",
+      "expected_values": {
+        "net_income_parent": "2018478513.91",
+        "revenue": "26069711361.44"
+      },
+      "expected_release_date": "2025-04-22"
+    },
+    {
+      "id": "public-boundary-4",
+      "request": {
+        "symbol": "300122",
+        "exchange": "SZSE",
+        "as_of": "2026-04-29T00:00:00+08:00",
+        "mode": "public",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "c2716e80c4dfe082203f4f19ccaffa61622642fc75fc53e27e369bfe199ab55a",
+            "provider": "cninfo",
+            "start": "2025-04-18",
+            "end": "2025-04-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "c2716e80c4dfe082203f4f19ccaffa61622642fc75fc53e27e369bfe199ab55a",
+            "provider": "cninfo",
+            "start": "2024-12-31",
+            "end": "2024-12-31"
+          }
+        ],
+        "benchmark": null,
+        "objective": "event_review",
+        "hypotheses": [
+          "event_chronology"
+        ],
+        "event_record_id": "1858473cf1602e2a7294904f261e3abe7de4c96bddbd6216491f1429e68817a0"
+      },
+      "expected_anchor": "verified",
+      "expected_values": {
+        "net_income_parent": "2005803553.96",
+        "revenue": "26048900498.27"
+      },
+      "expected_release_date": "2026-04-28"
+    },
+    {
+      "id": "system-historical",
+      "request": {
+        "symbol": "300122",
+        "exchange": "SZSE",
+        "as_of": "2026-04-29T00:00:00+08:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "c2716e80c4dfe082203f4f19ccaffa61622642fc75fc53e27e369bfe199ab55a",
+            "provider": "cninfo",
+            "start": "2025-04-18",
+            "end": "2025-04-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "c2716e80c4dfe082203f4f19ccaffa61622642fc75fc53e27e369bfe199ab55a",
+            "provider": "cninfo",
+            "start": "2024-12-31",
+            "end": "2024-12-31"
+          }
+        ],
+        "benchmark": null,
+        "objective": "event_review",
+        "hypotheses": [
+          "event_chronology"
+        ],
+        "event_record_id": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expected_anchor": "insufficient",
+      "expected_values": {},
+      "expected_release_date": null
+    },
+    {
+      "id": "system-ingested",
+      "request": {
+        "symbol": "300122",
+        "exchange": "SZSE",
+        "as_of": "2026-10-01T07:22:23.384409+00:00",
+        "mode": "system",
+        "bindings": [
+          {
+            "dataset": "market_daily",
+            "snapshot": "c2716e80c4dfe082203f4f19ccaffa61622642fc75fc53e27e369bfe199ab55a",
+            "provider": "cninfo",
+            "start": "2025-04-18",
+            "end": "2025-04-30"
+          },
+          {
+            "dataset": "financial_income",
+            "snapshot": "c2716e80c4dfe082203f4f19ccaffa61622642fc75fc53e27e369bfe199ab55a",
+            "provider": "cninfo",
+            "start": "2024-12-31",
+            "end": "2024-12-31"
+          }
+        ],
+        "benchmark": null,
+        "objective": "event_review",
+        "hypotheses": [
+          "event_chronology"
+        ],
+        "event_record_id": "1858473cf1602e2a7294904f261e3abe7de4c96bddbd6216491f1429e68817a0"
+      },
+      "expected_anchor": "verified",
+      "expected_values": {
+        "net_income_parent": "2005803553.96",
+        "revenue": "26048900498.27"
+      },
+      "expected_release_date": "2026-04-28"
+    }
+  ],
+  "source_run_sha256": "bae939d8b38c597ad62a618ae13975a4fe814ad135a5d1b89e789c3cd86f4613",
+  "qualification_sha256": "48e81cd276c874f14270ed66c24dbc2a08ce660048a40818174c3882540f41e4",
+  "provider_network_calls": 0,
+  "market_records_available": false,
+  "causal_truth_certified": false
+}

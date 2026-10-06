@@ -1,0 +1,87 @@
+{
+  "version": "2026-10-01-reference-supplement-v1",
+  "scope": "p17-reference-extension-20261001",
+  "original_scope": "p17-validation-20260930",
+  "original_snapshot": "2b30fc0aa2d93ec968847e0092e78d3e6e64bdd3e151fc8731e8334df71c2e59",
+  "original_plan_sha256": "8adbc927102e6e82a5ef9c5736b92bc3757504475d3a1d5ff110f33daa268636",
+  "purpose": "Supplement missing references of every financial record in the prior frozen pilot; not a new blind/random accuracy sample",
+  "requests": [
+    {
+      "code": "920118",
+      "exchange": "BSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-25",
+      "selector": "2024年年度报告",
+      "original_record_id": "e5eaa81a7d9b266cf9348e680097564fbf6b1b82951eb35c9c5d43b809e86d82",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ],
+      "supplement_reason": "CNINFO index dates differ by one day from Tushare; original probe kept"
+    },
+    {
+      "code": "920118",
+      "exchange": "BSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-25",
+      "selector": "2025年一季度报告",
+      "original_record_id": "50ba3be5a0a4f96177a8989287b89d57fcf1ff9fec978ecc3f5d1d25004981bd",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ],
+      "supplement_reason": "CNINFO index dates differ by one day from Tushare; original probe kept"
+    },
+    {
+      "code": "920118",
+      "exchange": "BSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-27",
+      "selector": "2025年半年度报告",
+      "original_record_id": "188c7026d4f93bf96a5ab94997edb7949bad36265ea636ef7cdc0a1f4a23a627",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ],
+      "supplement_reason": "CNINFO index dates differ by one day from Tushare; original probe kept"
+    },
+    {
+      "code": "600000",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-03-29",
+      "selector": "2024年年度报告摘要",
+      "original_record_id": "f2beb58ab7306aea60005dac1c901cb333ebc6a2d90cc2eef6b85631d0ceaadf",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ],
+      "supplement_reason": "Prior full-document batch failed; summary is an explicit narrower reference document, original failure kept and unreferred fields remain uncomparable"
+    },
+    {
+      "code": "300750",
+      "exchange": "SZSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-15",
+      "selector": "2025年一季度报告",
+      "original_record_id": "f22eb074a7ccb1556fbc30b38e4a6a3a58895a29b841baff169d151fd1e4f18d",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ],
+      "supplement_reason": "Exact official title uses 一季度 rather than 第一季度; original empty kept"
+    }
+  ],
+  "rules": {
+    "no_silent_exclusion": true,
+    "original_official_consolidated_cumulative_only": true,
+    "missing_reference": "uncomparable",
+    "date_is_not_intraday_release": true
+  },
+  "diagnostic_plan_artifact": "099c4fb19b5f082bdf2393ead3b63ee6d8cad8d02d685f3dcfc93d397a87212e"
+}

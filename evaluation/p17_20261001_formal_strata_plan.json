@@ -1,0 +1,58 @@
+{
+  "scope": "p17-formal-strata-20261001",
+  "formal_plan_sha256": "e98a23c65a1f073ebcda264ad138076ff53b711400709ed46bdc894388b2e0f5",
+  "created_at": "2026-10-01T09:07:44.105299+00:00",
+  "requests": [
+    {
+      "symbol": "603207",
+      "exchange": "SSE",
+      "start": "2024-08-16",
+      "end": "2024-08-26",
+      "selector": "上市公告书",
+      "metadata_listing_date": "2024-08-26",
+      "purpose": "official listing-date proof"
+    },
+    {
+      "symbol": "688710",
+      "exchange": "SSE",
+      "start": "2024-08-24",
+      "end": "2024-09-03",
+      "selector": "上市公告书",
+      "metadata_listing_date": "2024-09-03",
+      "purpose": "official listing-date proof"
+    },
+    {
+      "symbol": "301600",
+      "exchange": "SZSE",
+      "start": "2024-09-01",
+      "end": "2024-09-11",
+      "selector": "上市公告书",
+      "metadata_listing_date": "2024-09-11",
+      "purpose": "official listing-date proof"
+    },
+    {
+      "symbol": "920016",
+      "exchange": "BSE",
+      "start": "2024-09-03",
+      "end": "2024-09-13",
+      "selector": "上市公告书",
+      "metadata_listing_date": "2024-09-13",
+      "purpose": "official listing-date proof"
+    },
+    {
+      "symbol": "600301",
+      "exchange": "SSE",
+      "start": "2026-09-18",
+      "end": "2026-09-21",
+      "selector": "复牌",
+      "purpose": "qualify actual halt end, not projected duration"
+    }
+  ],
+  "max_attempts": 1,
+  "min_interval": 2.5,
+  "timeout_seconds": 60,
+  "rules": "Collect original PDFs; document dates do not upgrade PIT. Later qualification must cite actual text/page/code/date, not infer from title.",
+  "code_sha256": {
+    "scripts\\collect_p17_formal_strata.py": "82491c7deb408eb8fc9de713ceb572a59802e4e01d8891a950223fe1af3484ea"
+  }
+}

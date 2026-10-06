@@ -1,0 +1,723 @@
+{
+  "candidates_sha256": "5ae7a80903481edc561a14d60c6afd14cd34e5ce17a272f99dfd323f22ef5db7",
+  "review_method": "Machine-assisted consolidated-table heading/period/units/row/first-column inspection for 142 independent source candidates; four representative PDF pages rendered and inspected. Not exhaustive visual review. Provider numeric values have not been read for candidate selection.",
+  "reviewed": [
+    {
+      "code": "601009",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "601009",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "601009",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "601009",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "601009",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "601009",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "601528",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "601528",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "603207",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "603207",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "603207",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "603207",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "603207",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "603207",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "603207",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "603207",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688710",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "688710",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688710",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688710",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "688710",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688710",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688710",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "688710",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688710",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "301600",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "301600",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "301600",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "301600",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "301600",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "301600",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "600301",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "600301",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "600301",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "600301",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "600301",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "600301",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "600301",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "600301",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "600301",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "000016",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "000016",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "000016",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688184",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "688184",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688184",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688184",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "688184",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688184",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688184",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "688184",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688184",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "603615",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "603615",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "603615",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "603615",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "603615",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "603615",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "603615",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "603615",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "603615",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "600500",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "600500",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "600500",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "600500",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "600500",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "600500",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "600500",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "603681",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "603681",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "603681",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "603681",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "603681",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "603681",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "603681",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "603681",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "603681",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688570",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "688570",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688570",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688570",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "688570",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688570",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688570",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "688570",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688570",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688320",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "688320",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688320",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688320",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "688320",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688320",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688320",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "688320",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688320",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688315",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "688315",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688315",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "688315",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688315",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "688315",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "688315",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "688315",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "002363",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "002363",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "002363",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "002363",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "002363",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "002363",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "002363",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "002363",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "002363",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "000997",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "000997",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "000997",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "000997",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "000997",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "000997",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "000531",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "000531",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "000531",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "000531",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "000531",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "000531",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "300733",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "300733",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "300733",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "300733",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "300733",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "300733",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "300021",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "300021",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "300021",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "300021",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "300021",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "300021",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "300269",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "300269",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "300269",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "300269",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "300269",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "300269",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    }
+  ],
+  "rendered_pages": [
+    "601009 annual2024 PDF122 (thousand CNY)",
+    "688184 annual2024 PDF139 (negative parent profit)",
+    "000997 annual2024 PDF78 (revenue distinct from total)",
+    "300021 H1-2025 PDF77 (parent distinct from net profit, before parent-only table)"
+  ],
+  "unreviewed_fields_remain_in_denominator": true
+}

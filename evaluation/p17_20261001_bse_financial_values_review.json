@@ -1,0 +1,179 @@
+{
+  "candidates_path": ".artifacts\\p17_20261001\\formal\\financial_values\\bse-qualified-reviewed\\candidates.json",
+  "candidates_sha256": "45bafe750c2f9fae4f3c227434a86985452a7b470e051b5da059a439c744ab9e",
+  "reference_plan_path": "evaluation/p17_20261001_bse_qualified_reference_plan.json",
+  "collection_path": ".artifacts\\p17_20261001\\formal\\bse_qualified_references\\collection.json",
+  "comparison_label": "bse-qualified-reviewed",
+  "previous_comparison_path": ".artifacts\\p17_20261001\\formal\\konka_reference\\comparison.json",
+  "previous_comparison_sha256": "485da069d20f19fcf84991598347fc1d1b8a7ca16fc602f5182043781460ebd4",
+  "expected_count": 33,
+  "verify_source_columns": true,
+  "review": "All eleven periods: original consolidated annual/Q1/cumulative-H1 table heading, explicit yuan units, current-year first numeric column, separate revenue/total-revenue rows and parent-owner profit attribution. Footnotes excluded from numeric columns. Four representative pages rendered/viewed; 32 source candidates and one manually read page-64 revenue field locked before provider numeric comparison.",
+  "reviewed": [
+    {
+      "code": "920110",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "920110",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "920110",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "920110",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "920110",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "920110",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "920110",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "920110",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "920110",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "920510",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "920510",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "920510",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "920510",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "920510",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "920510",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "920510",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "920510",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "920510",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "920489",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "920489",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "920489",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "920489",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "920489",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "920489",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "920175",
+      "period": "2024-12-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "920175",
+      "period": "2024-12-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "920175",
+      "period": "2024-12-31",
+      "field": "revenue"
+    },
+    {
+      "code": "920175",
+      "period": "2025-03-31",
+      "field": "revenue"
+    },
+    {
+      "code": "920175",
+      "period": "2025-03-31",
+      "field": "total_revenue"
+    },
+    {
+      "code": "920175",
+      "period": "2025-03-31",
+      "field": "net_income_parent"
+    },
+    {
+      "code": "920175",
+      "period": "2025-06-30",
+      "field": "revenue"
+    },
+    {
+      "code": "920175",
+      "period": "2025-06-30",
+      "field": "total_revenue"
+    },
+    {
+      "code": "920175",
+      "period": "2025-06-30",
+      "field": "net_income_parent"
+    }
+  ]
+}

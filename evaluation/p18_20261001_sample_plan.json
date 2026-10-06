@@ -1,0 +1,32 @@
+{
+  "version": "2026-10-01-v1",
+  "scope": "p18-validation-20261001",
+  "source_boundary": ["tushare", "cninfo", "akshare"],
+  "news_scope": "User accepted recent captured news; historical news is a later extension",
+  "time_contract": "All live adapters are observed_at; no historical release is claimed",
+  "requests": [
+    {"kind":"exchange","code":"SSE","dataset":"trade_calendar","start":"2026-09-28","end":"2026-10-09","provider":"tushare"},
+    {"kind":"exchange","code":"SZSE","dataset":"trade_calendar","start":"2026-09-28","end":"2026-10-09","provider":"tushare"},
+    {"kind":"equity","code":"600000","exchange":"SSE","dataset":"adjustment_factor","start":"2024-09-18","end":"2024-09-30","provider":"tushare"},
+    {"kind":"equity","code":"300750","exchange":"SZSE","dataset":"adjustment_factor","start":"2026-09-15","end":"2026-09-25","provider":"tushare"},
+    {"kind":"index","code":"000300.SH","dataset":"index_daily","start":"2024-09-18","end":"2024-09-30","provider":"tushare"},
+    {"kind":"index","code":"399300.SZ","dataset":"index_weight","start":"2024-09-01","end":"2024-09-30","provider":"tushare"},
+    {"kind":"equity","code":"600000","exchange":"SSE","dataset":"financial_balance","start":"2024-12-31","end":"2024-12-31","provider":"tushare"},
+    {"kind":"equity","code":"600000","exchange":"SSE","dataset":"financial_cashflow","start":"2024-12-31","end":"2024-12-31","provider":"tushare"},
+    {"kind":"equity","code":"000001","exchange":"SZSE","dataset":"financial_balance","start":"2024-12-31","end":"2024-12-31","provider":"tushare"},
+    {"kind":"equity","code":"000001","exchange":"SZSE","dataset":"financial_cashflow","start":"2024-12-31","end":"2024-12-31","provider":"tushare"},
+    {"kind":"equity","code":"300750","exchange":"SZSE","dataset":"financial_balance","start":"2024-12-31","end":"2024-12-31","provider":"tushare"},
+    {"kind":"equity","code":"300750","exchange":"SZSE","dataset":"financial_cashflow","start":"2024-12-31","end":"2024-12-31","provider":"tushare"},
+    {"kind":"equity","code":"000001","exchange":"SZSE","dataset":"announcement","start":"2025-03-15","end":"2025-03-15","selector":"2024年年度报告","provider":"cninfo"},
+    {"kind":"equity","code":"300122","exchange":"SZSE","dataset":"announcement","start":"2025-04-22","end":"2025-04-22","selector":"2024年年度报告摘要","provider":"cninfo"},
+    {"kind":"equity","code":"300122","exchange":"SZSE","dataset":"announcement","start":"2026-04-28","end":"2026-04-28","selector":"更正","provider":"cninfo"},
+    {"kind":"equity","code":"600000","exchange":"SSE","dataset":"news_recent","start":"2026-08-01","end":"2026-09-30","provider":"akshare"}
+  ],
+  "gates": {
+    "mandatory_nonempty_all_requests": true,
+    "authorization_pit_integrity_errors_allowed": 0,
+    "frozen_snapshots_and_source_bytes_replay": true,
+    "independent_reference_comparison_required": true,
+    "sample_success_does_not_prove_all_market_accuracy": true
+  }
+}

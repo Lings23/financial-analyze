@@ -1,0 +1,99 @@
+{
+  "scope": "p17-szse-archive-gap-20261001",
+  "created_at": "2026-10-01T12:28:31.858950+00:00",
+  "url": "https://www.szse.cn/api/report/ShowReport/data",
+  "page_url": "https://www.szse.cn/market/trend/archive/index.html",
+  "params": {
+    "SHOWTYPE": "JSON",
+    "CATALOGID": "1815_stock",
+    "TABKEY": "tab1",
+    "PAGENO": "1"
+  },
+  "groups": [
+    {
+      "label": "original",
+      "original_scope": "p17-validation-20260930",
+      "snapshot_id": "2b30fc0aa2d93ec968847e0092e78d3e6e64bdd3e151fc8731e8334df71c2e59",
+      "finished_at": "2026-09-30T01:00:02.381740+00:00",
+      "original_artifacts": ".artifacts/p17_20260930/artifacts",
+      "codes": [
+        "000001"
+      ],
+      "dates": [
+        "2024-09-30"
+      ],
+      "window": {
+        "start": "2024-09-18",
+        "end": "2024-09-30"
+      }
+    }
+  ],
+  "rules": {
+    "open": {
+      "source_field": "ks",
+      "multiplier": "1",
+      "tolerance": "0.005"
+    },
+    "close": {
+      "source_field": "ss",
+      "multiplier": "1",
+      "tolerance": "0.005"
+    },
+    "high": {
+      "source_field": "zg",
+      "multiplier": "1",
+      "tolerance": "0.005"
+    },
+    "low": {
+      "source_field": "zd",
+      "multiplier": "1",
+      "tolerance": "0.005"
+    },
+    "volume": {
+      "source_field": "cjgs",
+      "multiplier": "10000",
+      "tolerance": "50"
+    },
+    "amount": {
+      "source_field": "cjje",
+      "multiplier": "10000",
+      "tolerance": "50"
+    }
+  },
+  "min_interval_seconds": 2.5,
+  "logical_requests": 1,
+  "registered_cells": 6,
+  "overall_deadline_seconds": 30,
+  "source_sha256": {
+    "evaluation\\p17_20261001_formal_plan.json": "e98a23c65a1f073ebcda264ad138076ff53b711400709ed46bdc894388b2e0f5",
+    "evaluation\\p17_20261001_szse_reference_plan.json": "8c69468ddf7a42e27d255ecb96fb2bd89bade68ca7137b8542a8a09346138c18",
+    ".artifacts\\p17_20261001\\szse_history_discovery\\archive-metadata.json": "24edb7f602d32fd16eb48853eda994e29f50f201049f089038453c96996ab5fb",
+    ".artifacts\\p17_20261001\\szse_history_discovery\\page.html": "d12209740871e566a9f4f34c0214d225098313d8f3a96b5c15c18a52ad3edb0c",
+    ".artifacts\\p17_20261001\\szse_history_discovery\\archive-page.html": "2869271b18f479730f4772331694f4f4a025241fe2d2a8b3fc52075c342c7422",
+    ".artifacts\\p17_20261001\\szse_history_discovery\\res-min-assets-script0.js": "e5466cb1981aee69592030da07ba279d0e3c05ebc273014670a30fce3e4381d9",
+    ".artifacts\\p17_20261001\\szse_history_discovery\\archive-probe.json": "76f0e1a06a8486b003d99b1369bf47005a83de1c58d41faa4a537978e7e7d2e5",
+    "D:\\workspace\\financial analyze\\scripts\\collect_p17_szse_archive.py": "d945d8fbb4cd50d68e24913786a4873ed6f1e1fdda5d4d7198846bbf6be5c7cc",
+    "D:\\workspace\\financial analyze\\scripts\\run_p17_szse_archive_gap.py": "f27120c26c58ae48568044dd170ae690592ffa7c6b661193b8c7d53a05b5e0e3"
+  },
+  "rule_basis": "Official archive table prints prices to 0.01 CNY, volume to 0.01 ten-thousand shares and amount to 0.01 ten-thousand CNY; half-print-step tolerance fixed before provider-value comparison. Footer covers all trading methods.",
+  "probe_seen_before_freeze": "002363/2024-09-18 official row only; not a blind statistical certification",
+  "phase1_complete": false,
+  "preserved_failed_request": {
+    "group": "original",
+    "code": "000001",
+    "date": "2024-09-30",
+    "attempts": 1,
+    "retries": 0,
+    "url": "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_stock&TABKEY=tab1&PAGENO=1&txtDMorJC=000001&txtBeginDate=2024-09-30",
+    "started_at": "2026-10-01T12:10:06.468922+00:00",
+    "status": "failed",
+    "worker_exit": 4,
+    "finished_at": "2026-10-01T12:10:09.839766+00:00"
+  },
+  "baseline_sha256": {
+    "evaluation\\p17_20261001_szse_archive_plan.json": "52001627fe1ad264b4d2b6affe21d8bce3c71c7a0a41cf9cfd40834a8ce82dfe",
+    ".artifacts\\p17_20261001\\szse_archive\\collection.json": "1fb4c85da62fe800b4c1450091e60b671f38ac4a37b34929f81bf4fc86f098c0",
+    ".artifacts\\p17_20261001\\szse_archive\\comparison.json": "f2ab55271672d24cd37a9f167823f5812beaeeee61d772c57846a83039c8027b",
+    ".artifacts\\p17_20261001\\szse_archive\\extension.json": "ea4c30bab022e719c6b9ba12c76681e4f686a7211fa000be658d84b396ddae81"
+  }
+}

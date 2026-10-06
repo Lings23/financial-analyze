@@ -1,0 +1,65 @@
+{
+  "reference_scope": "p17-szse-reference-20261001",
+  "original_scope": "p17-validation-20260930",
+  "original_snapshot": "2b30fc0aa2d93ec968847e0092e78d3e6e64bdd3e151fc8731e8334df71c2e59",
+  "original_finished_at": "2026-09-30T01:00:02.381740+00:00",
+  "codes": [
+    "000001",
+    "300750"
+  ],
+  "url": "https://www.szse.cn/api/market/ssjjhq/getHistoryData",
+  "page_url": "https://www.szse.cn/market/index.html",
+  "params": {
+    "marketId": 1,
+    "cycleType": 32
+  },
+  "windows": [
+    {
+      "start": "2024-09-18",
+      "end": "2024-09-30"
+    },
+    {
+      "start": "2026-09-15",
+      "end": "2026-09-25"
+    }
+  ],
+  "fields": {
+    "open": {
+      "position": 1,
+      "multiplier": "1",
+      "tolerance": "0.005"
+    },
+    "close": {
+      "position": 2,
+      "multiplier": "1",
+      "tolerance": "0.005"
+    },
+    "low": {
+      "position": 3,
+      "multiplier": "1",
+      "tolerance": "0.005"
+    },
+    "high": {
+      "position": 4,
+      "multiplier": "1",
+      "tolerance": "0.005"
+    },
+    "volume": {
+      "position": 7,
+      "multiplier": "100",
+      "tolerance": "0.5"
+    },
+    "amount": {
+      "position": 8,
+      "multiplier": "1",
+      "tolerance": "0.5"
+    }
+  },
+  "source_sha256": {
+    ".artifacts\\p17_20261001\\exchange_discovery\\script3.js": "af8a35fcfbd58fb4f7cf11c6ceeec262b85f6ec2b52d11d8c9923b28c407bdab",
+    ".artifacts\\p17_20261001\\exchange_discovery\\script6.js": "eebde357d093a18f59506deab8d0cc93c0899df45000f5bfd4eab3c54fced0f0",
+    ".artifacts\\p17_20261001\\exchange_discovery\\script7.js": "e28672ab8862634207b4950cc415eac355c5b8532fc5aa35192b48bb79d29dec"
+  },
+  "scope_note": "Original two-window SZSE strata retained; default response only covers recent dates, older absent cells remain unverified. Volume endpoint is in 100-share lots as shown by the official English chart unit; amount is CNY.",
+  "script_sha256": "1eaf29087219f457d90e644fc59a077db97166f86423d347cbeb07e9ef1d575f"
+}

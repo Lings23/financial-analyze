@@ -1,0 +1,13 @@
+{
+  "dataset_version": "synthetic-pit-v1",
+  "synthetic_only": true,
+  "allowed_sources": ["fixture"],
+  "symbols": ["SSE:600000"],
+  "report_period": "2024-12-31",
+  "cases": [
+    {"case_id": "PIT-001", "question": "未披露的年报在历史截止日是否可见？", "as_of_date": "2025-02-01T00:00:00+00:00", "mode": "public", "expected_revenue": null},
+    {"case_id": "PIT-002", "question": "修订前是否保留当时可见原值？", "as_of_date": "2025-04-10T00:00:00+00:00", "mode": "public", "expected_revenue": "100"},
+    {"case_id": "PIT-003", "question": "修订公开后是否选择修订值？", "as_of_date": "2025-04-20T10:00:00+00:00", "mode": "public", "expected_revenue": "90"},
+    {"case_id": "PIT-004", "question": "尚未入库的信息是否能用于系统回放？", "as_of_date": "2025-03-21T00:00:00+00:00", "mode": "system", "expected_revenue": null}
+  ]
+}

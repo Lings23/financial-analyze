@@ -1,0 +1,73 @@
+{
+  "reference_scope": "p17-sse-reference-20261001",
+  "original_scope": "p17-validation-20260930",
+  "original_snapshot": "2b30fc0aa2d93ec968847e0092e78d3e6e64bdd3e151fc8731e8334df71c2e59",
+  "original_finished_at": "2026-09-30T01:00:02.381740+00:00",
+  "original_days_per_stock": 17,
+  "fields": {
+    "open": {
+      "position": 1,
+      "unit": "CNY/share",
+      "tolerance": "0.005"
+    },
+    "high": {
+      "position": 2,
+      "unit": "CNY/share",
+      "tolerance": "0.005"
+    },
+    "low": {
+      "position": 3,
+      "unit": "CNY/share",
+      "tolerance": "0.005"
+    },
+    "close": {
+      "position": 4,
+      "unit": "CNY/share",
+      "tolerance": "0.005"
+    },
+    "volume": {
+      "position": 5,
+      "unit": "share",
+      "tolerance": "0.5"
+    },
+    "amount": {
+      "position": 6,
+      "unit": "CNY",
+      "tolerance": "0.5"
+    }
+  },
+  "windows": [
+    {
+      "start": "2024-09-18",
+      "end": "2024-09-30"
+    },
+    {
+      "start": "2026-09-15",
+      "end": "2026-09-25"
+    }
+  ],
+  "references": [
+    {
+      "code": "600000",
+      "url": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/600000"
+    },
+    {
+      "code": "688590",
+      "url": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/688590"
+    },
+    {
+      "code": "600519",
+      "url": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/600519"
+    }
+  ],
+  "params": {
+    "select": "date,open,high,low,close,volume,amount",
+    "begin": -600,
+    "end": -1
+  },
+  "renderer_path": ".artifacts\\p17_20261001\\exchange_discovery\\script4.js",
+  "renderer_sha256": "ee28d5e01af35592aa5d1be1e6900608645616878eb725fc0317b8db6a51c34f",
+  "page_url": "https://www.sse.com.cn/star/market/stocklist/info/index/index.shtml?COMPANY_CODE=688002",
+  "scope_note": "Extension of original sample; discovery preceded reference freeze, not a blind random sample; exchange is QA reference only",
+  "script_sha256": "82b02f521c898b1f5699a78823525126c870a7d9d3baad52bef50d57e4467d03"
+}

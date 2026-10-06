@@ -1,0 +1,1293 @@
+{
+  "scope": "p17-formal-financial-reference-20261001",
+  "created_at": "2026-10-01T09:10:09.260622+00:00",
+  "requests": [
+    {
+      "code": "601009",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-22",
+      "effective_provider_announcement_date": "2025-04-22",
+      "start_date": "2025-04-21",
+      "end_date": "2025-04-23",
+      "selector": "2024年年度报告",
+      "original_record_id": "0b3fdbbbc72a1d0c101eb16906e5019492080d52db0bf3dd9292eeb7828f179f",
+      "original_snapshot": "f5a8981b94c629c6489fb4a2760c60e590a95a12efc60f5975eed789279ca08c",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "601009",
+      "exchange": "SSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-22",
+      "effective_provider_announcement_date": "2025-04-22",
+      "start_date": "2025-04-21",
+      "end_date": "2025-04-23",
+      "selector": "季度报告",
+      "original_record_id": "ad2c8e410c2150fa5354cbb0ae9d68c54771da5cb98f5fbf44cc878f061b0d98",
+      "original_snapshot": "f5a8981b94c629c6489fb4a2760c60e590a95a12efc60f5975eed789279ca08c",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "601009",
+      "exchange": "SSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-29",
+      "effective_provider_announcement_date": "2025-08-29",
+      "start_date": "2025-08-28",
+      "end_date": "2025-08-30",
+      "selector": "2025年半年度报告",
+      "original_record_id": "af4f563e2e8794387da12864e4794755f47a7478730478eb83b06c56995a768b",
+      "original_snapshot": "f5a8981b94c629c6489fb4a2760c60e590a95a12efc60f5975eed789279ca08c",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "601528",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-03-28",
+      "effective_provider_announcement_date": "2025-03-28",
+      "start_date": "2025-03-27",
+      "end_date": "2025-03-29",
+      "selector": "2024年年度报告",
+      "original_record_id": "313761ed06b6ea843fbd419fa5fbc911fde198a2f5528a3ae4483d9da5cda33e",
+      "original_snapshot": "271a6ad2c0b88fb053b6e46603c3f55537e6937010abfca78a0ccdda613dc762",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "601528",
+      "exchange": "SSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-29",
+      "effective_provider_announcement_date": "2025-04-29",
+      "start_date": "2025-04-28",
+      "end_date": "2025-04-30",
+      "selector": "季度报告",
+      "original_record_id": "b648fc894609d7da9e87c3d022c06c3e918377258046c00850cd234fd5125a72",
+      "original_snapshot": "271a6ad2c0b88fb053b6e46603c3f55537e6937010abfca78a0ccdda613dc762",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "601528",
+      "exchange": "SSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-27",
+      "effective_provider_announcement_date": "2025-08-27",
+      "start_date": "2025-08-26",
+      "end_date": "2025-08-28",
+      "selector": "2025年半年度报告",
+      "original_record_id": "cc2bd045179f9bf11792a06e8acb0a42b06f53eda9eed47b2ad6fa5520d4ae2a",
+      "original_snapshot": "271a6ad2c0b88fb053b6e46603c3f55537e6937010abfca78a0ccdda613dc762",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "603207",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "2024年年度报告",
+      "original_record_id": "2c30eec38f5412685e7667ea61442367ed9bd3493efcaca31bcf0e39c99c690e",
+      "original_snapshot": "25aed3cde367a318fb392007f98f70e2aec6d1098b5a676731247790525d0066",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "603207",
+      "exchange": "SSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告",
+      "original_record_id": "e7e87d1d486d60223423bb47efb9e40bec95e38510d40515492738d45e1332d2",
+      "original_snapshot": "25aed3cde367a318fb392007f98f70e2aec6d1098b5a676731247790525d0066",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "603207",
+      "exchange": "SSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-26",
+      "effective_provider_announcement_date": "2025-08-26",
+      "start_date": "2025-08-25",
+      "end_date": "2025-08-27",
+      "selector": "2025年半年度报告",
+      "original_record_id": "0e732ecd69b0bfa7e1e91bfd32ba7c9a96fcf096433419dca470c462cf5008a7",
+      "original_snapshot": "25aed3cde367a318fb392007f98f70e2aec6d1098b5a676731247790525d0066",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688710",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "2024年年度报告",
+      "original_record_id": "0fcabaf548e9d54acfc5f9b793eb805173278bd4445224174cd07b06dba09740",
+      "original_snapshot": "18569ceb4140777d0dcecf6ab7063069589d904da158c83ecb6e61b7c2e7a589",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688710",
+      "exchange": "SSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告",
+      "original_record_id": "d719201dabe046764a6ba73b678012bbec97e523b3bd52d93ff0130e1e707d26",
+      "original_snapshot": "18569ceb4140777d0dcecf6ab7063069589d904da158c83ecb6e61b7c2e7a589",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688710",
+      "exchange": "SSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-29",
+      "effective_provider_announcement_date": "2025-08-29",
+      "start_date": "2025-08-28",
+      "end_date": "2025-08-30",
+      "selector": "2025年半年度报告",
+      "original_record_id": "ff649c60a9e3ee1524838df69862aab603415e4e445c3b37b6e388ece494801f",
+      "original_snapshot": "18569ceb4140777d0dcecf6ab7063069589d904da158c83ecb6e61b7c2e7a589",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "301600",
+      "exchange": "SZSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-21",
+      "effective_provider_announcement_date": "2025-04-21",
+      "start_date": "2025-04-20",
+      "end_date": "2025-04-22",
+      "selector": "2024年年度报告",
+      "original_record_id": "0141dbf08d0cf7e569d089f711f51a92005eb6017e3b5375767700628ced0a58",
+      "original_snapshot": "0147471c09dae0378ba707d56d56b8347c697eeb1cae2c5409e23582c2227fc2",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "301600",
+      "exchange": "SZSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-25",
+      "effective_provider_announcement_date": "2025-04-25",
+      "start_date": "2025-04-24",
+      "end_date": "2025-04-26",
+      "selector": "季度报告",
+      "original_record_id": "6b711bddae32b9b867c606ecdf5231c8e09bf66379cde2bb0f7ccc894e7835c5",
+      "original_snapshot": "0147471c09dae0378ba707d56d56b8347c697eeb1cae2c5409e23582c2227fc2",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "301600",
+      "exchange": "SZSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-27",
+      "effective_provider_announcement_date": "2025-08-27",
+      "start_date": "2025-08-26",
+      "end_date": "2025-08-28",
+      "selector": "2025年半年度报告",
+      "original_record_id": "ebdb9d1435a8c589a5d0cc3b293d569053da9eb27205542cc2e185d7220537a6",
+      "original_snapshot": "0147471c09dae0378ba707d56d56b8347c697eeb1cae2c5409e23582c2227fc2",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920016",
+      "exchange": "BSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-19",
+      "effective_provider_announcement_date": "2025-04-19",
+      "start_date": "2025-04-18",
+      "end_date": "2025-04-20",
+      "selector": "2024年年度报告",
+      "original_record_id": "12566492e15a26423fc42c43d927df127213f183f9c049d6b6b27d4f1a72d239",
+      "original_snapshot": "3f7d4e94dc9254da1df4fbcf9fc4504e676c33ee95f8a308855b3e99f841ffe2",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920016",
+      "exchange": "BSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-19",
+      "effective_provider_announcement_date": "2025-04-19",
+      "start_date": "2025-04-18",
+      "end_date": "2025-04-20",
+      "selector": "季度报告",
+      "original_record_id": "fd1395bb0f623b2c450362065658165cf7cfd54eb1156e8f6ad5f60dab9956c3",
+      "original_snapshot": "3f7d4e94dc9254da1df4fbcf9fc4504e676c33ee95f8a308855b3e99f841ffe2",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920016",
+      "exchange": "BSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-29",
+      "effective_provider_announcement_date": "2025-08-29",
+      "start_date": "2025-08-28",
+      "end_date": "2025-08-30",
+      "selector": "2025年半年度报告",
+      "original_record_id": "5dfbf8340bd68b182b73d9f437fb88a547be4f4d10e68bf59fe51ec22321161b",
+      "original_snapshot": "3f7d4e94dc9254da1df4fbcf9fc4504e676c33ee95f8a308855b3e99f841ffe2",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "600301",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "2024年年度报告",
+      "original_record_id": "71da0893cb7ea9c50d6ebdaf4f3e9fb16f3db3488723a722fd6d536f42c2db05",
+      "original_snapshot": "ba6bfe1069c27abff54ca229c48ea6b2b64b7d82fa135b849a3e7efa40738648",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "600301",
+      "exchange": "SSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告",
+      "original_record_id": "ad970abe1a17173277ff4f78c0dd20b15d4f0ea83ac0f602b3b6ae667585d042",
+      "original_snapshot": "ba6bfe1069c27abff54ca229c48ea6b2b64b7d82fa135b849a3e7efa40738648",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "600301",
+      "exchange": "SSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-15",
+      "effective_provider_announcement_date": "2025-08-15",
+      "start_date": "2025-08-14",
+      "end_date": "2025-08-16",
+      "selector": "2025年半年度报告",
+      "original_record_id": "647b9c0cd16edd1dd34aea7d2c4589318f24beec1a0ebb758ae334b9d014c2b7",
+      "original_snapshot": "ba6bfe1069c27abff54ca229c48ea6b2b64b7d82fa135b849a3e7efa40738648",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "000016",
+      "exchange": "SZSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-15",
+      "effective_provider_announcement_date": "2026-04-29",
+      "start_date": "2026-04-28",
+      "end_date": "2026-04-30",
+      "selector": "2024年年度报告",
+      "original_record_id": "8c9b48b3ad278aa344c2ef67046c8b30556264c13b2033332051bee3206b0e9b",
+      "original_snapshot": "72d82370b2f9184b5b451687e83a3086e0bc553ccdada5cbe04b7ed350f816b1",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "000016",
+      "exchange": "SZSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告",
+      "original_record_id": "26ef8549ab8fc9b6d8240b59c6ae7300b2655004c90f87266e3741e203acede7",
+      "original_snapshot": "72d82370b2f9184b5b451687e83a3086e0bc553ccdada5cbe04b7ed350f816b1",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "000016",
+      "exchange": "SZSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-29",
+      "effective_provider_announcement_date": "2025-08-29",
+      "start_date": "2025-08-28",
+      "end_date": "2025-08-30",
+      "selector": "2025年半年度报告",
+      "original_record_id": "5ffc3bb47fdf10f6b2095eed6689a8ce5d07e4071f32ea4152dd5a42c5a7f4a6",
+      "original_snapshot": "72d82370b2f9184b5b451687e83a3086e0bc553ccdada5cbe04b7ed350f816b1",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688184",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "2024年年度报告",
+      "original_record_id": "b701e51a2fa4bbb9145b6d9aa9f626889a482b564e7b2c3f1f11549a551169c0",
+      "original_snapshot": "b79d27fc3e5c255db3cc88aca0e1521db3bdfd7e9e86686cac0e382365b11529",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688184",
+      "exchange": "SSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告",
+      "original_record_id": "4bd5f47a50d9b9934539b772f6a20510b82dd48bac10a3b26434279dd4299bc4",
+      "original_snapshot": "b79d27fc3e5c255db3cc88aca0e1521db3bdfd7e9e86686cac0e382365b11529",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688184",
+      "exchange": "SSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-30",
+      "effective_provider_announcement_date": "2025-08-30",
+      "start_date": "2025-08-29",
+      "end_date": "2025-08-31",
+      "selector": "2025年半年度报告",
+      "original_record_id": "f5e30ae27a78161b742f3561312918c593356b048536fe87572c6aabc97ace52",
+      "original_snapshot": "b79d27fc3e5c255db3cc88aca0e1521db3bdfd7e9e86686cac0e382365b11529",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920110",
+      "exchange": "BSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-11",
+      "effective_provider_announcement_date": "2025-04-11",
+      "start_date": "2025-04-10",
+      "end_date": "2025-04-12",
+      "selector": "2024年年度报告",
+      "original_record_id": "1c4f3d8ef75f457a62335e244a327e648c890ad8a123047780a7c97fd81244a5",
+      "original_snapshot": "66acd24fe093c663fc3f21b6cf6c6393640b8808189a760ba7d97fee3d40b091",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920110",
+      "exchange": "BSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-26",
+      "effective_provider_announcement_date": "2025-04-26",
+      "start_date": "2025-04-25",
+      "end_date": "2025-04-27",
+      "selector": "季度报告",
+      "original_record_id": "4e43f07f49187c6a0b895f7b463bb601a2eb3ec27ac23dd84cec1684bfd71002",
+      "original_snapshot": "66acd24fe093c663fc3f21b6cf6c6393640b8808189a760ba7d97fee3d40b091",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920110",
+      "exchange": "BSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-27",
+      "effective_provider_announcement_date": "2025-08-27",
+      "start_date": "2025-08-26",
+      "end_date": "2025-08-28",
+      "selector": "2025年半年度报告",
+      "original_record_id": "8986b7d046745414e24e7766289688e0f796fedd7e7c6ef1a9d13c0daec3a58a",
+      "original_snapshot": "66acd24fe093c663fc3f21b6cf6c6393640b8808189a760ba7d97fee3d40b091",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "603615",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-03-29",
+      "effective_provider_announcement_date": "2025-03-29",
+      "start_date": "2025-03-28",
+      "end_date": "2025-03-30",
+      "selector": "2024年年度报告",
+      "original_record_id": "a4ddc75741c25c1a461fb5239707f780769435f4da5fdfbdc454e42a6c67aa1b",
+      "original_snapshot": "b0f908ac34293c831504294f4d3c6cc46933fcb0ede4f25fd602438059560111",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "603615",
+      "exchange": "SSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-29",
+      "effective_provider_announcement_date": "2025-04-29",
+      "start_date": "2025-04-28",
+      "end_date": "2025-04-30",
+      "selector": "季度报告",
+      "original_record_id": "48f36fd94ba9002b81d7ceed6125752cee1f932ae54b32f10d907eafb02937a0",
+      "original_snapshot": "b0f908ac34293c831504294f4d3c6cc46933fcb0ede4f25fd602438059560111",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "603615",
+      "exchange": "SSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-23",
+      "effective_provider_announcement_date": "2025-08-23",
+      "start_date": "2025-08-22",
+      "end_date": "2025-08-24",
+      "selector": "2025年半年度报告",
+      "original_record_id": "8f06e09b801a37f7b00d44644ac33b3d9800bed6155cc2777f668553b62b6761",
+      "original_snapshot": "b0f908ac34293c831504294f4d3c6cc46933fcb0ede4f25fd602438059560111",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "600500",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "2024年年度报告",
+      "original_record_id": "f16f6762d67addeb2b173f98e4bfc5d33f288232ce392e63dde6ef67b04ce111",
+      "original_snapshot": "d56379e137f8932531e81f118e49beedd043c2ad787c5b98142c2d7e748d968d",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "600500",
+      "exchange": "SSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告",
+      "original_record_id": "6a9c208c8942511d84fd7fc16c183357a8524896a6bd357a9583d529f4b63b72",
+      "original_snapshot": "d56379e137f8932531e81f118e49beedd043c2ad787c5b98142c2d7e748d968d",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "600500",
+      "exchange": "SSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-28",
+      "effective_provider_announcement_date": "2025-08-28",
+      "start_date": "2025-08-27",
+      "end_date": "2025-08-29",
+      "selector": "2025年半年度报告",
+      "original_record_id": "3c143315c0cf375acea36b89fdbb2400342ba92c589c88d0273f2f913aad1bed",
+      "original_snapshot": "d56379e137f8932531e81f118e49beedd043c2ad787c5b98142c2d7e748d968d",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "603681",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-29",
+      "effective_provider_announcement_date": "2025-04-29",
+      "start_date": "2025-04-28",
+      "end_date": "2025-04-30",
+      "selector": "2024年年度报告",
+      "original_record_id": "bbc26910c224a687596eac9b6053db89217e73e61c58fafc12b6bcaf6910ce1c",
+      "original_snapshot": "ea6d9049757c8fe91c4eb2878da2ee4753ec37023c7a67061fb8be15142fe0d6",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "603681",
+      "exchange": "SSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-29",
+      "effective_provider_announcement_date": "2025-04-29",
+      "start_date": "2025-04-28",
+      "end_date": "2025-04-30",
+      "selector": "季度报告",
+      "original_record_id": "82fd5d1a61d731f4c1f38900788148b60b61261f355c846f1baa2cd4f78efed2",
+      "original_snapshot": "ea6d9049757c8fe91c4eb2878da2ee4753ec37023c7a67061fb8be15142fe0d6",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "603681",
+      "exchange": "SSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-28",
+      "effective_provider_announcement_date": "2025-08-28",
+      "start_date": "2025-08-27",
+      "end_date": "2025-08-29",
+      "selector": "2025年半年度报告",
+      "original_record_id": "059489ffe421f7e909f1569e0b5d9df2569435d3ddbe2da617d89254dbf243f6",
+      "original_snapshot": "ea6d9049757c8fe91c4eb2878da2ee4753ec37023c7a67061fb8be15142fe0d6",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688570",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-03-21",
+      "effective_provider_announcement_date": "2025-03-21",
+      "start_date": "2025-03-20",
+      "end_date": "2025-03-22",
+      "selector": "2024年年度报告",
+      "original_record_id": "bcb4998f94b20099bf01fb18279d70851ae7302db9d8e9ac82f9b802e273cf92",
+      "original_snapshot": "10b68b8428d7e398e1d63f8bf05bf3fa9e48d5c549b5dc1958c2e07a31e8dcaa",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688570",
+      "exchange": "SSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告",
+      "original_record_id": "1ccf08023304eccb48d2fc7fadd00f19e9ad771342c1accaf17c10cd628d7db5",
+      "original_snapshot": "10b68b8428d7e398e1d63f8bf05bf3fa9e48d5c549b5dc1958c2e07a31e8dcaa",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688570",
+      "exchange": "SSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-28",
+      "effective_provider_announcement_date": "2025-08-28",
+      "start_date": "2025-08-27",
+      "end_date": "2025-08-29",
+      "selector": "2025年半年度报告",
+      "original_record_id": "3febafbcdb7b9f15b8174f31851d16b54e6c8f01f91d7d3a97efbd0c0245a5be",
+      "original_snapshot": "10b68b8428d7e398e1d63f8bf05bf3fa9e48d5c549b5dc1958c2e07a31e8dcaa",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688320",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-26",
+      "effective_provider_announcement_date": "2025-04-26",
+      "start_date": "2025-04-25",
+      "end_date": "2025-04-27",
+      "selector": "2024年年度报告",
+      "original_record_id": "7d44f108834df70e1cf2de4c43a5f4067b914989e2e5e700caa315d81abaac28",
+      "original_snapshot": "77ca32138b1096ba8f0d4f6e048a4084fdf1a42dc33f72e124c5b71bb1f0ffd9",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688320",
+      "exchange": "SSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-26",
+      "effective_provider_announcement_date": "2025-04-26",
+      "start_date": "2025-04-25",
+      "end_date": "2025-04-27",
+      "selector": "季度报告",
+      "original_record_id": "6d1911434b087e2882b48bad84a0488f481b0ba17352a58481b126599c9e50f3",
+      "original_snapshot": "77ca32138b1096ba8f0d4f6e048a4084fdf1a42dc33f72e124c5b71bb1f0ffd9",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688320",
+      "exchange": "SSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-28",
+      "effective_provider_announcement_date": "2025-08-28",
+      "start_date": "2025-08-27",
+      "end_date": "2025-08-29",
+      "selector": "2025年半年度报告",
+      "original_record_id": "da8178f98d46b0213862ec9b8f6bf8b0e1a4f280ebaab8147bc98657d95c899b",
+      "original_snapshot": "77ca32138b1096ba8f0d4f6e048a4084fdf1a42dc33f72e124c5b71bb1f0ffd9",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688315",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-15",
+      "effective_provider_announcement_date": "2025-04-15",
+      "start_date": "2025-04-14",
+      "end_date": "2025-04-16",
+      "selector": "2024年年度报告",
+      "original_record_id": "c2cbf368e1b5ed46c1d6cba9328fb7eea0da73ff4b0af21ce9773c3fb4d849a6",
+      "original_snapshot": "387b1d292db9376793f5f16def8592a9f32344f7a395223ae37f999599bd0b82",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688315",
+      "exchange": "SSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-15",
+      "effective_provider_announcement_date": "2025-04-15",
+      "start_date": "2025-04-14",
+      "end_date": "2025-04-16",
+      "selector": "季度报告",
+      "original_record_id": "258c1532bed221f631386947aefde478d8d50a1503cc16d2550a3f626442099b",
+      "original_snapshot": "387b1d292db9376793f5f16def8592a9f32344f7a395223ae37f999599bd0b82",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "688315",
+      "exchange": "SSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-15",
+      "effective_provider_announcement_date": "2025-08-15",
+      "start_date": "2025-08-14",
+      "end_date": "2025-08-16",
+      "selector": "2025年半年度报告",
+      "original_record_id": "f63da4e1bc864cd24af653c76a6ffdec0294fc2b03d6685865190e4a77704891",
+      "original_snapshot": "387b1d292db9376793f5f16def8592a9f32344f7a395223ae37f999599bd0b82",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "002363",
+      "exchange": "SZSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-25",
+      "effective_provider_announcement_date": "2025-04-25",
+      "start_date": "2025-04-24",
+      "end_date": "2025-04-26",
+      "selector": "2024年年度报告",
+      "original_record_id": "66bad434f5914df19e3ac460755ac95f731e38e69ba49b17ddc8eba0b27ad8db",
+      "original_snapshot": "c97ff82d400f5046d412ba9c6483a81e3673325d3344ce1482e42b6f507cda48",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "002363",
+      "exchange": "SZSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-25",
+      "effective_provider_announcement_date": "2025-04-25",
+      "start_date": "2025-04-24",
+      "end_date": "2025-04-26",
+      "selector": "季度报告",
+      "original_record_id": "d818bd38216422871de7af615a749c8b0890f408d71eb87c1b0c392d46a300f3",
+      "original_snapshot": "c97ff82d400f5046d412ba9c6483a81e3673325d3344ce1482e42b6f507cda48",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "002363",
+      "exchange": "SZSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-29",
+      "effective_provider_announcement_date": "2025-08-29",
+      "start_date": "2025-08-28",
+      "end_date": "2025-08-30",
+      "selector": "2025年半年度报告",
+      "original_record_id": "3fbeb77a81ce136eeca4ee087d1904faff3e6f7ed7eea0bab1788e98d34214f5",
+      "original_snapshot": "c97ff82d400f5046d412ba9c6483a81e3673325d3344ce1482e42b6f507cda48",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "000997",
+      "exchange": "SZSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-23",
+      "effective_provider_announcement_date": "2025-04-23",
+      "start_date": "2025-04-22",
+      "end_date": "2025-04-24",
+      "selector": "2024年年度报告",
+      "original_record_id": "3d5cf508a19ba6a6f66a501c0a429fcb9c486e8ad54188eb19917242c90c4f42",
+      "original_snapshot": "a7780a49b7dd3562bcc7d22d9f2a9a573870e66c75f8236a29bf0c987b2e2a83",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "000997",
+      "exchange": "SZSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-23",
+      "effective_provider_announcement_date": "2025-04-23",
+      "start_date": "2025-04-22",
+      "end_date": "2025-04-24",
+      "selector": "季度报告",
+      "original_record_id": "d51694c13977392139719f3260be8222c85497d4aeee80e63f398608c28fc389",
+      "original_snapshot": "a7780a49b7dd3562bcc7d22d9f2a9a573870e66c75f8236a29bf0c987b2e2a83",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "000997",
+      "exchange": "SZSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-26",
+      "effective_provider_announcement_date": "2025-08-26",
+      "start_date": "2025-08-25",
+      "end_date": "2025-08-27",
+      "selector": "2025年半年度报告",
+      "original_record_id": "d0cda3a1d62cbf8af8752a0058ea541d03a26b6035325b1900e14109e26be296",
+      "original_snapshot": "a7780a49b7dd3562bcc7d22d9f2a9a573870e66c75f8236a29bf0c987b2e2a83",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "000531",
+      "exchange": "SZSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-09",
+      "effective_provider_announcement_date": "2025-04-09",
+      "start_date": "2025-04-08",
+      "end_date": "2025-04-10",
+      "selector": "2024年年度报告",
+      "original_record_id": "71bac3aeda8b3e6361f05c223afc83a223d963db044af995e101d4e26789330c",
+      "original_snapshot": "e9df79668e0037b26f8c7786ec2f12c1dfe6ade68b807e469373deefe3a8fb93",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "000531",
+      "exchange": "SZSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告",
+      "original_record_id": "e0494e89cd4547704d40af070f206b90ac96bbf5e2ee3f21fe42c0533d39f1ba",
+      "original_snapshot": "e9df79668e0037b26f8c7786ec2f12c1dfe6ade68b807e469373deefe3a8fb93",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "000531",
+      "exchange": "SZSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-30",
+      "effective_provider_announcement_date": "2025-08-30",
+      "start_date": "2025-08-29",
+      "end_date": "2025-08-31",
+      "selector": "2025年半年度报告",
+      "original_record_id": "622459033cdac483bd468c8bd576c854b2fe59632639bdf25be730ec47a43634",
+      "original_snapshot": "e9df79668e0037b26f8c7786ec2f12c1dfe6ade68b807e469373deefe3a8fb93",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "300733",
+      "exchange": "SZSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-24",
+      "effective_provider_announcement_date": "2025-04-24",
+      "start_date": "2025-04-23",
+      "end_date": "2025-04-25",
+      "selector": "2024年年度报告",
+      "original_record_id": "e4c28e6922580bee4bf4987183dd34db103cca6989b4017cd9733546098ad45d",
+      "original_snapshot": "4332b230983a8c60b1eafeea0fab688184a0f52ced4d5f5509f80e3122168f24",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "300733",
+      "exchange": "SZSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-25",
+      "effective_provider_announcement_date": "2025-04-25",
+      "start_date": "2025-04-24",
+      "end_date": "2025-04-26",
+      "selector": "季度报告",
+      "original_record_id": "31d2855e9b3c2f76868b60bd6ccf56880487f8f1bde071b03ad90f5410900b0c",
+      "original_snapshot": "4332b230983a8c60b1eafeea0fab688184a0f52ced4d5f5509f80e3122168f24",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "300733",
+      "exchange": "SZSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-26",
+      "effective_provider_announcement_date": "2025-08-26",
+      "start_date": "2025-08-25",
+      "end_date": "2025-08-27",
+      "selector": "2025年半年度报告",
+      "original_record_id": "26e48492d940c4c1c36af4a24de996745526a807e99adad45f4406357dbb6b08",
+      "original_snapshot": "4332b230983a8c60b1eafeea0fab688184a0f52ced4d5f5509f80e3122168f24",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "300021",
+      "exchange": "SZSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-23",
+      "effective_provider_announcement_date": "2025-04-23",
+      "start_date": "2025-04-22",
+      "end_date": "2025-04-24",
+      "selector": "2024年年度报告",
+      "original_record_id": "bede5130da2952817d47a2d1c749ecb5878858c46caa8a4c93838ec518a5dd6a",
+      "original_snapshot": "821b7115f8f8720804911bc62c868f877b4cdc56125eb4d3c52e944509c5269c",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "300021",
+      "exchange": "SZSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-28",
+      "effective_provider_announcement_date": "2025-04-28",
+      "start_date": "2025-04-27",
+      "end_date": "2025-04-29",
+      "selector": "季度报告",
+      "original_record_id": "f0cc25d8d45396d939afa9f9cc62af71cc3bacb3b93b8a9ea0be342f2ff71795",
+      "original_snapshot": "821b7115f8f8720804911bc62c868f877b4cdc56125eb4d3c52e944509c5269c",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "300021",
+      "exchange": "SZSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-26",
+      "effective_provider_announcement_date": "2025-08-26",
+      "start_date": "2025-08-25",
+      "end_date": "2025-08-27",
+      "selector": "2025年半年度报告",
+      "original_record_id": "989ec31b2e3f22cd4ee58a31554c3f6f4eb2955327f22d03257d63cee2f6fd61",
+      "original_snapshot": "821b7115f8f8720804911bc62c868f877b4cdc56125eb4d3c52e944509c5269c",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "300269",
+      "exchange": "SZSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-16",
+      "effective_provider_announcement_date": "2025-04-16",
+      "start_date": "2025-04-15",
+      "end_date": "2025-04-17",
+      "selector": "2024年年度报告",
+      "original_record_id": "d4076c5eb5e3101ba5429a7f84224d4667244d9e987307d5f7502f959eed345f",
+      "original_snapshot": "98e869e8fc35d1ce682bb5ed2b98699aa0922e24641063822f03632c7cc474ad",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "300269",
+      "exchange": "SZSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-26",
+      "effective_provider_announcement_date": "2025-04-26",
+      "start_date": "2025-04-25",
+      "end_date": "2025-04-27",
+      "selector": "季度报告",
+      "original_record_id": "f97dd01f417c7c541012cbbc14dc83d634589bfae52c13f037143f9619fcc22c",
+      "original_snapshot": "98e869e8fc35d1ce682bb5ed2b98699aa0922e24641063822f03632c7cc474ad",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "300269",
+      "exchange": "SZSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-22",
+      "effective_provider_announcement_date": "2025-08-22",
+      "start_date": "2025-08-21",
+      "end_date": "2025-08-23",
+      "selector": "2025年半年度报告",
+      "original_record_id": "b72f2126ee47b2dd4d45ddc363ab22cfdd90cae035b0a4ad9528a1b1a83a43ab",
+      "original_snapshot": "98e869e8fc35d1ce682bb5ed2b98699aa0922e24641063822f03632c7cc474ad",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920510",
+      "exchange": "BSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-03",
+      "effective_provider_announcement_date": "2025-04-03",
+      "start_date": "2025-04-02",
+      "end_date": "2025-04-04",
+      "selector": "2024年年度报告",
+      "original_record_id": "0eae116f52d2ca4d397863a2e7b47adb5c4ee0cc821d49659fd05df90db5eb46",
+      "original_snapshot": "af07a80e0fd4de70dcaca403043d7b7b9eaabc0e184b9e98d14d3d1ea7d4fed2",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920510",
+      "exchange": "BSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-24",
+      "effective_provider_announcement_date": "2025-04-24",
+      "start_date": "2025-04-23",
+      "end_date": "2025-04-25",
+      "selector": "季度报告",
+      "original_record_id": "409d2dedded2636ec97280d77a363929bb58e146b9c46120ad0755957fb05b72",
+      "original_snapshot": "af07a80e0fd4de70dcaca403043d7b7b9eaabc0e184b9e98d14d3d1ea7d4fed2",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920510",
+      "exchange": "BSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-27",
+      "effective_provider_announcement_date": "2025-08-27",
+      "start_date": "2025-08-26",
+      "end_date": "2025-08-28",
+      "selector": "2025年半年度报告",
+      "original_record_id": "92c80db8cef7dc999f468abaf5c8aff115b5008d7f3dfdd0a0ca68284e6e655b",
+      "original_snapshot": "af07a80e0fd4de70dcaca403043d7b7b9eaabc0e184b9e98d14d3d1ea7d4fed2",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920489",
+      "exchange": "BSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-26",
+      "effective_provider_announcement_date": "2025-04-26",
+      "start_date": "2025-04-25",
+      "end_date": "2025-04-27",
+      "selector": "2024年年度报告",
+      "original_record_id": "2710876104032883ec4d63dfae2f82f6bf918764e88657ba94366af74ceb6ab5",
+      "original_snapshot": "3918a4d70ccf0a6b2f3b119d43917282bf4ad1e4940038e97e8d7651b8bf519b",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920489",
+      "exchange": "BSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告",
+      "original_record_id": "3b98f266899fa77ff1cc380e167929f894ba75ffc65d4efcb2b4310ee9cc59ee",
+      "original_snapshot": "3918a4d70ccf0a6b2f3b119d43917282bf4ad1e4940038e97e8d7651b8bf519b",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920489",
+      "exchange": "BSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-28",
+      "effective_provider_announcement_date": "2025-08-28",
+      "start_date": "2025-08-27",
+      "end_date": "2025-08-29",
+      "selector": "2025年半年度报告",
+      "original_record_id": "67362cab7235ce1075a6580a505cc23863eb646d473cbde0b2689fad5ca62283",
+      "original_snapshot": "3918a4d70ccf0a6b2f3b119d43917282bf4ad1e4940038e97e8d7651b8bf519b",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920175",
+      "exchange": "BSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-04-17",
+      "effective_provider_announcement_date": "2025-04-17",
+      "start_date": "2025-04-16",
+      "end_date": "2025-04-18",
+      "selector": "2024年年度报告",
+      "original_record_id": "b1fe46d5dc23da8566584eef8389cf9325fe7348f120f1e86018d2c42c66f770",
+      "original_snapshot": "23cc8c6765a745dce63973cec8b941833162254897c3c1f2ca1fa28b1d8b7c58",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920175",
+      "exchange": "BSE",
+      "period": "2025-03-31",
+      "announcement_date": "2025-04-30",
+      "effective_provider_announcement_date": "2025-04-30",
+      "start_date": "2025-04-29",
+      "end_date": "2025-05-01",
+      "selector": "季度报告",
+      "original_record_id": "14f913daf848057355c5eb7c6dd911eff245623ae78281680dd75d1ec165d850",
+      "original_snapshot": "23cc8c6765a745dce63973cec8b941833162254897c3c1f2ca1fa28b1d8b7c58",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    },
+    {
+      "code": "920175",
+      "exchange": "BSE",
+      "period": "2025-06-30",
+      "announcement_date": "2025-08-26",
+      "effective_provider_announcement_date": "2025-08-26",
+      "start_date": "2025-08-25",
+      "end_date": "2025-08-27",
+      "selector": "2025年半年度报告",
+      "original_record_id": "506522e57ca5b6c59cc1fc5cb75e3eefd1ca5d0bf7842180c8ad9165f23016ab",
+      "original_snapshot": "23cc8c6765a745dce63973cec8b941833162254897c3c1f2ca1fa28b1d8b7c58",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    }
+  ],
+  "original_scope": "p17-formal-20261001",
+  "original_plan_sha256": "e98a23c65a1f073ebcda264ad138076ff53b711400709ed46bdc894388b2e0f5",
+  "original_run_path": ".artifacts\\p17_20261001\\formal\\run.json",
+  "original_run_sha256": "08007ae3f345bbb9aa13746485f58d010733737421e787f027d380640927e382",
+  "min_interval_seconds": 2.5,
+  "purpose": "Every registered financial period; independent financial values not consulted for reference selection",
+  "rules": "Current Tushare ann/f_ann metadata selects a three-date search window; actual official index date is separate. Generic quarter title covers 第一季度/一季度 variants. Original consolidated cumulative same-version printed fields only; no aliases or missing-as-zero. Current capture is observed_at, not historical publication proof.",
+  "code_sha256": {
+    "scripts/prepare_p17_formal_financial_references.py": "660e31907eb40e78db91e8013e261045fb54ea63d8915aa5f646b028ea5ffdd3",
+    "scripts/collect_p17_reference_extension.py": "3882d2d041c3992d5baa6c340f07adf0ca48ba8a9d5f008a1c551d1d66e77af0",
+    "src/stock_research/providers/documents.py": "3f64f6ca26cacb3f00499bbf8b9aebbfdb50e85c57aaf880d992c517aeff97cb"
+  }
+}

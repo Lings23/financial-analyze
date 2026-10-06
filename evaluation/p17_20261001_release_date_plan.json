@@ -1,0 +1,34 @@
+{
+  "schema": "p17_release_date_plan_v1",
+  "scope": "p17-qualified-cninfo-20261001",
+  "qualification_path": ".artifacts\\p17_20261001\\release_date\\qualification.json",
+  "qualification_sha256": "48e81cd276c874f14270ed66c24dbc2a08ce660048a40818174c3882540f41e4",
+  "dataset": "financial_income",
+  "symbol": "300122",
+  "exchange": "SZSE",
+  "period": "2024-12-31",
+  "public_cutoffs_local": [
+    "2025-04-22T23:59:59.999999+08:00",
+    "2025-04-23T00:00:00+08:00",
+    "2026-04-28T23:59:59.999999+08:00",
+    "2026-04-29T00:00:00+08:00"
+  ],
+  "expected_labels": [
+    null,
+    "original",
+    "original",
+    "correction"
+  ],
+  "system_historical_count": 0,
+  "network_calls": 0,
+  "required_checks": [
+    "field-specific original PDF page",
+    "date boundary",
+    "correction selection",
+    "source and scope authorization",
+    "attached artifact access",
+    "old snapshot immutable",
+    "persistent database restart replay",
+    "legacy P1.7 and P1.8 replay"
+  ]
+}

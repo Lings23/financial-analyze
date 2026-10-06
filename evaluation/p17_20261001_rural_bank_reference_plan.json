@@ -1,0 +1,27 @@
+{
+  "scope": "p17-rural-bank-reference-20261001",
+  "original_plan_sha256": "7b2ba1042561835448c3b2abb70f78c9648c5d468aad11bbe856b7a9ac4aabc6",
+  "discovery_run_sha256": "4fe6353a65a1fc9625ca6b30f4fb104f1c2cb2b51e547247de2c5db8df574624",
+  "reason": "Correct-code official index returned full report and summary; narrow summary independently of provider values. Preserve original failed batch.",
+  "min_interval_seconds": 2.5,
+  "original_financial_denominator": 225,
+  "requests": [
+    {
+      "code": "601528",
+      "exchange": "SSE",
+      "period": "2024-12-31",
+      "announcement_date": "2025-03-28",
+      "effective_provider_announcement_date": "2025-03-28",
+      "start_date": "2025-03-27",
+      "end_date": "2025-03-29",
+      "selector": "2024年年度报告摘要",
+      "original_record_id": "313761ed06b6ea843fbd419fa5fbc911fde198a2f5528a3ae4483d9da5cda33e",
+      "original_snapshot": "271a6ad2c0b88fb053b6e46603c3f55537e6937010abfca78a0ccdda613dc762",
+      "fields": [
+        "revenue",
+        "total_revenue",
+        "net_income_parent"
+      ]
+    }
+  ]
+}
