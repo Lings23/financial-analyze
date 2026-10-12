@@ -85,11 +85,18 @@ def event_prices(datasets, anchor):
     return pair
 
 
-def test_hypotheses(computed, datasets, request):
+def test_hypotheses(computed, datasets, request, *, hypothesis_ids=None):
+    """Evaluate the requested subset without evaluating delegated domain rules.
+
+    With no subset this is the original complete, ordered compatibility API.
+    Ownership/subset authorization is frozen by the calling Runtime.
+    """
     facts = {f["name"]: f for f in computed["facts"]}
     anchor = computed["event_anchor"]
     results = []
     for hid in request.hypotheses:
+        if hypothesis_ids is not None and hid not in hypothesis_ids:
+            continue
         if hid == "absolute_profit_change":
             results.append(profit_change_hypothesis(computed, datasets, request))
             continue

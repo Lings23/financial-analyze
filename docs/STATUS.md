@@ -1,6 +1,152 @@
 # 执行状态
 
-更新日期：2026-10-06（Asia/Shanghai）。本文只记录实际实现和执行结果。实现前的审查及历史运行证据保留在对应报告中，不以新结论改写旧失败。
+## 2026-10-12 更新整理与仓库同步
+
+本次按用户要求整理上次远端 `f5cf776` 之后的更新，新增[更新汇总](UPDATE_SUMMARY_20261012.md)并补充 README 索引。上下文 v4–v6.2 与领域分析 Child 的源码、测试、脚本和既有报告纳入上传；业务阶段四解释研究仅为设计，尚未实现或启动新实验。原默认、12000 字节、权限/PIT/快照、历史评分及未知预留保持。GitHub 同步为本轮明确授权，不改变下文各历史轮次的“未发布”记录。
+
+本次 12 组离线定向检查 **165/165 通过，534.953 秒**；编译、汇总文档链接与 `git diff --check` 通过。未重跑历史全量/数据库验收，模型/金融 Provider 外发0。首次系统沙箱临时目录的18项 Windows 原子替换权限错误及日志保留；仅将测试临时目录移至工作区后复测，生产代码与测试断言不改。377个候选文件真实密钥及禁入文件扫描均0，密钥及运行/验收产物继续 Git 忽略，历史本地文件保留。检查回执`.runtime/github-update-tests-20261012-v2.json`与`.runtime/github-upload-preflight-20261012.json`；复现命令和历史验收边界见更新汇总。
+
+2026-10-09 最终交付：工程①–④及限定真实Child闭环完成；原603207正常和688184合法不足的A/B/C最终canonical结果均与原完整oracle等价，6格覆盖6/6。原新窗口评分保留初始4/6、复验1/2；用户另授权688184/B独立一次v4补验，6决策/20074 Token、真实Final后insufficient通过；共9次运行6/9通过，失败未删除。C每例实际域计算2次/4算子、局部Fraction2次、Join重复生产/Fraction0、原完整Final1、独立完整性审计19保留。全部当前58 API请求用量已知139565 Token；A24841/B55656/C59068含失败修正，C较B高6.13%、较更强A高137.78%，无实用收益或有意义自主检查增量证明，保持显式实验及原默认。core1159门禁哈希一致、隔离PG16通过，旧39与新8＋补验1＋前轮3只读回放一致。全历史旧API未知22338＋局部Root4095预留保留，实际总费用未知。详见[最终报告](DOMAIN_CHILD_ANALYSIS_FINAL_REPORT_20261009.md)；没有发布、部署、来源扩张或下一阶段。
+
+2026-10-09 新独立窗口已获明确授权：原2案例/6初始＋最多2有据复验/128父子决策/768000记账Token/首次freeze起2400秒。上轮16:27:09–17:07:09（+08:00）实际外发11次全部已知17900 Token；正常A实际Final完成，B两次非法parallel按no_progress停止，C入口将Financial在途预留误判为terminal unknown，Market未HTTP外发即拒绝，原Root4095预留不释放。修复已离线通过，待启动续验因自动审批usage limit未执行；原窗口已过期。新入口对全部A/B/C统一legal-action-selection/v2，修复在途/terminal区分；传输12＋新入口11离线通过，core保持原1159门禁。保留旧API未知22338＋旧局部Root4095合计26433预留、全部deadline和失败。当前准备新正式freeze，尚无本窗口新paid。详见[验收报告](DOMAIN_CHILD_ANALYSIS_ACCEPTANCE_20261009.md)。
+
+2026-10-09 用户最新明确要求“再试一次，使用verification中的数据发给deepseek，完成原来第二轮实验”，本次按原同范围另冻新身份/账本/2400秒，覆盖此前本实验停止条件。复用原verification绑定两案例，保持A/B/C请求/oracle/质量/顺序/局部与根预算。旧3次unknown及22338 Token预留、截止和失败均保留。显式direct-ipv4-prehttp/v2只在TLS/HTTP开始前尝试最多2个合法DNS IPv4候选、每个TCP8秒；实际HTTP仅1次，TLS/HTTP失败无重发。新增离线transport12/driver9通过，core仍为原1159项哈希；目前准备正式冻结，本次paid0。
+
+2026-10-09 verification数据续验实际结果：15:49:29冻结、16:29:29绝对截止（+08:00），原两案例、六A/B/C槽及质量标准不变。前三次DeepSeek请求成功，财务/行情/计算已执行并生成7 Fact/12 Evidence；第4次于15:50:13–15:50:34连接失败、用量未知，立即停止新增paid（3/4=75%，无重试）。实际hypotheses/Final未执行，B/C等五槽未启动、复验0，第二轮和goal仍未完成。新known3659/accounted12203/未知8544保留；全历史加独立探针known10090/accounted32428/unknown3，未知预留22338不释放。工程本地门禁保持1159＋隔离PG16、传输8、driver9；只读partial1/1回放无模型/Provider/Checkpoint追加。无真实Child/强基线收益结论，继续保留显式实验模式；详见[验收报告](DOMAIN_CHILD_ANALYSIS_ACCEPTANCE_20261009.md)。
+
+2026-10-09 最新用户授权“直接使用verification中的数据发给deepseek，完成原来第二轮实验”，覆盖此前本实验的停止重试指令。沿用已完成工作包和原两案例A/B/C同题标准；只复用verification绑定的合法不可变源与完整计算输入，通过原授权Tool Observation披露，不把verified元数据当最终执行。旧campaign/续验已过期，旧两个未知请求及13794 Token预留、失败和截止时间保持；同范围续验另冻结新身份、账本与2400秒起点，仍2案例/6初始＋最多2有据修复/128决策/768000记账Token。只显式使用同端点同模型direct-ipv4/v1传输实例，默认和源码身份不变。当前在离线门禁及续验准备，尚未产生新的真实闭环证据。
+
+2026-10-09最新用户停止条件已满足：续验网络请求4/5成功（80%），两业务campaign合计4/6成功（66.7%），当前可见失败均为ModelConnectionError。按“超过60%就不要再重试”停止所有进一步paid重试/新campaign；此前重试草案授权由最新指令覆盖，第三目录未创建、第三轮paid0。未知2次及13794 Token预留不释放。HTTP/模型请求成功率不等于业务闭环：实际Final/B/C/Child仍未完成，goal未完成；详见[报告](DOMAIN_CHILD_ANALYSIS_ACCEPTANCE_20261009.md)。
+
+2026-10-09续验结果：新campaign已于14:24:43正式冻结（截止15:04:43，+08:00），603207/A前四模型动作/Tool成功，第5连接失败且用量未知；Root partial、实际Final0，B/C五槽未启动、修复0。新known6417/保守记账15387（含8970未知预留）；加旧4824未知记账与独立14已知Token，跨批known6431/accounted20225/unknown2，实际总费用仍未知。已停止所有新paid、不重发、不释放；partial1/1零追加回放。六个无凭据代理TLS样本1次SSLEOF支持间歇性连接故障，不能证明未计费。完整业务闭环、Child自主选择与强基线收益仍未验证，goal未完成；详细证据见[本轮报告](DOMAIN_CHILD_ANALYSIS_ACCEPTANCE_20261009.md)。
+
+## 2026-10-09 DeepSeek 独立连通性检查：通过
+
+按用户“检查deepseek连通性”请求，Asia/Shanghai 13:02:17 完成一次独立最小模型请求，仅使用 `test_api.txt` 配置端点及 `deepseek-v4-flash-0731`。请求/返回模型一致，返回 `OK`、finish_reason=`stop`，适配器耗时 **2296 ms**；输入13、输出1、合计 **14 Token**，用量已知。事前持久化独立intent，限制1次派发、输出16 Token、超时30秒；实际派发1、自动重试0、模型替换0、金融Provider外发0，密钥未输出或复制。证据：[独立检查回执](../.artifacts/connectivity/deepseek-20261009T050215477074Z/receipt.json)。
+
+该结果仅证明本次配置模型请求成功，不核清此前业务campaign的未知回执，也未续跑业务或改变其4824 Token记账、未知预留、失败及停止状态。
+
+## 2026-10-09 领域分析 Child：工程本地通过，真实验收阻塞
+
+续验现状：原campaign绝对截止为今天11:19:12（+08:00），已过期；你确认旧请求暂无权威回执。13:02独立连通性请求通过（14 Token）不结算旧unknown。13:06–13:07无凭据分阶段检查：当前代理CONNECT+TLS约32ms可用，IPv4 TLS31/16ms可用；两个IPv6地址在TCP阶段各2.5秒超时。旧“direct_tls=TimeoutError”未拆分TCP/TLS，因此此前“TLS握手超时”的定位不充分，原日志不改。用户随后明确授权同范围新独立campaign；正在完成薄续验驱动与fresh39历史门禁，尚未正式freeze/paid；旧1unknown/4824预留/5未启动/0复验全部保留。证据见[本轮报告](DOMAIN_CHILD_ANALYSIS_ACCEPTANCE_20261009.md)。
+
+①–④已实施并完成本地验证；采用Child领域生产与独立Fraction局部验证 → Parent可信Join（不重复生产/Fraction）→ 跨域Composition/Checks → 实际原完整Final Verification。身份、权限/PIT、版本/revision、ownership、真实执行回执、必需覆盖及恢复检查保持；旧默认/历史版本、12000字节与根16/18/96000/原deadline不改。显式CLI的direct/tool/child及serial/parallel入口已交付。
+
+最终完整回归 **1159项，1143通过/16专用数据库项跳过，0失败/错误，1398.402秒**；源/测试哈希固定。跳过的16项另在临时隔离PostgreSQL全部通过并回收。历史 **39/39** 零模型/Provider/Checkpoint追加回放与原件哈希保持；新partial **1/1** 零追加回放一致。初始Runtime、超限、旧回调兼容及freeze格式失败记录全部保留，修复未放宽断言。
+
+⑤已冻结独立campaign：2案例/6初始槽＋最多2复验、128决策/768000记账Token/2400秒；主指标事前固定为完整根Token对有效B至少减少10%并核对更强A/B，wall另列。首个603207/A模型请求连接失败、结果及用量未知；**1次未知意图、4824保守记账Token与预留保留**。全局停止新增付费，余5槽未启动、复验0、重发0、金融Provider外发0。DNS/代理TCP可达，直连TLS超时及无凭据HEAD的TLS EOF提供外部连接阻塞证据，不证明原请求免费。
+
+离线六路径完整Claim/Evidence/缺口/反证/假设等价；每双域Child案例局部Fraction2次、Join0次、实际Final1次，Root原完整integrity audit19次另计。真实业务闭环、自主检查选择、实用收益均未验证，不能用合成模型机制计时替代真实效益。**goal未完成**；解除须恢复受控端点连接并权威核清未知回执，过冻结期限后需新的独立授权/campaign，旧账本与失败不改写。完整入口、阶段计时、预算与证据见[本轮报告](DOMAIN_CHILD_ANALYSIS_ACCEPTANCE_20261009.md)。
+
+以下为实施期间的历史进度和诊断记录，保留原文；其中“尚未冻结/正在执行”不是当前状态。
+
+## 2026-10-08–09 领域分析 Child 实施过程记录（历史进度）
+
+2026-10-09 当前实装：①纯域算子、独立局部oracle及四份旧完整输出SHA等价已完成；②版本化task/result/ownership、确定性领域组合Tool（每域wrapper＋read/calculation/review四尝试）、Parent可信消费已接入；③Financial串行及④Market/原并行根预算/恢复已实现。Child真正执行domain_review一次局部Fraction；Join从真实Checkpoint链核授权/身份/版本/执行回执/完整manifest，无局部Fraction或同域生产；Parent实际完整verification与原恢复审计保留。Parent revision同时绑定源与域结果digest。
+
+定向结果：算子18项、契约/协议/精确codec21项、Runtime9项、安全14项通过；新组61项59通过/2专用数据库项跳过，另行专用隔离PostgreSQL14＋2项全部通过并回收容器。旧合法源配合合成模型的六路径预检经过一次C正常任务超限失败及最小无损视图修复后完成；这些只证明离线机制，不能当真实模型或供应商真值。全部诊断日志保留。
+
+首轮完整1159项1143执行/16数据库跳过、6错误（同一旧verifier回调收到新增execution参数）原样保留；已只在新分析路径传统计参数，旧撤权回调定向通过，不改断言。两个工作区既有v6.2夹具问题（版本集合漏枚举、目录发现误用facts游标）仅修测试driver，16项分页组严格原判据通过。最终完整回归正在固定源码下执行；⑤历史39份零追加回放和真实campaign尚待门禁通过，尚未冻结、真实模型/新金融Provider外发0，原2/6＋2/128/768000/2400预算未使用。
+
+2026-10-09 继续当前goal，用户要求消除Join重复局部Fraction核验。代码审查确认新接入中的import_result、Parent恢复及compose/test_remaining仍调用verify_domain，尚未达到该责任分离；正在移除这些冗余并增加可信执行凭据、结构/覆盖检查、阶段实际计数。①域纯算子和局部独立oracle已实现并通过14项定向测试；新契约16项通过。初次Runtime9项失败日志完整保留，尚未形成工程通过或新真实验收结论；后续修复不放宽最终verifier、12000或预算。
+
+用户已正式授权方案五个工作包及限定真实模型请求，覆盖先前仅设计边界。已核对设计、约束及工作区；已有上下文优化未提交改动全部保留。①算子提取/等价验证进行中；②完整结果与消费、③Financial串行、④Market并行、⑤强基线实用验收尚待实施。新能力尚无通过结论，不以历史1036测试或旧Child闭环充当新证据。预算、版本与门禁见PLAN；历史结果与失败不改写。
+
+更新日期：2026-10-08（Asia/Shanghai）。本文只记录实际实现和执行结果。实现前的审查及历史运行证据保留在对应报告中，不以新结论改写旧失败。
+
+## 真实分页、超限完成与恢复补证（2026-10-08，盘点与验收准备中）
+
+用户明确追加补齐此前未验证的三项证据，授权新独立有界验收；本会话外发批准保持。正在只读盘点现有真实不可变快照、完整多hypothesis原请求及合法source grants，寻找当前v5真实必需view>12000而v6.1可分页的任务，同时设计真实模型按语义选择ref/cursor的读页目标。尚未冻结新campaign、未执行新模型/Provider外发或修改已付费原件；原v6/v6.1的context_read0结论保留。预算与验收边界见PLAN/CONSTRAINTS，本轮不启动W3或分析Child。
+
+已盘点87不可变快照和38旧真实请求；原Market序列最大17行，未合成重复扩量。31个完整结果详情v5披露可超限，但全O页数不合原预算，保留未满足诊断。新301600四Dataset合法目标去除非目标index/market_direction，完整14Fact/25Evidence独立oracle通过，源/PIT/窗口/快照不变；七Claim目标源预检曾自然v5closure>12000，具体数值随目标/反馈变化分列，不能冒充paid失败。475字节最终任务在v6.1一次Facts读取仍缺五项目标名称映射，故未冻结/外发。正在实施独立显式v6.2主动页实际编码容量/自动预览legacy增量修复；旧SYS/codec/业务check/预算/身份原件保持，补证结果仅归新版本。新source防数值/遗漏/输入序/源metadata/快照/主体篡改机制4/4通过，harness机制仍在检查。所有中间失败诊断保留。
+
+## v6.1 窗口metadata无损去重（2026-10-08，限定验收完成）
+
+用户授权优化v6 Token开销和去重逻辑，并检查v5 metadata。原v6实测Token增加20.77%、十个Parent同状态86495→100561 bytes的结果保留；本轮只新增显式v6.1/window-v2/精确metadata codec与旧envelope优先装载。符号/完整列表/白名单列记录可严格回解原窗口，金融value与O/C/E/H scalar atom literal、成员/顺序/哈希/原Verifier和安全预算保持。小窗口无收益fallback literal，短system2589 bytes（旧2599），当前消息表索引不作权限或进度凭据。只读核v5局部symbols/list收益与完整revision表，不回写旧v5。
+
+最终完整离线 **1036项1022通过/14数据库跳过、0失败，1140.132秒**；新增54项全部通过，71代码/86测试与start SHA保持；独立新PostgreSQL机制 **4/4、0跳过，73.151秒**，容器回收。历史35/35零追加回放，旧paid最终probe同raw100561→94540（少5.99%）、各阶段不增/同页且无填页；仅字节测量。初始probe每stage不增失败、报告标签纠正前中止全套、首次审计/回放争RunLock等诊断原样保留；正式顺序审计通过，没有修改冻结代码或付费原件。
+
+新冻结SHA `62ad575421aa605e67449aac03719de603ee1a9437703640b464efa09cb92e08`，两旧case/四新run、v6 baseline/v6.1 candidate、Child显式v3、新64决策/384000记账Token/1800秒，原根/局部限制保持。真实 **4/4质量、4/4零追加回放**，603207两版completed/7Facts/12Evidence，688184两版合法insufficient/6Facts/12Evidence；20必需业务执行检查、4actualverification、双Child真实I/O重叠、完整source/oracle/PIT/权限/快照/血缘/账本保持。独立12run链/360行/36paid/4verification审计通过。
+
+整任务实测 input **38457→38030**、output **435→501**、total暨accounted **38892→38531（少361、0.9282%）**；Child逐域input/output相同，差异在Parent，每Parent仍5决策。候选十份实际paid同raw反事实完整system+user **100834→94813 bytes（少6021、5.9712%）**、各阶段不增/同页、最高实际11753/12000，与事前probe分列。全campaign36paid/28根工具/**77423known暨accountedToken**、unknown0、新金融Provider网络0；累计dispatch预留288830/根累计预留364974不当实际Token。Runtime43719→45985ms（+2266）、模型I/O union19487→20147ms、DB13484032→13942784 bytes，不证明延迟/存储/金额改善或统计/P95优势。
+
+决定 `limited_explicit_exact_window_metadata_token_optimization_accepted`，只接受显式精确codec与本包小幅实际总Token节省。真实context_read0，真实超限分页恢复仍未验证；四槽用完、独立新任务0、真实失败0、付费追加0，默认/12000/全部旧协议与原件保持，结束本包、不启动W3。证据`.artifacts/context-window-optimized/metadata-v6.1-20261008`、`.runtime/context-v6.1-{replay,actual-audit,metrics}-20261008.json`，完整记录见[本包记录](CONTEXT_WINDOW_METADATA_V6_1_20261008.md)。
+
+独立直接RO收据核36paid/12链/360行及逐角色actualusage一致，reader首次缺domain假设错误仅在未冻结QA工具修正并留日志。交付初检684文件、精确实际密钥匹配0/秘密文件混入0，71代码/86测试/历史/live SHA保持；独立acceptance索引SHA `e51d731860497da1ad07d77327739442b9449b179bf88bbc37ccb02c8f8ab13d` 引用实际证据，不回写immutable summary。文档与索引完成后复检另存`.runtime/context-v6.1-closeout-integrity-20261008.json`。
+
+## 领域 Child 分析职责设计（2026-10-08，仅设计）
+
+用户要求设计让领域 Child 有实用价值的改进方案，已完成[设计文档](DOMAIN_CHILD_ANALYSIS_DESIGN_20261008.md)，并同步 ARCHITECTURE/CONSTRAINTS/PLAN。只读核对当前 Child 请求/权限/结果、Parent计算与回执、独立 verifier、并行账本及 Phase5实际结果；参考 Anthropic/LangChain 官方文档的任务边界，不新增框架依赖。当前 Child 仍只读 Financial/Market，分析协议未实施。
+
+方案明确：先复用并拆分域内纯算子，建立确定性领域 Tool 与 Parent 真正消费；拟议分析 Child 完成领域计算/检验/局部独立校验，返回完整 Claim/Evidence/缺口/反证与真实执行回执。Parent 只生产跨域/未委派结果，原完整最终 verifier 和实际 verification 保持。旧 v3 不能仅放开 calculation；新 request/Spec/action/result/check ownership/revision/恢复身份须独立版本。普通 Tool、确定性领域 Tool、分析 Child 同目标/同算子/同源作强基线比较，固定流程不能冒称 Agent 收益。
+
+本轮只改设计与索引，不改业务源码/测试/默认/12000/历史原件或任何预算，不执行新模型/金融 Provider/Checkpoint/campaign；文档 QA 与独立设计复核另列，不重跑完整 unittest，不把既有982离线/17数据库或v6真实4/4归功新 Child。原根16/18/96000内的局部分配和10%效率目标仅为待冻结候选，未证明可完成或有收益。Financial→Market/并行的实施包均未启动，不新增领域/Provider/Dataset/Runtime/Router，不启动W3；下文v6限定收口事实保持。
+
+两项独立设计终审提出的冻结目标/金额检验、强确定性基线、wrapper计账、available_at精确最大值及unknown根停止外发等问题已补齐。五份文档110个本地链接存在性、围栏配对、无尾随空白、13项范围/契约声明检查和 `git diff --check` 通过；初检记录 `.runtime/domain-child-analysis-design-validation-20261008.json`，最终落盘记录 `.runtime/domain-child-analysis-design-final-validation-20261008.json`。末检初次仅因Windows路径反斜杠与预期正斜杠比较不一致停止，修正QA表示并保留诊断后复核；未改设计契约、未执行新业务测试。
+
+## W2 v6 有界分页与工作集替换（2026-10-07实施，2026-10-08限定验收收口）
+
+用户明确要求阅读整合方案后执行 v6，并授权本会话一切真实外发；10-08追加继续按计划收尾。本轮已交付显式 Parent v6/window/v1/context_read，复用同一 Runtime、完整 catalog、v5 audit/brief 与原全量 verifier，完成确定性分页、当前付费窗口绑定、读取计账、成员去重和恢复核对。默认、12000、Child 显式 v3、全部原局部/根限制和历史原件保持。
+
+最终完整离线 **982项968通过/14数据库跳过、0失败，986.300秒**；另行专用隔离PostgreSQL **17/17、0跳过**（44.799秒），容器已回收。新增v6核心19/协议14/Runtime18/安全11/harness8共70项全部通过；合成长inputs/目录/期间/证据精确回解、至少两次真实读取工作集替换、原verification/finish、故障点/撤权/协调篡改拒绝均仅作机制验证。首次982项的旧P4.5合成overlap失败及所有诊断/修复日志保留，原历史31/31零模型/Provider/Checkpoint追加回放一致。
+
+独立冻结SHA `745e384daab1541e9cdc229c2b0fd578330cdc8dd9a60b8169634ed89a181879`，两旧case/四运行v5 baseline/v6 candidate、新64父子决策/384000记账Token/1800秒；原局部/根限制保持。真实 **4/4质量通过、4/4零追加回放一致**：603207两版completed/7 Facts/12 Evidence；688184两版合法insufficient/6 Facts/12 Evidence，非正基数/原假设不足保留。20项必需业务执行检查passed，4次verification实际执行，双Child实际I/O重叠4/4。独立审计12 run链/360 Checkpoint行/36 paid状态及完整source/oracle/权限/PIT/快照/血缘通过。
+
+实际36父子决策/28工具/**70907已知暨记账Token**、unknown0、新金融Provider网络0；累计dispatch预留280820、根累计预留356964不当实际Token。候选10份paid状态同状态完整system+user **86495→100561字节（+16.26%）**，最高11753/12000；整任务input **31596→38348**、output **522→441**、total **32118→38789（+6671，+20.77%）**。Runtime47734→47532ms（−202），模型I/O union21458→23161ms，Checkpoint DB合计11837440→13496320 bytes；没有证明延迟或成本改善，金额未知，不声明统计/P95优势。
+
+决定 `limited_explicit_bounded_window_accepted_real_pagination_unverified`：仅接受显式v6机制与已有真实案例的完整窗口闭环。真实模型没有选择context_read（实际页回执0），当前没有合法v5真实超限材料，**真实context_read/超限分页恢复仍未验证**；自动阶段窗口变化不冒称真实读页。四槽全用，真实失败0/付费追加0/独立新任务0，不扩大scope、不进入W3或下一阶段。证据`.artifacts/context-window/bounded-v6-20261007`、`.runtime/context-v6-{replay,actual-audit,metrics}-20261008.json`；原campaign日期指标副本也保留。完整记录见[本包记录](CONTEXT_WINDOW_V6_20261007.md)。下方为实施过程与历史记录。
+
+交付初检676文件、包含正式索引的复检678文件均通过：精确实际密钥匹配0、秘密文件混入0；69份冻结代码、82份测试、原历史与新live全部SHA保持，12运行链/360行再次只读核对，46 Markdown/267本地链接/围栏与diff通过。独立acceptance索引`acceptance-20261008.json` SHA `793ddcb8c51a7b6e94f0d63f18705852a8ba983e5cebc2eca560a3d947caf2d8`只引用原plan/Trace/gate/回放/audit/metrics/完整性证据，不回写immutable live summary。最终文档落盘后的完整性核对另存`.runtime/context-v6-closeout-integrity-20261008.json`；本包停止。
+
+分页核心19/19、新协议14/14、旧协议43/43、Telemetry8/8及v5 Runtime34/34定向通过；新harness7/7及两页独立机制1/1通过。31历史报告零模型/Provider/Checkpoint追加回放一致；当前v5十份真实paid状态只读预检87014→v6投影101080字节，全部≤12000（最高11842），没有合法当前超限案例，字节增加不代表实际Token。新Runtime两次工作集替换及完成后零追加恢复定向通过。
+
+独立安全审查实证发现并修复：删付费窗口导致IndexError（现在类型化拒绝）；故障在页提交后/下一paid前时，协调重哈希篡改片段end/范围/hash/coverage可被接受（现在从真实tool_started意图按下一轮实际头部重编严格核边界）；瞬态read意图tools_used伪造可避开末态账本核验（现在逐paid/read intent核完整local/root/Trace账本）。全部中间日志保留，新11项安全组纳入最终全套。完整离线回归正在执行；Docker daemon不可连接，未使用其他DSN，不声明PostgreSQL已验证。用户已明确批准本会话一切真实外发，仍须离线gate后按新冻结四槽/64/384000/1800执行。
+
+用户重启Docker后，已重新核对本机daemon并使用现有PostgreSQL16镜像`57c72fd2a128`新建专用容器，仅绑定127.0.0.1随机端口。原14项数据库集成＋v6两次工作集替换/完整verify/零追加恢复、撤权恢复、direct/serial/parallel三路径共3项新增检查，**17/17通过、0跳过**（44.799秒），仅合成机制；测试容器已停止并自动删除，未使用持久验收库或其他DSN。日志`.runtime/context-v6-postgres-20261007.log`，完整离线结果仍单独记录。
+
+首次完整回归**982项/967通过/1失败/14数据库跳过，1038.690秒**；新增v6 70项全过，唯一失败为旧P4.5 Child v2 `test_p45_child_repair_demo` 合成I/O区间严格重叠。独立原夹具3次复现中1次失败，所有业务/oracle/预算/worker重叠均通过，只是actual_child_model_dispatch_overlap=false；原日志/诊断保留。仅给该合成EnvelopeTransport首轮Barrier后加20ms有界停留（同历史v3夹具方法），不改动作/断言/真实wire/评分/预算，稳定3/3通过，11.685秒。完整最终回归已重新启动；真实外发尚未开始。
+
+## W1b v5 去重与阶段披露（2026-10-07，限定验收完成）
+
+用户明确要求阅读方案后执行 v5，已实现显式 Parent v5/disclosure-view/v2：程序侧 audit、真实状态门禁 brief、精确 revision 表及独立验收工具；默认、12000、旧版本/付费原件/恢复身份和完整 verifier 保持。新增 codec10/10、Runtime34/34、harness7/7与合成80行补充1/1通过，历史27/27零模型/Provider/Checkpoint追加回放一致，5667历史哈希条目不变。只读十份实际 v4 paid 输入同状态94979→87345字节，每份减少；这不是实际 Token 收益，未找到合法当前 v4 超限案例。
+
+首个完整912项在系统 Python 下发现旧支持版本枚举测试仍止于v4（1失败、15跳过：14数据库与1可选SDK），日志原样保留；仅更新该测试版本列表期望，原默认身份/限额断言保持，相关13/13复测通过。项目虚拟环境最终全套 **912项898通过/14数据库跳过、0失败**（643.020秒），源码/测试/log已绑定新离线gate。compileall、pip check、CLI帮助及diff检查通过；本轮未执行PostgreSQL集成。
+
+独立冻结计划 SHA `efdd5558953cb52f04b6a8dd492eff02edfdeebcefccd6787c1d7bb33e2ad021`，两旧case/四运行 v4 baseline/v5 candidate、新64决策/384000记账Token/1800秒、Child显式v3。首次外发启动被自动审批因具体载荷/接收地址授权不足拒绝，进程及paid intent均未启动；用户追加批准本会话所有真实外发后，保持同一冻结计划/配置端点/模型执行。
+
+真实 **4/4通过、4/4零模型/Provider/Checkpoint追加回放一致**。603207两版completed、7 Facts/12 Evidence；688184两版合法insufficient、6 Facts/12 Evidence，非正基数缺口与原假设不足保持。全部20项必需执行检查passed，四次实际verification、双Child I/O重叠及权限/PIT/快照/血缘/预算核对通过；12 run链/36 paid状态与回执独立审计一致。每版Parent5决策，根总36决策/28工具/**68436已知暨记账Token**/unknown0/新金融Provider网络0。最高实际11057/12000字节（v5最高10108）。
+
+候选实际同状态完整system+user **94648→87014字节，少7634（8.07%）**，十阶段均减少；这是与事前94979→87345预检不同的本次实际plan/state。整任务父子实测input **35704→31592**、output **582→558**、total **36286→32150**，少4136（**11.40%**）；实测不是字节推算。Runtime **44141→45422ms**，多1281，未证实延迟改善；模型I/O union20112→20305ms，金额因价格/账单缺失未知。累计派发预留275197与根累计预留351341不算实际Token，非盲两旧案例/独立新任务0，不声明P95或统计优势。
+
+决定 `limited_explicit_phase_gated_disclosure_accepted`；默认、旧wire/identity/Checkpoint、12000及全部原限制保持，四槽已用/真实失败0/追加0。真实超限恢复仍未验证；W2/v6/context_read/分页与W3不实施，v5收口。证据 `.artifacts/context-disclosure/phase-gated-v5-20261007`、`.runtime/context-v5-{replay,actual-audit,metrics}-20261007.json`；完整记录见[本包记录](CONTEXT_DISCLOSURE_V5_20261007.md)。历史仅设计及v4原结果保持。
+
+交付初检509文件、独立索引完成后复核511文件，实际密钥精确匹配0、秘密文件禁入0，源码freeze与历史SHA保持；证据 `.runtime/context-v5-{delivery-integrity,final-delivery-integrity}-20261007.json`。独立acceptance索引引用实际plan/Trace/离线gate/回放/audit/metrics及完整性证据，SHA `9373ded39164d3e1764a20aa4ffa7eebc460fe0c28f50caaeaf36d8f3c078093`。原immutable live summary和所有paid原件不回写，决定保存在独立索引；没有外部发布或下一包启动。
+
+## 持续上下文整合与去重设计（2026-10-07，仅设计）
+
+已将原持续上下文方案与新去重设计整合，主文档为[整合方案](CONTEXT_CONTINUATION_DESIGN_20261006.md)，[W1b详细设计](CONTEXT_DISCLOSURE_DEDUP_DESIGN_20261007.md)保留schema/测量细节。版本/工作包统一：W1a/v4已完成 → W1b拟议v5/disclosure-view/v2（完整audit程序侧、权威就绪brief、单消息revision精确去重）→ W2拟议v6/window/v1/context_read → W3有程序瓶颈证据才评估。修正原文拟议v4分页命名，已冻结v4 wire/恢复含义保持；v5仍无新动作/分页，原任务/checks/事实/缺口/反证和全部执行/安全/预算规则保持，Child显式v3。
+
+只读设计字节样例：原v4十份Parent输入94979→85435 bytes，少9544（约10.05%），每份少855–1098；复用旧system，只隔离正文变化，尚非可派发v5 wire，**不代表实际Token/延迟收益**。原v4总Token多11.51%的结果保留。设计已完成，v5/v6未实施、未执行其功能测试或新真实验收；本轮零模型/金融Provider/Checkpoint追加，不复用历史额度。文档/版本/链接与冻结代码、测试、付费原件只读核对见`.runtime/context-integration-design-validation-20261007.json`；下文861/四真实运行为已完成v4当轮结果，不归功本次设计。
+
+## W1 首个最小包：验证前披露解耦（2026-10-07，限定验收完成）
+
+新增显式 `dynamic-parent-parallel-v4` / `dynamic-context-disclosure-view/v1`，仅取消 verification 阶段自动全Claim Evidence闭包。原任务/范围/required checks、权威revision/执行进度、完整集合引用/数量、事实/假设/缺口/反证入口保留；新披露契约不能独立回解旧全量视图。原全量 verifier 不改，实际模型选择verification并成功执行后才提交v4执行凭据；读取/视图/计数/自动重验证/Child完成不能满足检查。新增复用前后授权和完整computed_sources恢复核对，旧wire/identity/default/Checkpoint、12000及原局部/根预算与finish/no_progress均保持，Child显式v3。
+
+最终离线 **861项847通过/14数据库跳过、0失败**，SQLite恢复实际测试；Docker专用实例不可用，未用其他DSN，未作PostgreSQL集成验证。中间850/860回归与定向/harness失败均保留，[本包记录](CONTEXT_VERIFICATION_DECOUPLING_20261007.md)逐列原因和修复。旧报告23/23零追加回放一致、5371历史文件SHA保持，原失败/分母不改；compileall/pip check/CLI帮助/diff检查通过。
+
+独立冻结两旧case各v3 baseline/v4 candidate、四运行（64决策/384000记账Token/1800秒）真实 **4/4通过，4/4零模型/Provider/Checkpoint追加回放一致**。603207两版completed且7Fact/12Evidence；688184两版合法insufficient且6Fact/12Evidence/非正基数缺口保持。20必需执行检查全passed，四次verification实际执行，两Child I/O重叠4/4，PIT/权限/快照/血缘/预算核对通过；新只读audit核12run链/36paid状态与回执。
+
+实际36决策/28工具/69147已知暨记账Token/unknown0/金融Provider网络0；最高11144/12000字节。candidate验证前同状态v3→v4 10709→10358、10578→10255，Evidence正文12/11→0，共省674字节，完整每run12Evidence保留；合成80行情/85Evidence 19091→10854并实际verify/finish另属机制。**Token整体32692→36455，多3763（11.51%）；Runtime37938→43234ms，多5296，不证明总成本或延迟改善。** 金额因端点单价/账单缺失未知；累计派发预留277100、根累计353244不是实付Token。
+
+计划SHA `de569712135701e55959c46dabd834ac8e7129c996d40e30b12f9a416e792391`；证据 `.artifacts/context-verification/first-minimal-20261007`、日志 `.runtime/context-verification-*`，最终离线gate与66实施代码SHA绑定。真实失败0/追加0/独立新任务0，四槽全用、不扩额；决定 `limited_explicit_verification_disclosure_accepted`。未发现适合的当前v3真实超限case，**真实超限恢复尚未验证**；本包不等于W2通用分页/context_read或无限续跑，已停止、不自动进入下一包。历史Phase6的4/4与828项是原轮结果。
+
+最终交付完整性609文件精确密钥匹配0、秘密文件禁入0，66代码及最终测试gate保持，5371历史与本包live原件SHA未变；记录 `.runtime/context-verification-delivery-integrity.json`，独立acceptance索引只引用实际plan/Trace/回放/audit。所有只读QA错误另存本包诊断，不修改冻结生产材料。
+
+## 持续上下文管理调研与设计（2026-10-06）
+
+用户要求的成熟方案调研与仓库改进设计已完成，详见[设计文档](CONTEXT_CONTINUATION_DESIGN_20261006.md)。实际核对 OpenAI、Claude、Deep Agents/LangChain、Letta 官方资料及当前源码：模型输入每轮已是当前状态而非无限聊天历史；主要增长点包括全量事实/目录/期间列表和verification前全Evidence闭包，而实际verifier在程序内读取完整源。推荐W1确定性工作记忆与验证入口解耦、W2授权内分页和重复重建；W3程序验证批处理作为有实测瓶颈时的后续。
+
+本轮仅新增设计文档并同步PLAN/ARCHITECTURE/CONSTRAINTS和本状态；本文档8个本地链接及四份索引、围栏配对和`git diff --check`检查通过。新版本/窗口/分页/批处理均未实施或验收，未重跑完整unittest，业务模型/金融Provider调用0，未消费旧campaign余额。12000、默认、局部/根预算、Child v3、历史paid wire/Checkpoint/失败分母保持。既有Phase6结果见下文，不代表新持续上下文能力已通过。
 
 ## GitHub 仓库上传准备（2026-10-06）
 
@@ -99,8 +245,8 @@
 | Phase 2 | **固定 Single 首版及限定任务质量验收通过；广泛质量仍未认证** | 2026-10-02 用户批准25次真实模型批次，原始质量24/25=96%达到该批95%门槛；1项重复重点透明展示修复后25/25，原评分不改。123/123数值、263 Evidence、25/25无网络回放；最新隔离回归172/172。既有50/50离线与机制证据保留，不泛化为专家盲评/全局成功率。 |
 | Phase 3 | **原端到端完整验收未通过；新合法输入v2限定验证通过，广泛认证未通过** | 原68/952分母、14合法/54非法及历史分数保持。新38合法题L3 34/34、L5 4/4，来源支持588/588、关键锚点5/5；非盲validation、官方完整输入只覆盖142/536，不能替代完整认证。v5显式金额变化不改旧YoY。 |
 | Phase 4 | **M1/P4.3/P4.4限定功能已交付；P4.5 Child v3限定真实完整并行闭环通过** | 最新746/746隔离回归，原600500失败0/1、v2修复0/1保留，v3同案例复验1/1、独立新任务0；全部7Facts/12Evidence与真实Child模型并发及零模型回放通过。无独立Router，不泛化质量/性能；旧M1/P4.3/P4.4分母保持。 |
-| Phase 5 | **有界定向评估已完成；Parent v2同案例修复通过，原扩大并行启用门槛未通过** | 原三非盲validation任务×三路线8/9及77决策/157821Token保持。后续688184 Parent v2同案例复验1/1、9决策/16937Token，独立新任务0；全部执行/源/安全/并发/零模型回放通过，最终794/794隔离回归。不能补写原9/9或泛化其他case的v2验证；默认/12000保持，Phase6未开始。 |
-| Phase 6 | 完整优化未开始 | P4.4实际字节阻塞的最小确定性无损修复单列，不作Phase 6全面缓存/成本/P95优化验收；交易、下单、组合调整持续排除。 |
+| Phase 5 | **有界定向评估已完成；Parent v2同案例修复通过，原扩大并行启用门槛未通过** | 原三非盲validation任务×三路线8/9及77决策/157821Token保持。后续688184 Parent v2同案例复验1/1、9决策/16937Token，独立新任务0；全部执行/源/安全/并发/零模型回放通过，最终794/794隔离回归。不能补写原9/9或泛化其他case的v2验证；默认/12000保持，后续Phase6首轮另列。 |
+| Phase 6 | **首轮局部无损表示优化限定验收完成；W1a限定实施完成，后续持续上下文包仍仅设计** | 两已有案例四真实运行4/4、零追加回放4/4；实际Token少4.59%，未证实延迟改善。完整缓存/成本/P95及跨工作集续跑均未认证；W1a/v4随后限定实施完成；W1b/v5、W2/v6和W3仍仅设计，默认/12000及历史结果保持。 |
 
 ## 本轮 Phase 4 M1 实施（2026-10-04）
 
@@ -437,3 +583,25 @@ P1.7 扩展轮重新扫描 src/scripts/evaluation/docs/README 及 P1.7/P1.9 新�
 2. P1.9 后续补充：三项实时完整表仍失败，保留 ProxyError/超时及分页证据；以后取得真实成功表才能验收该扩展，当前不阻塞首版。无需继续此会话网络诊断。
 3. 保留历史新闻、北交所日历、历史证券名称/代码映射及更细财务字段为未完成扩展；首版近期新闻依已确认范围验收。
 4. Phase2固定Single与Phase3有界首版/新合法v2限定验证结果保持；Phase4 M1有界首版已交付，下一工作包P4.3/P4.4受限Child/领域委派尚未实现。本轮初始提前结束表现及601009未复测保留。现有快照/scope/源Artifact及命名卷继续复用；Phase5/6额外实验、交易未启动。广泛Phase3认证列后续，不阻塞M1、不改旧分数。
+
+
+2026-10-09 16:05（+08:00）新增原因分析：无代理、无密钥探测复现47.94.20.201:443在TCP connect阶段21031ms后Windows10060，TLS未开始；另5次建连后TLS15–46ms、HEAD立即401。与原21048ms失败相符，支持TCP路径间歇性故障，但历史付费具体阶段仍属推断，未知预留不释放。详见[网络故障分析](DOMAIN_CHILD_NETWORK_DIAGNOSIS_20261009.md)。本次0模型/0金融Provider请求，无网络配置和冻结代码修改。
+
+
+## 领域Child当前最终状态
+
+本轮实施与证据收口已完成：两个案例最终A/B/C结果完整核验通过，实际Child局部计算/验证、Join可信接收不重算、Parent完整Final均有真实回执；自主检查及实用收益未证明，保留显式实验。初始/修复/补验6/2/1及全部失败、旧unknown预留不改；原主窗口正式评分仍未通过，补验仅补足功能覆盖。最新文件完整性、预算、版本差异和限制见[最终报告](DOMAIN_CHILD_ANALYSIS_FINAL_REPORT_20261009.md)。
+
+## 2026-10-10 Child 机制梳理与面试材料
+
+按用户要求，只读核对当前源码、契约、测试及最终验收记录，新增[Child Agent 机制与30道面试题详解](CHILD_AGENT_MECHANISM_AND_INTERVIEW_20261010.md)。区分旧来源Child v1–v3与新领域分析Child，整理权限/PIT、同一Runtime的独立实例、DAG/原子根预算、局部验证/可信Join/完整Final、恢复及真实收益限制；包含架构图、预算表、逐题答案、追问和评分建议。
+
+本次仅文档变更；实际检查30题编号连续、22个本地链接存在、代码围栏配对，以及三路线Token合计与6.13%/137.78%比较值。未重跑Runtime或完整unittest、未调用模型/金融Provider、未新增campaign，不改变默认、实现、历史通过数、失败分母或未知预留。文中1159项与隔离PostgreSQL结果明确引用此前记录。
+
+## 2026-10-12 业务阶段四实现文档（设计完成，尚未实施）
+
+按用户要求新增[多因素解释研究最小实现方案](STAGE4_EXPLANATION_RESEARCH_IMPLEMENTATION_20261012.md)，并在 ARCHITECTURE 与 PLAN 追加设计索引。文档包含术语说明、两幅流程图、模型与程序分工、候选解释及比较稿、检查反馈与预算内重规划、模块和工作包、输出示例，以及公开机构研究案例整理和有用比较验收方法。这里是业务阶段四，不是自动开启仓库研发的下一阶段。
+
+本轮仅文档交付：新协议、字段、工具和六例案例规模均属拟议；未改业务代码、测试、数据库、默认值或历史运行材料，未建立正式案例集，未执行业务测试、模型/金融 Provider 请求或新验收批次。旧历史通过数、失败分母、未知预留、协议身份和 12000 字节上限不变。
+
+本地核对：新文档 15 个编号章节、17 个本地链接均可定位、6 条代码围栏配对，包含 2 个 Mermaid 源码块；检查文档空白及 git diff --check。对本轮开始时记录的 375 个既有文件做哈希比对，除本轮追加的 ARCHITECTURE、PLAN、STATUS 外，其余文件内容保持；三个文件的追加前字节保留。未执行 Mermaid 图形渲染或完整 unittest，不能据此声明新业务能力通过。

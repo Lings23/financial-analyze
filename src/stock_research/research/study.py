@@ -17,6 +17,14 @@ from .profit_change import add_profit_change_claim
 def calculate_study_claims(datasets, request, *, profit_change=False):
     """Shared deterministic business calculation; no model, reads or planning."""
     computed = calculate(datasets)
+    add_event_claims(computed, datasets, request)
+    if profit_change:
+        add_profit_change_claim(computed, datasets, request)
+    return computed
+
+
+def add_event_claims(computed, datasets, request):
+    """Parent-owned event production, independent of domain Claim producers."""
     anchor = event_anchor(datasets, request)
     pair = event_prices(datasets, anchor)
     if pair and any(f["name"] == "observed_price_change" for f in computed["facts"]):
@@ -33,8 +41,6 @@ def calculate_study_claims(datasets, request, *, profit_change=False):
         fact["id"] = digest(fact)
         computed["facts"].append(fact)
     computed["event_anchor"] = anchor
-    if profit_change:
-        add_profit_change_claim(computed, datasets, request)
     return computed
 
 

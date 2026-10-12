@@ -40,6 +40,10 @@ def validate_groups(state):
         if gid in seen or group["schema"] != "parallel-group/v1":
             raise IntegrityError("parallel group identity differs")
         seen.add(gid)
+        if state.get("spec_version") == "dynamic-parent-domain-analysis-v1":
+            from .domain_analysis_execution import analysis_dag
+            if group.get("analysis_dag") != analysis_dag():
+                raise IntegrityError("analysis domain dependency graph changed")
         nodes = group["nodes"]
         expected = {"financial_branch": [], "market_branch": [],
                     "calculation": ["financial_branch", "market_branch"],
@@ -126,6 +130,9 @@ def start_group(runtime, state, request, access, executor, event):
         "status": "reserved", "group_started_at": now.isoformat(), "group_finished_at": None,
         "result_order": [], "canonical_merge_order": list(DOMAINS), "reservation_headroom": headroom,
         "root_usage_before": root_usage(state["root_budget"]), "telemetry": None}
+    if runtime._analysis_enabled():
+        from .domain_analysis_execution import analysis_dag
+        group["analysis_dag"] = analysis_dag()
     state["root_budget"] = ledger
     state["tools_used"] += 2
     state["parallel_groups"].append(group)
@@ -154,6 +161,8 @@ def execute_group(runtime, state, request, access, executor, event, check, group
                                                         state["deadline"], node["domain"])
         child.inherited_deadline = datetime.fromisoformat(node["deadline"])
         child.cancelled = lambda: stop.is_set() or runtime.cancelled()
+        if runtime._analysis_enabled():
+            child.on_unknown_outcome = stop.set
         child.telemetry_lineage = {"parallel_group_id": gid, "parallel_width": 2,
                                   "route_type": "parallel_child"}
         return child, req, child_access
@@ -219,6 +228,9 @@ def execute_group(runtime, state, request, access, executor, event, check, group
         if digest(verified) != digest(report):
             raise IntegrityError("parallel Child result changed during join")
         check()
+        if runtime._analysis_enabled():
+            from .domain_analysis_execution import import_result
+            import_result(runtime, state, request, report, node["domain"], access)
         state["outputs"][node["domain"]] = deepcopy(delegated)
         state["observations"][node["domain"]] = observe_tool(node["domain"], delegated)
         state["source_origins"][node["domain"]] = report["source_tool_call_id"]
@@ -227,6 +239,8 @@ def execute_group(runtime, state, request, access, executor, event, check, group
         state["observations"] = dict(sorted(state["observations"].items()))
         event("tool_finished", tool=node["tool"], tool_call_id=node["tool_call_id"], dedup=False,
               result_hash=digest(delegated), observation=state["observations"][node["domain"]], parallel_group_id=gid)
+        if runtime._analysis_enabled():
+            event("domain_join", **state.pop("pending_analysis_join"))
 
     try:
         pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix="domain-child")
@@ -259,6 +273,8 @@ def execute_group(runtime, state, request, access, executor, event, check, group
                         stop.set()
                         raise
                     except Exception as exc:
+                        if runtime._analysis_enabled():
+                            stop.set()
                         # Without an authoritative complete receipt keep the whole allocation.
                         node["status"] = "cancelled" if runtime.cancelled() else "failed"
                         node["stop_reason"] = "cancelled" if runtime.cancelled() else "unknown_child_result"
@@ -302,7 +318,10 @@ def finalize_group(runtime, state, group, event):
     telemetry = build_telemetry(group)
     group["telemetry"] = telemetry
     state["pending_action"] = None
-    state["context_store"]["requested_refs"] = []
+    if "context_store" in state:
+        state["context_store"]["requested_refs"] = []
+    if runtime._window_enabled():
+        state["window_store"]["selection"] = None
     state["no_progress"] = 0
     event("parallel_telemetry", **telemetry)
 

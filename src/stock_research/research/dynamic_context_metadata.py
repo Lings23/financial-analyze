@@ -6,14 +6,16 @@ the disclosure selection and every original object remain unchanged.
 """
 from copy import deepcopy
 
-from ..errors import ValidationError
+from ..errors import IntegrityError, ValidationError
 from ..models import canonical_json
 from .dynamic_context import (
     VIEW_SCHEMA, _VIEW_KEYS, encode_arena, encode_view, expand_view,
+    validate_execution_revisions,
 )
 
 
 METADATA_VIEW_SCHEMA = "dynamic-context-view/v2"
+_REVISION_SLOTS = ("source", "calculated", "hypotheses", "verified")
 
 
 def _require(condition, message="invalid metadata context view"):
@@ -187,3 +189,57 @@ def decode_metadata_view(view):
         return _decode_metadata_view(view)
     except (KeyError, TypeError, IndexError, ValueError, RecursionError):
         raise ValidationError("invalid metadata context view structure") from None
+
+
+def encode_state_versions(revisions):
+    """Encode exact v5 revisions in one independent, message-local digest table.
+
+    This is composed with the existing metadata codec by the separate
+    dynamic-context-disclosure-view/v2 builder. It does not change the legacy
+    metadata schema, financial values, catalog IDs, or any business actions.
+    A digest is stored in full even for the initial empty source state; null
+    preserves the original not-executed revision value.
+    """
+    revisions = validate_execution_revisions(revisions)
+    digests = sorted({value for value in revisions.values() if value is not None})
+    aliases = {value: index for index, value in enumerate(digests)}
+    return {"digests": digests,
+            "refs": {slot: None if revisions[slot] is None else {"h": aliases[revisions[slot]]}
+                     for slot in _REVISION_SLOTS}}
+
+
+def decode_state_versions(state_versions, execution_revisions=None):
+    """Strictly recover full revisions; optionally bind them to trusted state.
+
+    Table references are valid only inside this message. Decoding provides no
+    authorization or execution proof. A well-formed but stale revision map fails
+    the optional authoritative comparison with a typed integrity error.
+    """
+    _require(type(state_versions) is dict and set(state_versions) == {"digests", "refs"},
+             "invalid context state versions")
+    digests, refs = state_versions["digests"], state_versions["refs"]
+    # At most four distinct revisions exist. Validate the exact literal digest
+    # shape before comparing/sorting so malformed objects never escape typed errors.
+    _require(type(digests) is list and len(digests) <= len(_REVISION_SLOTS)
+             and all(type(value) is str and len(value) == 64
+                     and all(character in "0123456789abcdef" for character in value)
+                     for value in digests)
+             and digests == sorted(set(digests)), "invalid context revision digest table")
+    _require(type(refs) is dict and set(refs) == set(_REVISION_SLOTS),
+             "invalid context revision slots")
+    revisions = {}
+    for slot in _REVISION_SLOTS:
+        ref = refs[slot]
+        if ref is None:
+            revisions[slot] = None
+            continue
+        _require(type(ref) is dict and set(ref) == {"h"} and type(ref["h"]) is int
+                 and 0 <= ref["h"] < len(digests), "invalid context revision index")
+        revisions[slot] = digests[ref["h"]]
+    _require(encode_state_versions(revisions) == state_versions,
+             "noncanonical context state versions")
+    if execution_revisions is not None:
+        expected = validate_execution_revisions(execution_revisions)
+        if revisions != expected:
+            raise IntegrityError("context state versions differ from authoritative execution revisions")
+    return revisions

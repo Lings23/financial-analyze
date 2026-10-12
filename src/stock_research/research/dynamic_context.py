@@ -19,6 +19,11 @@ from .dynamic_contracts import (
 
 CATALOG_SCHEMA = "dynamic-context-catalog/v1"
 VIEW_SCHEMA = "dynamic-context-view/v1"
+DISCLOSURE_VIEW_SCHEMA = "dynamic-context-disclosure-view/v1"
+DISCLOSURE_CONTRACT = "verification_evidence_opt_in/v1"
+PHASE_GATED_VIEW_SCHEMA = "dynamic-context-disclosure-view/v2"
+PHASE_GATED_CONTRACT = "phase_gated_verification_brief/v1"
+VERIFICATION_MANIFEST_SCHEMA = "dynamic-verification-disclosure-manifest/v1"
 ARENA_SCHEMA = "dynamic-context-arena/v1"
 MAX_REFS = 16
 MAX_CATALOG_BYTES = 4_000_000
@@ -422,6 +427,10 @@ def expand_view(view):
     This is decoding only, not source authorization. Use validate_view with the
     trusted current catalogue to verify the expanded values and their binding.
     """
+    if type(view) is dict and view.get("schema") == PHASE_GATED_VIEW_SCHEMA:
+        return expand_phase_gated_view(view)
+    if type(view) is dict and view.get("schema") == DISCLOSURE_VIEW_SCHEMA:
+        return expand_disclosure_view(view)
     if type(view) is dict and view.get("schema") == "dynamic-context-view/v2":
         from .dynamic_context_metadata import decode_metadata_view
         return expand_view(decode_metadata_view(view))
@@ -461,8 +470,26 @@ def expand_view(view):
     return result
 
 
-def validate_view(view, catalog, *, scope, run_id):
+def validate_view(view, catalog, *, scope, run_id, execution_revisions=None, verification_ready=False):
     """Bind every wire value/ref/column to its exact authoritative current catalogue."""
+    if type(view) is dict and view.get("schema") == PHASE_GATED_VIEW_SCHEMA:
+        expanded = expand_phase_gated_view(view)
+        expected = view_phase_gated_catalog(catalog, scope=scope, run_id=run_id,
+            refs=expanded["requested_refs"], current_stage=expanded["stage"],
+            catalog_ref=expanded["catalog_ref"], execution_revisions=execution_revisions,
+            verification_ready=verification_ready)
+        if expected != view:
+            raise IntegrityError("phase-gated view differs from authoritative catalogue or readiness")
+        return expanded
+    if type(view) is dict and view.get("schema") == DISCLOSURE_VIEW_SCHEMA:
+        expanded = expand_disclosure_view(view)
+        expected = view_verification_catalog(catalog, scope=scope, run_id=run_id,
+            refs=expanded["requested_refs"], current_stage=expanded["stage"],
+            catalog_ref=expanded["catalog_ref"], execution_revisions=execution_revisions)
+        if expected != view:
+            raise IntegrityError("disclosure context view differs from current catalogue or revisions")
+        return expanded
+    _require(execution_revisions is None, "legacy context view has no execution revision contract")
     expanded = expand_view(view)
     wire = view
     if view["schema"] == "dynamic-context-view/v2":
@@ -477,7 +504,208 @@ def validate_view(view, catalog, *, scope, run_id):
     return expanded
 
 
+def validate_execution_revisions(revisions):
+    """Validate trusted revision fields; their values never authorize a read."""
+    _require(type(revisions) is dict and set(revisions) == {
+        "source", "calculated", "hypotheses", "verified"}
+        and all(value is None or _hash(value) for value in revisions.values()),
+        "invalid authoritative context execution revisions")
+    return deepcopy(revisions)
+
+
+def _verification_manifest(catalog, payload, *, scope, run_id, execution_revisions):
+    revisions = validate_execution_revisions(execution_revisions)
+    observations = payload["observations"]
+    derived = [item for item in observations if item["kind"] == "derived"]
+    latest = next((item for item in derived if item["tool"] == "hypotheses"),
+                  derived[0] if derived else None)
+    collections = {kind: latest[kind] if latest else {}
+                   for kind in ("facts", "evidence", "hypotheses")}
+    collections["source_datasets"] = [
+        {"observation_ref": "O:" + observation["tool"], "dataset": dataset, **result}
+        for observation in observations if observation["kind"] == "source_read"
+        for dataset, result in observation["datasets"].items()]
+    body = {"schema": VERIFICATION_MANIFEST_SCHEMA, "catalog_ref": catalog["catalog_ref"],
+        "binding_ref": digest({"scope": scope, "run_id": run_id,
+                               "request_ref": catalog["request_ref"]}),
+        "request_ref": catalog["request_ref"], "execution_revisions": revisions,
+        # This commits the complete typed catalogue, including gaps and event anchor.
+        # Dataset result refs and the authoritative revisions retain the source binding.
+        "complete_state_ref": digest(payload),
+        "collections": {kind: {"ref": digest(values), "count": len(values)}
+                        for kind, values in collections.items()},
+        "source_records": sum(item["records"] for item in collections["source_datasets"]),
+        "execution_receipt": False}
+    return {**body, "manifest_ref": digest(body)}
+
+
+def build_verification_audit(catalog, *, scope, run_id, execution_revisions, input_refs=None):
+    """Complete server-side audit; never a business execution receipt or authority."""
+    _, payload = _checked_catalog(catalog, scope=scope, run_id=run_id)
+    audit = _verification_manifest(catalog, payload, scope=scope, run_id=run_id,
+                                   execution_revisions=execution_revisions)
+    if input_refs is not None:
+        _require(type(input_refs) is dict and set(input_refs) == {"computed_ref", "datasets_ref"}
+                 and all(_hash(value) for value in input_refs.values()), "invalid raw verification input refs")
+        audit.update(schema="dynamic-verification-audit/v1", input_refs=deepcopy(input_refs))
+        audit["manifest_ref"] = digest({key: value for key, value in audit.items() if key != "manifest_ref"})
+    return audit
+
+
+def _verification_brief(catalog, audit):
+    payload = decode_arena(catalog["arena"])
+    sources = sorted("O:" + item["tool"] for item in payload["observations"]
+                     if item["kind"] == "source_read")
+    # The typed payload is authoritative for counts; refs are exact catalog members.
+    _require("O:hypotheses" in catalog["index"], "verification target missing from catalogue")
+    return {"computed_ref": "O:hypotheses", "source_refs": sources,
+            "counts": {**{kind: item["count"] for kind, item in audit["collections"].items()},
+                       "source_records": audit["source_records"]}}
+
+
+def expand_phase_gated_view(view):
+    """Decode displayed metadata and exact revisions; undisclosed audit stays external."""
+    extras = {"list_table", "disclosure_contract", "state_versions"}
+    if type(view) is dict and "verification_brief" in view:
+        extras.add("verification_brief")
+    _require(type(view) is dict and set(view) == _VIEW_KEYS | extras
+             and view["schema"] == PHASE_GATED_VIEW_SCHEMA
+             and view["disclosure_contract"] == PHASE_GATED_CONTRACT,
+             "invalid phase-gated disclosure view")
+    from .dynamic_context_metadata import decode_metadata_view, decode_state_versions
+    revisions = decode_state_versions(view["state_versions"])
+    brief = view.get("verification_brief")
+    _require("verification_brief" not in view or brief is not None,
+             "verification brief must be omitted when unavailable")
+    if brief is not None:
+        _require(type(brief) is dict and set(brief) == {"computed_ref", "source_refs", "counts"}
+                 and brief["computed_ref"] == "O:hypotheses"
+                 and type(brief["source_refs"]) is list
+                 and all(type(ref) is str and ref.startswith("O:") for ref in brief["source_refs"])
+                 and brief["source_refs"] == sorted(set(brief["source_refs"]))
+                 and type(brief["counts"]) is dict and set(brief["counts"]) == {
+                     "facts", "evidence", "hypotheses", "source_datasets", "source_records"}
+                 and all(type(n) is int and n >= 0 for n in brief["counts"].values())
+                 and view["stage"] == "verification"
+                 and revisions["calculated"] == revisions["hypotheses"] == revisions["source"]
+                 and revisions["verified"] != revisions["source"],
+                 "invalid phase-gated verification brief")
+    wire = deepcopy(view)
+    for key in extras - {"list_table"}:
+        wire.pop(key)
+    wire["schema"] = "dynamic-context-view/v2"
+    expanded = expand_view(decode_metadata_view(wire))
+    if brief is not None:
+        known = {ref for group in expanded["catalog_ids"].values() for ref in group}
+        _require({brief["computed_ref"], *brief["source_refs"]} <= known,
+                 "verification brief has unknown catalogue refs")
+        expanded["verification_brief"] = deepcopy(brief)
+    expanded.update(schema=PHASE_GATED_VIEW_SCHEMA, disclosure_contract=PHASE_GATED_CONTRACT,
+                    state_versions=revisions)
+    return expanded
+
+
+def view_phase_gated_catalog(catalog, *, scope, run_id, refs=(), current_stage="before_sources",
+                            catalog_ref=None, execution_revisions=None, verification_ready=False):
+    """V5 projection preserves v4 selected content with an authoritative optional brief."""
+    _checked_catalog(catalog, scope=scope, run_id=run_id, catalog_ref=catalog_ref)
+    _require(type(verification_ready) is bool, "invalid verification readiness")
+    from .dynamic_context_metadata import encode_metadata_view, encode_state_versions
+    revisions = validate_execution_revisions(execution_revisions)
+    view = encode_metadata_view(_view_catalog(catalog, scope=scope, run_id=run_id, refs=refs,
+        current_stage=current_stage, catalog_ref=catalog_ref, verification_closure=False))
+    view.update(schema=PHASE_GATED_VIEW_SCHEMA, disclosure_contract=PHASE_GATED_CONTRACT,
+                state_versions=encode_state_versions(revisions))
+    if verification_ready:
+        audit = build_verification_audit(catalog, scope=scope, run_id=run_id, execution_revisions=revisions)
+        view["verification_brief"] = _verification_brief(catalog, audit)
+    expand_phase_gated_view(view)
+    return view
+
+
+def _validate_manifest(manifest, view):
+    _require(type(manifest) is dict and set(manifest) == {
+        "schema", "catalog_ref", "binding_ref", "request_ref", "execution_revisions",
+        "complete_state_ref", "collections", "source_records", "execution_receipt", "manifest_ref"}
+        and manifest["schema"] == VERIFICATION_MANIFEST_SCHEMA,
+        "invalid verification disclosure manifest")
+    _require(all(_hash(manifest[key]) for key in (
+        "catalog_ref", "binding_ref", "request_ref", "complete_state_ref", "manifest_ref")))
+    _require(manifest["catalog_ref"] == view["catalog_ref"]
+             and manifest["binding_ref"] == view["binding_ref"],
+             "verification disclosure manifest belongs to a different context")
+    validate_execution_revisions(manifest["execution_revisions"])
+    collections = manifest["collections"]
+    _require(type(collections) is dict and set(collections) == {
+        "facts", "evidence", "hypotheses", "source_datasets"})
+    for item in collections.values():
+        _require(type(item) is dict and set(item) == {"ref", "count"}
+                 and _hash(item["ref"]) and type(item["count"]) is int and item["count"] >= 0)
+    _require(type(manifest["source_records"]) is int and manifest["source_records"] >= 0
+             and manifest["execution_receipt"] is False,
+             "disclosure manifest cannot assert verification execution")
+    _require(digest({key: value for key, value in manifest.items() if key != "manifest_ref"})
+             == manifest["manifest_ref"], "verification disclosure manifest hash changed")
+
+
+def expand_disclosure_view(view):
+    """Decode the selected v4 projection, never reconstruct undisclosed Evidence.
+
+    The independent disclosure schema commits full typed catalogue collections in
+    its manifest. Exact metadata encoding is reused only for displayed rows. This
+    is not an equivalent encoding of the legacy all-Evidence verification view.
+    Authorization and current catalogue/revision binding require validate_view.
+    """
+    _require(type(view) is dict and set(view) == _VIEW_KEYS | {
+        "list_table", "disclosure_contract", "verification_manifest"}
+        and view["schema"] == DISCLOSURE_VIEW_SCHEMA
+        and view["disclosure_contract"] == DISCLOSURE_CONTRACT,
+        "invalid context disclosure view")
+    _validate_manifest(view["verification_manifest"], view)
+    from .dynamic_context_metadata import decode_metadata_view
+    wire = deepcopy(view)
+    wire.pop("disclosure_contract")
+    wire.pop("verification_manifest")
+    wire["schema"] = "dynamic-context-view/v2"
+    expanded = expand_view(decode_metadata_view(wire))
+    expanded.update(schema=DISCLOSURE_VIEW_SCHEMA,
+                    disclosure_contract=DISCLOSURE_CONTRACT,
+                    verification_manifest=deepcopy(view["verification_manifest"]))
+    return expanded
+
+
+def view_verification_catalog(catalog, *, scope, run_id, refs=(),
+                              current_stage="before_sources", catalog_ref=None,
+                              execution_revisions=None):
+    """Build explicit v4 disclosure with no automatic verification Evidence closure.
+
+    All facts, hypotheses, gaps, conflict/counterevidence references, source scope
+    and catalog IDs are retained. Existing explicit disclose requests still read
+    their exact complete closures. Nothing here executes or replaces verification.
+    """
+    _, payload = _checked_catalog(catalog, scope=scope, run_id=run_id, catalog_ref=catalog_ref)
+    manifest = _verification_manifest(catalog, payload, scope=scope, run_id=run_id,
+                                      execution_revisions=execution_revisions)
+    view = _view_catalog(catalog, scope=scope, run_id=run_id, refs=refs,
+                         current_stage=current_stage, catalog_ref=catalog_ref,
+                         verification_closure=False)
+    from .dynamic_context_metadata import encode_metadata_view
+    view = encode_metadata_view(view)
+    view.update(schema=DISCLOSURE_VIEW_SCHEMA, disclosure_contract=DISCLOSURE_CONTRACT,
+                verification_manifest=manifest)
+    expand_disclosure_view(view)
+    return view
+
+
 def view_catalog(catalog, *, scope, run_id, refs=(), current_stage="before_sources", catalog_ref=None):
+    """Build the unchanged legacy disclosure view and its original Evidence closure."""
+    return _view_catalog(catalog, scope=scope, run_id=run_id, refs=refs,
+                         current_stage=current_stage, catalog_ref=catalog_ref,
+                         verification_closure=True)
+
+
+def _view_catalog(catalog, *, scope, run_id, refs, current_stage, catalog_ref,
+                  verification_closure):
     """Return compact exact facts/hypotheses and stage/reference-selected Evidence.
 
     Every C/E/H/O reference remains in the directory even when its object is not
@@ -496,7 +724,7 @@ def view_catalog(catalog, *, scope, run_id, refs=(), current_stage="before_sourc
     evidence = latest["evidence"] if latest else {}
     hypotheses = latest["hypotheses"] if latest else {}
     disclosed, claim_ids = set(), set()
-    if current_stage == "verification":
+    if current_stage == "verification" and verification_closure:
         claim_ids.update(facts)
     elif current_stage in {"hypotheses", "finish"}:
         for hid in request.hypotheses:

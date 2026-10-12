@@ -15,7 +15,7 @@ from .dynamic_contracts import (DYNAMIC_TOOLS, SOURCE_TOOLS, FINANCIAL_DATASETS,
                                 DynamicSpec, FinancialRequest, FinancialParentSpec,
                                 FinancialChildSpec, DomainParentSpec, MarketRequest, MarketChildSpec, ParallelParentSpec, required_checks)
 from .dynamic_protocol import (dynamic_messages, observe_tool, parse_action, validate_finish_rejection,
-                               context_next_stage)
+                               context_next_stage, ContextViewBudgetExceeded, REQUESTED_WINDOW_ADMISSION_POLICY)
 from .hypotheses import diagnose_insufficiency, test_hypotheses
 from .runtime import BudgetExceeded, ResearchRuntime, validate_model_result
 from .study import calculate_study_claims
@@ -32,6 +32,13 @@ class DynamicToolRegistry(ToolRegistry):
 class DynamicRuntime(ResearchRuntime):
     """Same registry/executor, sources, verifier, checkpoint and model core; new strategy."""
     def __init__(self, service, checkpoints, model=None, spec=None, **kwargs):
+        analysis = getattr(spec, "version", "") == "dynamic-parent-domain-analysis-v1"
+        if analysis:
+            from .domain_analysis_contracts import FinancialAnalysisChildSpec, MarketAnalysisChildSpec, ANALYSIS_TOOLS
+            kwargs.setdefault("child_spec", FinancialAnalysisChildSpec(model=spec.model))
+            kwargs.setdefault("domain_child_specs", {"financial": kwargs["child_spec"],
+                "market": MarketAnalysisChildSpec(model=spec.model)})
+            kwargs.setdefault("granted_tools", ANALYSIS_TOOLS)
         self.child_spec = kwargs.pop("child_spec", None) or FinancialChildSpec(model=(spec or DynamicSpec()).model)
         domains = isinstance(spec, DomainParentSpec)
         self.child_specs = kwargs.pop("domain_child_specs", None)
@@ -46,6 +53,10 @@ class DynamicRuntime(ResearchRuntime):
         self.parent_run_id = kwargs.pop("parent_run_id", None)
         self.inherited_deadline = kwargs.pop("inherited_deadline", None)
         self.authorize_parent = kwargs.pop("authorize_parent", None)
+        self.on_unknown_outcome = kwargs.pop("on_unknown_outcome", None)
+        # Observational only; excluded from identities, decisions and checkpoints.
+        self.analysis_metrics = {"root_full_execution": {"calls": 0, "elapsed_ms": 0},
+                                 "root_full_integrity": {"calls": 0, "elapsed_ms": 0}}
         # Observation-only lineage; it is never placed in model messages or grants.
         self.telemetry_lineage = kwargs.pop("telemetry_lineage", None)
         if (not isinstance(self.child_spec, FinancialChildSpec)
@@ -67,7 +78,37 @@ class DynamicRuntime(ResearchRuntime):
         if domains and any(child_spec.model != self.spec.model for child_spec in self.child_specs.values()):
             raise ValidationError("domain children must use the same configured model")
 
+    def _analysis_enabled(self):
+        return self.spec.version in {"dynamic-parent-domain-analysis-v1", "financial-analysis-child-v1",
+                                     "market-analysis-child-v1"}
+
+    def _analysis_child(self):
+        return self.spec.version in {"financial-analysis-child-v1", "market-analysis-child-v1"}
+
+    def _messages(self, state, request, available, **kwargs):
+        if self._analysis_enabled():
+            from .domain_analysis_protocol import messages
+            prepared = messages(state, request, available, self.spec.context_bytes, spec=self.spec,
+                                decision=kwargs.get("decision"))
+            if prepared[1]["bytes"] > self.spec.context_bytes:
+                raise BudgetExceeded("dynamic_context_budget_exceeded")
+            return prepared
+        return dynamic_messages(request, available, list(state["observations"].values()),
+            state["requirements"], state["plans"][-1]["steps"] if state["plans"] else [],
+            self.spec.context_bytes, **kwargs)
+
+    def _parse_action(self, content, available, state, request, access):
+        if self._analysis_enabled():
+            from .domain_analysis_protocol import parse_action as parse_analysis
+            return parse_analysis(content, available, state["observations"], state=state,
+                                  request=request, spec=self.spec)
+        return parse_action(content, available, state["observations"], version=self.spec.version,
+                            **self._context_parse_arguments(state, request, access))
+
     def _setup(self, request, access):
+        if self._analysis_enabled():
+            from .domain_analysis_execution import setup
+            return setup(self, request, access)
         if not isinstance(request, DynamicRequest):
             raise ValidationError("dynamic strategy requires DynamicRequest")
         if (isinstance(self.spec, FinancialChildSpec) != isinstance(request, FinancialRequest)
@@ -98,6 +139,9 @@ class DynamicRuntime(ResearchRuntime):
 
     @staticmethod
     def _requirements(request):
+        if getattr(request, "parent_request_ref", None) is not None:
+            from .domain_analysis_contracts import required_checks as analysis_checks
+            return analysis_checks(request)
         return required_checks(request)
 
     def preview(self, request, access, *, run_id=None):
@@ -105,16 +149,65 @@ class DynamicRuntime(ResearchRuntime):
         executor, available = self._setup(request, access)
         for name in available:
             executor.registry.authorize(name, self.spec, self.granted)
+        if self._analysis_enabled():
+            state = {"spec_version": self.spec.version, "observations": {}, "outputs": {}, "plans": [],
+                     "requirements": self._requirements(request), "model_attempts": 0, "trace": [],
+                     "child_results": [], "domain_results": {}, "decisions": []}
+            return self._messages(state, request, available, decision=1)[0]
         return dynamic_messages(request, available, [], self._requirements(request), [],
                                 self.spec.context_bytes, version=self.spec.version,
                                 **({"context_scope": access.scope, "context_run_id": run_id or "0" * 32}
-                                   if self._context_enabled() else {}))[0]
+                                   if self._context_enabled() else {}),
+                                **({"parent_execution_revisions": {"source": digest({}),
+                                    "calculated": None, "hypotheses": None, "verified": None}}
+                                   if self._verification_disclosure_decoupled() else {}),
+                                **({"parent_computed_sources": [], "parent_dependency_ready": True,
+                                    "parent_verification_inputs": None}
+                                   if self._phase_gated_disclosure() else {}))[0]
 
     def _context_enabled(self):
         return isinstance(self.spec, DomainParentSpec) and self.spec.version in {
-            "dynamic-parent-domains-v2", "dynamic-parent-parallel-v1", "dynamic-parent-parallel-v2", "dynamic-parent-parallel-v3"}
+            "dynamic-parent-domains-v2", "dynamic-parent-parallel-v1", "dynamic-parent-parallel-v2", "dynamic-parent-parallel-v3",
+            "dynamic-parent-parallel-v4", "dynamic-parent-parallel-v5", "dynamic-parent-parallel-v6", "dynamic-parent-parallel-v6.1", "dynamic-parent-parallel-v6.2"}
+
+    def _verification_disclosure_decoupled(self):
+        if self._analysis_enabled():
+            return not self._analysis_child()
+        return self.spec.version in {"dynamic-parent-parallel-v4", "dynamic-parent-parallel-v5", "dynamic-parent-parallel-v6", "dynamic-parent-parallel-v6.1", "dynamic-parent-parallel-v6.2"}
+
+    def _phase_gated_disclosure(self):
+        return self.spec.version in {"dynamic-parent-parallel-v5", "dynamic-parent-parallel-v6", "dynamic-parent-parallel-v6.1", "dynamic-parent-parallel-v6.2"}
+
+    def _window_enabled(self):
+        return self.spec.version in {"dynamic-parent-parallel-v6", "dynamic-parent-parallel-v6.1", "dynamic-parent-parallel-v6.2"}
+
+    def _window_budget(self, state, *, paid_decision=None):
+        """Authoritative capacity immediately before this paid decision's intent."""
+        from .root_budget import root_usage
+        root = root_usage(state["root_budget"])["remaining"]
+        attempts, tokens = state["model_attempts"], state["tokens_accounted"]
+        if paid_decision is not None:
+            attempts -= 1
+            tokens -= paid_decision["token_reservation"]
+            root = {**root, "decisions": root["decisions"] + 1,
+                    "tokens": root["tokens"] + paid_decision["token_reservation"]}
+        checks = self._check_results(state, DynamicRequest.from_dict(state["request"]))
+        pending = sum(c["status"] == "not_completed" and
+                      (c["id"].startswith("read:") or c["id"] in {
+                          "calculation", "hypotheses", "verification"}) for c in checks)
+        decisions, tools = self.spec.max_decisions - attempts, self.spec.max_tools - state["tools_used"]
+        return {"decisions_remaining": decisions, "tools_remaining": tools,
+                "tokens_remaining": self.spec.max_tokens - tokens, "root_remaining": root,
+                "deadline": state["deadline"], "required_actions_remaining": pending,
+                "context_read_available": (decisions >= pending + 2 and tools >= pending + 1
+                    and root["decisions"] >= pending + 2 and root["tools"] >= pending + 1
+                    and min(self.spec.max_tokens - tokens, root["tokens"]) > 0)}
 
     def _parallel_enabled(self):
+        if self._analysis_enabled():
+            # Analysis Parents use root-budget/v3 for atomic allocations and
+            # headroom even when the explicit action route is serial.
+            return not self._analysis_child()
         return isinstance(self.spec, ParallelParentSpec)
 
     def _parent_headroom(self, state, *, additional_tools=0):
@@ -139,19 +232,45 @@ class DynamicRuntime(ResearchRuntime):
         return build_catalog(request, observations, state["requirements"],
                              scope=access.scope, run_id=state["run_id"])
 
-    def _context_arguments(self, state, access):
+    def _context_arguments(self, state, access, *, paid_decision=None):
         arguments = {"context_scope": access.scope, "context_run_id": state["run_id"],
                      "context_refs": state["context_store"]["requested_refs"]}
-        if self.spec.version in {"dynamic-parent-parallel-v2", "dynamic-parent-parallel-v3"}:
+        if self.spec.version in {"dynamic-parent-parallel-v2", "dynamic-parent-parallel-v3", "dynamic-parent-parallel-v4", "dynamic-parent-parallel-v5", "dynamic-parent-parallel-v6", "dynamic-parent-parallel-v6.1", "dynamic-parent-parallel-v6.2"}:
             arguments["parent_execution_checks"] = self._check_results(
                 state, DynamicRequest.from_dict(state["request"]))
+        if self._verification_disclosure_decoupled():
+            arguments["parent_execution_revisions"] = {"source": self._current(state),
+                **{name: state.get(name + "_revision") for name in ("calculated", "hypotheses", "verified")}}
+        if self._phase_gated_disclosure():
+            from .parallel import gate_stage
+            try:
+                gate_stage(state, "verification")
+                dependency_ready = True
+            except ValidationError:
+                dependency_ready = False
+            arguments.update(parent_computed_sources=state.get("computed_sources", []),
+                             parent_dependency_ready=dependency_ready,
+                             parent_verification_inputs=({"computed_ref": digest(state["calculated"]),
+                                 "datasets_ref": digest(self._datasets(state, state.get("computed_sources", [])))}
+                                 if "calculated" in state else None))
+        if self._window_enabled():
+            arguments.update(context_window_selection=state["window_store"]["selection"],
+                             context_window_budget=self._window_budget(state, paid_decision=paid_decision))
         return arguments
 
     def _context_parse_arguments(self, state, request, access):
         if not self._context_enabled():
             return {}
+        if self._window_enabled():
+            window = state["window_store"]["windows"][-1]
+            return {"context_catalog_ref": window["catalog_ref"],
+                    "context_known_refs": window["allowed_refs"],
+                    "context_known_cursors": list(window["cursors"])}
         from .dynamic_context import view_catalog
         catalog = self._build_catalog(state, request, access)
+        if self._verification_disclosure_decoupled():
+            # Membership needs no model view and grants no access on its own.
+            return {"context_catalog_ref": catalog["catalog_ref"], "context_known_refs": sorted(catalog["index"])}
         view = view_catalog(catalog, scope=access.scope, run_id=state["run_id"], current_stage="calculation")
         return {"context_catalog_ref": catalog["catalog_ref"], "context_known_refs": self._catalog_refs(view)}
 
@@ -164,11 +283,17 @@ class DynamicRuntime(ResearchRuntime):
         """
         if not self._context_enabled():
             return
+        if self._window_enabled():
+            try:
+                return self._validate_window_history(history, state, request, access, available)
+            except (ValidationError, KeyError, IndexError, TypeError, ValueError):
+                raise IntegrityError("invalid versioned context window recovery") from None
         from .dynamic_context import decode_catalog, resolve_catalog
         expected_binding = digest({"scope": access.scope, "run_id": state["run_id"], "request": request.to_dict()})
         prior_catalogs, prior_disclosures = {}, []
         observed_refs = set()
         for saved in [*history, state]:
+            self._validate_verification_execution(saved)
             store = saved.get("context_store")
             if (type(store) is not dict or set(store) != {"schema", "binding", "catalogs", "disclosures", "requested_refs"}
                     or store["schema"] != "dynamic-context-store/v1" or store["binding"] != expected_binding
@@ -246,9 +371,141 @@ class DynamicRuntime(ResearchRuntime):
         if not committed <= observed_refs:
             raise IntegrityError("context history lacks an authoritative paid view")
 
+    def _validate_window_history(self, history, state, request, access, available):
+        """Rebuild every paid window and accounted page from immutable originals."""
+        from .context_window import (select_next, rebuild_selection, coverage_progress,
+                                     merge_coverage, WINDOW_POLICY)
+        expected_binding = digest({"scope": access.scope, "run_id": state["run_id"], "request": request.to_dict()})
+        prior_catalogs, prior_windows, prior_receipts = {}, [], []
+        paid = {}
+        read_intents = {}
+        for candidate in [*history, state]:
+            if (candidate["trace"] and candidate["trace"][-1]["event"] == "tool_started"
+                    and candidate["trace"][-1]["tool"] == "context_read"):
+                read_intents[candidate["trace"][-1]["tool_call_id"]] = candidate
+        for saved in [*history, state]:
+            self._validate_verification_execution(saved)
+            store, pages = saved.get("context_store"), saved.get("window_store")
+            if (saved["schema"] != "dynamic-window-state/v1" or type(store) is not dict
+                    or set(store) != {"schema", "binding", "catalogs", "disclosures", "requested_refs"}
+                    or store["schema"] != "dynamic-context-store/v1" or store["binding"] != expected_binding
+                    or store["disclosures"] != [] or store["requested_refs"] != []
+                    or type(store["catalogs"]) is not dict
+                    or any(store["catalogs"].get(k) != v for k, v in prior_catalogs.items())
+                    or type(pages) is not dict or set(pages) != {"schema", "windows", "receipts", "selection", "coverage"}
+                    or pages["schema"] != "dynamic-window-store/v1"
+                    or type(pages["windows"]) is not list or type(pages["receipts"]) is not list
+                    or pages["windows"][:len(prior_windows)] != prior_windows
+                    or pages["receipts"][:len(prior_receipts)] != prior_receipts):
+                raise IntegrityError("versioned window history changed or removed an immutable object")
+            prior_catalogs, prior_windows, prior_receipts = store["catalogs"], pages["windows"], pages["receipts"]
+            events = [e for e in saved["trace"] if e["event"] == "context_page_read"]
+            if pages["receipts"] != [e["receipt"] for e in events]:
+                raise IntegrityError("page receipt ledger differs from its actual reads")
+            coverage, selection = [], None
+            for event in events:
+                receipt = event["receipt"]
+                turn, call_id = receipt["turn"], receipt["tool_call_id"]
+                if type(turn) is not int or not 1 <= turn <= len(saved["decisions"]):
+                    raise IntegrityError("page read lacks a paid decision")
+                decision = saved["decisions"][turn - 1]
+                action = decision.get("action", {})
+                issued = [w for w in pages["windows"] if w["turn"] == turn]
+                starts = [e for e in saved["trace"] if e["event"] == "tool_started" and e["tool_call_id"] == call_id]
+                if (decision["status"] != "verified" or action.get("action") != "context_read"
+                        or len(issued) != 1 or len(starts) != 1 or starts[0]["tool"] != "context_read"
+                        or starts[0]["turn"] != turn or starts[0]["seq"] >= event["seq"]):
+                    raise IntegrityError("page receipt differs from its accounted intent")
+                window = {k: v for k, v in issued[0].items() if k not in {"turn", "message_sha256"}}
+                catalog = store["catalogs"].get(receipt["catalog_ref"])
+                if catalog is None:
+                    raise IntegrityError("page receipt catalog missing")
+                expected_start = select_next(catalog, action, window, scope=access.scope, run_id=state["run_id"])
+                selected = receipt["selection_after"]
+                if (type(selected) is not dict or any(selected.get(k) != v for k, v in expected_start.items() if k != "end")
+                        or type(selected.get("end")) is not int or selected["end"] <= selected["start"]):
+                    raise IntegrityError("page slice differs from the issued cursor or object request")
+                intent = read_intents.get(call_id)
+                if intent is None or self._build_catalog(intent, request, access) != catalog:
+                    raise IntegrityError("page receipt lacks its authoritative precommit tool intent")
+                self._validate_ledger(intent, request)
+                arguments = self._context_arguments(intent, access)
+                arguments["context_window_selection"] = expected_start
+                _, prepared = dynamic_messages(request, available, list(intent["observations"].values()),
+                    intent["requirements"], action["plan"], self.spec.context_bytes,
+                    decision=intent["model_attempts"] + 1, version=self.spec.version,
+                    protocol_error=intent.get("protocol_error"), finish_rejection=intent.get("finish_rejection"),
+                    delegation_results=[{"tool": c["domain"] + "_child", "domain": c["domain"],
+                        "status": c["status"], "result_ref": c["result_ref"]} for c in intent["child_results"]],
+                    **arguments)
+                if prepared["window_selection"] != selected:
+                    raise IntegrityError("committed page boundary differs from its actual precommit window")
+                page = rebuild_selection(catalog, selected, scope=access.scope, run_id=state["run_id"])
+                expected = {"scope_ref": digest(access.scope), "run_id": state["run_id"],
+                    "request_ref": catalog["request_ref"], "catalog_ref": catalog["catalog_ref"],
+                    "policy_version": WINDOW_POLICY, "object_revision": selected["object_revision"],
+                    "collection_ref": selected["collection_ref"], "ordered_slice": [page["start"], page["end"]],
+                    "content_hash": page["content_hash"], "turn": turn, "tool_call_id": call_id,
+                    "issuing_window_ref": window["window_ref"],
+                    "selection_before": receipt["selection_before"], "selection_after": selected}
+                # The prior selection is determined by actual business/read events,
+                # not by a model-supplied receipt or an arbitrary saved pointer.
+                previous = next((e for e in reversed(saved["trace"][:starts[0]["seq"]])
+                                 if e["event"] in {"context_page_read", "tool_finished"}), None)
+                before = (previous["receipt"]["selection_after"] if previous and previous["event"] == "context_page_read"
+                          else next((e["receipt"]["selection_after"] for e in reversed(saved["trace"][:starts[0]["seq"]])
+                                     if e["event"] == "context_page_read"), None)
+                          if previous and previous["tool"] == "context_read" else None)
+                if (receipt != expected or receipt["selection_before"] != before
+                        or not coverage_progress(catalog, selected, coverage, scope=access.scope, run_id=state["run_id"])):
+                    raise IntegrityError("page read content, binding or member coverage changed")
+                coverage = merge_coverage(catalog, selected, coverage, scope=access.scope, run_id=state["run_id"])
+                selection = selected
+            for finished in (e for e in saved["trace"] if e["event"] == "tool_finished" and e["tool"] == "context_read"):
+                matched = [e for e in events if e["receipt"]["tool_call_id"] == finished["tool_call_id"]]
+                if (len(matched) != 1 or matched[0]["seq"] >= finished["seq"]
+                        or matched[0]["receipt"]["content_hash"] != finished["result_hash"]):
+                    raise IntegrityError("page completion differs from its receipt")
+            last = next((e for e in reversed(saved["trace"]) if e["event"] in {"context_page_read", "tool_finished"}), None)
+            if last and last["event"] == "tool_finished" and last["tool"] != "context_read":
+                selection = None
+            if coverage != pages["coverage"] or selection != pages["selection"]:
+                raise IntegrityError("window selection or member coverage differs from actual reads")
+            if not saved["trace"] or saved["trace"][-1]["event"] != "model_started":
+                continue
+            self._validate_ledger(saved, request)
+            decision = saved["decisions"][-1]
+            catalog = self._build_catalog(saved, request, access)
+            if store["catalogs"].get(catalog["catalog_ref"]) != catalog:
+                raise IntegrityError("paid window catalog differs from authoritative state")
+            order = decision.get("context_observation_order", list(saved["observations"]))
+            if len(order) != len(set(order)) or set(order) != set(saved["observations"]):
+                raise IntegrityError("paid window observation order changed")
+            messages, metadata = dynamic_messages(request, available, [saved["observations"][n] for n in order],
+                saved["requirements"], saved["plans"][-1]["steps"] if saved["plans"] else [], self.spec.context_bytes,
+                decision=decision["turn"], protocol_error=saved.get("protocol_error"), version=self.spec.version,
+                finish_rejection=saved.get("finish_rejection"),
+                delegation_results=[{"tool": c["domain"] + "_child", "domain": c["domain"],
+                    "status": c["status"], "result_ref": c["result_ref"]} for c in saved["child_results"]],
+                **self._context_arguments(saved, access, paid_decision=decision))
+            window = {"turn": decision["turn"], "message_sha256": digest(messages), **metadata["window"]}
+            if (digest(messages) != decision["message_sha256"] or saved["context"] != {"status": "prepared", **metadata}
+                    or pages["windows"][-1] != window or decision.get("context_window_ref") != window["window_ref"]
+                    or decision.get("context_catalog_ref") != catalog["catalog_ref"]):
+                raise IntegrityError("paid window wire, descriptor or audit changed")
+            paid[decision["turn"]] = window
+        if (set(paid) != {d["turn"] for d in state["decisions"]}
+                or state["window_store"]["windows"] != [paid[d["turn"]] for d in state["decisions"]]
+                or set(state["context_store"]["catalogs"]) != {d["context_catalog_ref"] for d in state["decisions"]}):
+            raise IntegrityError("window store lacks an authoritative paid intent")
+
     def _validate_telemetry_history(self, history, state, request, access, available):
         """Reproduce measurements from paid checkpoint wires, after reauthorization."""
         if "context_telemetry" not in state:
+            return
+        if self._analysis_enabled():
+            from .domain_analysis_execution import validate_paid_history
+            validate_paid_history(self, history, state, request, available)
             return
         from .context_telemetry import build_context_telemetry
         measured = {}
@@ -270,7 +527,8 @@ class DynamicRuntime(ResearchRuntime):
                 **({"delegation_results": [{"tool": c["domain"] + "_child", "domain": c["domain"],
                     "status": c["status"], "result_ref": c["result_ref"]} for c in saved["child_results"]]}
                     if isinstance(self.spec, DomainParentSpec) else {}),
-                **(self._context_arguments(saved, access) if self._context_enabled() else {}))
+                **(self._context_arguments(saved, access, paid_decision=decision if self._window_enabled() else None)
+                   if self._context_enabled() else {}))
             lineage = {k: record[k] for k in ("run_id", "parent_run_id", "child_run_id", "agent_role", "domain",
                        "turn_id", "route_type", "parallel_group_id", "parallel_width")}
             expected = build_context_telemetry(messages, metadata, observations, request,
@@ -300,10 +558,14 @@ class DynamicRuntime(ResearchRuntime):
 
     @staticmethod
     def _current(state):
+        if state.get("spec_version") == "dynamic-parent-domain-analysis-v1":
+            return digest({"sources": state["outputs"], "domain_results": {
+                domain: digest(result) for domain, result in sorted(state.get("domain_results", {}).items())}})
         return digest(state["outputs"])
 
     def _validate_ledger(self, state, request):
-        if (state.get("schema") != "dynamic-state/v1" or state.get("requirements") != self._requirements(request)
+        if (state.get("schema") != ("dynamic-window-state/v1" if self._window_enabled() else "dynamic-state/v1")
+                or state.get("requirements") != self._requirements(request)
                 or state.get("request") != request.to_dict()
                 or state.get("spec_version") != self.spec.version):
             raise IntegrityError("dynamic state contract differs")
@@ -355,9 +617,15 @@ class DynamicRuntime(ResearchRuntime):
             raise IntegrityError("dynamic pending action differs from committed decision")
         if state["pending_tool"] is not None:
             starts = [e for e in state["trace"] if e["event"] == "tool_started"]
+            if self._analysis_enabled() and state["pending_tool"]["tool"] in {"financial_analysis_tool", "market_analysis_tool"}:
+                # Internal attempts belong to the pending bounded wrapper. An
+                # incomplete wrapper remains unknown and must never be rerun.
+                starts = [e for e in starts if e["tool_call_id"] == state["pending_tool"]["tool_call_id"]]
             if (not starts or not state["pending_action"] or
                     state["pending_tool"] != {k: starts[-1][k] for k in ("tool", "tool_call_id")}
-                    or state["pending_tool"]["tool"] != ("context_disclosure" if self._context_enabled()
+                    or state["pending_tool"]["tool"] != ("context_read" if self._window_enabled()
+                        and state["pending_action"].get("action") == "context_read" else
+                        "context_disclosure" if self._context_enabled()
                         and state["pending_action"].get("action") == "disclose" else state["pending_action"].get("tool"))):
                 raise IntegrityError("dynamic pending tool differs from committed intent")
         if isinstance(self.spec, FinancialParentSpec):
@@ -447,10 +715,17 @@ class DynamicRuntime(ResearchRuntime):
             if not local_read and not child_read:
                 raise IntegrityError("parent evidence points outside its authorized read")
 
-    def _verify_computed(self, state, request):
+    def _verify_computed(self, state, request, *, execution=False):
         if "calculated" not in state:
             return {"status": "not_completed", "numeric_claims": 0}
+        if self._analysis_child():
+            from .domain_analysis_execution import verify_child
+            return verify_child(self, state, request)
         computed = state["calculated"]
+        if (self._verification_disclosure_decoupled()
+                and state.get("calculated_revision") == self._current(state)
+                and state.get("computed_sources") != sorted(state["outputs"])):
+            raise IntegrityError("current calculation omits an executed source")
         datasets = self._datasets(state, state["computed_sources"])
         checking = deepcopy(computed)
         # The mandatory verifier may recompute expectations, but never publishes an
@@ -459,9 +734,94 @@ class DynamicRuntime(ResearchRuntime):
             checking["hypotheses"] = test_hypotheses(checking, datasets, request)
         if computed.get("insufficiency_diagnostics") != diagnose_insufficiency(checking, datasets, request):
             raise IntegrityError("dynamic insufficiency diagnostics differ")
-        return verify(checking, datasets, request)
+        start = self.monotonic()
+        result = verify(checking, datasets, request)
+        if self._analysis_enabled():
+            bucket = self.analysis_metrics["root_full_execution" if execution else "root_full_integrity"]
+            bucket["calls"] += 1
+            bucket["elapsed_ms"] += max(0, round((self.monotonic() - start) * 1000))
+        return result
+
+    def _verification_execution_matches(self, state):
+        """A v4 disclosure reference is never evidence of tool execution.
+
+        This checks the durable execution receipt without running the verifier.
+        Recovery/final-output revalidation still invokes the full original verifier.
+        """
+        receipt = state.get("verification_execution")
+        observation = state.get("observations", {}).get("verification")
+        if type(receipt) is not dict or type(observation) is not dict or "calculated" not in state:
+            return False
+        result = observation.get("result")
+        if type(result) is not dict or result.get("status") != "verified":
+            return False
+        expected = {"source_revision": self._current(state),
+            "calculated_revision": state.get("calculated_revision"),
+            "hypotheses_revision": state.get("hypotheses_revision"),
+            "computed_ref": digest(state["calculated"]),
+            "datasets_ref": digest(self._datasets(state, state.get("computed_sources", []))),
+            "tool_call_id": receipt.get("tool_call_id"), "turn": receipt.get("turn"),
+            "result_ref": digest(result)}
+        if receipt != expected or state.get("verified_revision") != receipt["calculated_revision"]:
+            return False
+        turn = receipt["turn"]
+        if type(turn) is not int or not 1 <= turn <= len(state["decisions"]):
+            return False
+        decision = state["decisions"][turn - 1]
+        action = decision.get("action", {})
+        starts = [e for e in state["trace"] if e["event"] == "tool_started"
+                  and e.get("tool_call_id") == receipt["tool_call_id"]]
+        ends = [e for e in state["trace"] if e["event"] == "tool_finished"
+                and e.get("tool_call_id") == receipt["tool_call_id"]]
+        return (decision["status"] == "verified" and action.get("action") == "tool"
+            and action.get("tool") == "verification" and action.get("refs") == ["hypotheses"]
+            and len(starts) == len(ends) == 1 and starts[0].get("tool") == "verification"
+            and starts[0].get("turn") == turn and ends[0].get("tool") == "verification"
+            and starts[0]["seq"] < ends[0]["seq"]
+            and ends[0].get("result_hash") == receipt["result_ref"]
+            and ends[0].get("observation") == observation)
+
+    @staticmethod
+    def _derived_execution_observed(state, name):
+        observation = state["observations"].get(name)
+        ends = [e for e in state["trace"] if e["event"] == "tool_finished" and e.get("tool") == name]
+        if observation is None or not ends or ends[-1].get("observation") != observation:
+            return False
+        end = ends[-1]
+        starts = [e for e in state["trace"] if e["event"] == "tool_started"
+                  and e.get("tool_call_id") == end["tool_call_id"]]
+        if len(starts) != 1 or starts[0].get("tool") != name or starts[0]["seq"] >= end["seq"]:
+            return False
+        turn = starts[0].get("turn")
+        if type(turn) is not int or not 1 <= turn <= len(state["decisions"]):
+            return False
+        decision = state["decisions"][turn - 1]
+        action = decision.get("action", {})
+        expected_refs = sorted(state["outputs"]) if name == "calculation" else ["calculation"]
+        invalidators = SOURCE_TOOLS | AGENT_TOOLS | ({"calculation"} if name == "hypotheses" else set())
+        return (decision["status"] == "verified" and action.get("action") == "tool"
+            and action.get("tool") == name and sorted(action.get("refs", [])) == expected_refs
+            and not any(e["event"] == "tool_finished" and e.get("tool") in invalidators
+                        and e["seq"] > end["seq"] for e in state["trace"]))
+
+    def _validate_verification_execution(self, state):
+        if not self._verification_disclosure_decoupled():
+            return
+        for name in ("calculation", "hypotheses"):
+            if name in state["observations"] and not self._derived_execution_observed(state, name):
+                raise IntegrityError("derived execution progress differs from its actual tool")
+        has_observation = "verification" in state["observations"]
+        has_receipt = "verification_execution" in state
+        if has_observation != has_receipt or has_receipt and not self._verification_execution_matches(state):
+            raise IntegrityError("verification execution receipt differs from its actual tool")
+        if (not has_receipt and state.get("verified_revision") is not None
+                and state.get("verified_revision") == self._current(state)):
+            raise IntegrityError("verification revision has no successful tool execution")
 
     def _check_results(self, state, request):
+        if self._analysis_child():
+            from .domain_analysis_execution import child_checks
+            return child_checks(self, state, request)
         current = state.get("calculated_revision") == self._current(state)
         checked = {h["id"]: h["status"] for h in state.get("calculated", {}).get("hypotheses", [])}
         results = []
@@ -471,11 +831,15 @@ class DynamicRuntime(ResearchRuntime):
             elif item.startswith("binding:"):
                 status = "insufficient"
             elif item == "calculation":
-                status = "passed" if current else "not_completed"
+                executed = self._derived_execution_observed(state, item) if self._verification_disclosure_decoupled() else True
+                status = "passed" if current and executed else "not_completed"
             elif item == "hypotheses":
-                status = "passed" if current and state.get("hypotheses_revision") == state.get("calculated_revision") else "not_completed"
+                executed = self._derived_execution_observed(state, item) if self._verification_disclosure_decoupled() else True
+                status = "passed" if current and executed and state.get("hypotheses_revision") == state.get("calculated_revision") else "not_completed"
             elif item == "verification":
-                status = "passed" if current and state.get("verified_revision") == state.get("calculated_revision") else "not_completed"
+                executed = (self._verification_execution_matches(state)
+                            if self._verification_disclosure_decoupled() else True)
+                status = "passed" if current and executed and state.get("verified_revision") == state.get("calculated_revision") else "not_completed"
             else:
                 status = ("not_completed" if item[11:] not in checked or not current else
                           "insufficient" if checked[item[11:]] == "insufficient" else "passed")
@@ -485,6 +849,9 @@ class DynamicRuntime(ResearchRuntime):
     def _child_context(self, request, access, run, deadline, domain="financial"):
         """Intersect trusted delegation, live parent tools, ChildSpec and source policy."""
         child_spec = self._role_spec(domain)
+        if self._analysis_enabled():
+            from .domain_analysis_execution import child_context
+            return child_context(self, request, access, run, deadline, domain)
         request_type, datasets = ((FinancialRequest, FINANCIAL_DATASETS) if domain == "financial" else
                                   (MarketRequest, MARKET_DATASETS))
         child_request = request_type.from_parent(request, self.delegated_datasets & datasets)
@@ -506,6 +873,10 @@ class DynamicRuntime(ResearchRuntime):
         return child, child_request, child_access
 
     def _finish_child(self, state, request, finish_reason):
+        if self._analysis_child():
+            from .domain_analysis_execution import finish_child
+            finish_child(self, state, request, finish_reason)
+            return
         domain = "market" if isinstance(self.spec, MarketChildSpec) else "financial"
         outputs = {} if state.get("withheld") else deepcopy(state["outputs"].get(domain, {}))
         checks = self._check_results(state, request) if not state.get("withheld") else [
@@ -537,6 +908,9 @@ class DynamicRuntime(ResearchRuntime):
 
     @staticmethod
     def _child_summary(report, parent_run_id, tool_call_id, domain=None):
+        if report.get("schema") == "domain-analysis-result/v1":
+            from .domain_analysis_execution import child_summary
+            return child_summary(report, parent_run_id, tool_call_id, domain)
         if (report.get("schema") != (domain or "financial") + "-child-result/v1"
                 or report.get("parent_run_id") != parent_run_id
                 or domain == "market" and report.get("domain") != domain):
@@ -557,8 +931,12 @@ class DynamicRuntime(ResearchRuntime):
             safe = deepcopy(state)
             safe.pop("withheld", None)
             safe["outputs"], safe["observations"] = {}, {}
+            if self._analysis_enabled():
+                safe["domain_results"] = {}
             for key in ("calculated", "calculated_revision", "hypotheses_revision", "verified_revision"):
                 safe.pop(key, None)
+            if self._verification_disclosure_decoupled():
+                safe.pop("verification_execution", None)
             self._finish_dynamic(safe, request, finish_reason=finish_reason)
             state["report"], state["phase"] = safe["report"], safe["phase"]
             state["finish_reason"] = finish_reason
@@ -613,6 +991,8 @@ class DynamicRuntime(ResearchRuntime):
                 route = {"turn": event["turn"], "tool": name, "tool_call_id": event["tool_call_id"],
                     "mode": "delegated" if name in AGENT_TOOLS else "direct",
                     "domain": name.removesuffix("_child") if name in AGENT_TOOLS else name if name in SOURCE_TOOLS else "research"}
+                if self._analysis_enabled() and name in {"financial_analysis_tool", "market_analysis_tool"}:
+                    route.update(mode="deterministic_domain", domain=name.removesuffix("_analysis_tool"))
                 if event["tool_call_id"] in reservations:
                     route["child_run_id"] = reservations[event["tool_call_id"]]
                 report["routes"].append(route)
@@ -622,8 +1002,27 @@ class DynamicRuntime(ResearchRuntime):
                 "disclosures": deepcopy(state["context_store"]["disclosures"]),
                 "authoritative_facts_preserved": len(report["facts"]),
                 "authoritative_evidence_preserved": len(report["evidence"])}
+            if self._verification_disclosure_decoupled():
+                report["context_archive"]["disclosure_contract"] = "verification_evidence_opt_in/v1"
+                report["verification_execution"] = deepcopy(state.get("verification_execution"))
+                if self._phase_gated_disclosure():
+                    report["context_archive"]["disclosure_contract"] = "phase_gated_verification_brief/v1"
+                if self._window_enabled():
+                    report["context_archive"].update(window_schema="dynamic-context-window/v1",
+                        windows=deepcopy(state["window_store"]["windows"]),
+                        page_receipts=deepcopy(state["window_store"]["receipts"]),
+                        read_coverage=deepcopy(state["window_store"]["coverage"]))
+                    if self.spec.version == "dynamic-parent-parallel-v6.1":
+                        report["context_archive"].update(window_metadata_contract="exact_window_metadata/v1",
+                            window_admission_policy="legacy_envelope_then_compact_minimum/v1")
+                    elif self.spec.version == "dynamic-parent-parallel-v6.2":
+                        report["context_archive"].update(window_metadata_contract="exact_window_metadata/v1",
+                            window_admission_policy=REQUESTED_WINDOW_ADMISSION_POLICY)
         if self._parallel_enabled():
             report["parallel_groups"] = deepcopy(state.get("parallel_groups", []))
+        if self._analysis_enabled():
+            from .domain_analysis_execution import report_details
+            report["domain_analysis"] = report_details(self, state, request)
         if "context_telemetry" in state:
             report["context_telemetry"] = deepcopy(state["context_telemetry"])
             report["trace_stratum"] = ("parallel_2_child" if state.get("parallel_groups") else
@@ -631,6 +1030,9 @@ class DynamicRuntime(ResearchRuntime):
                 "parent_1_child" if state.get("child_results") else
                 "parent_direct" if isinstance(self.spec, FinancialParentSpec) else "dynamic_single")
         state["finish_reason"] = finish_reason
+        if self._analysis_enabled():
+            import json
+            state["report"] = json.loads(canonical_json(state["report"]))
 
     def run(self, request, access, *, resume=None, run_id=None):
         if self.model is None or self.checkpoints is None:
@@ -652,6 +1054,22 @@ class DynamicRuntime(ResearchRuntime):
             configuration["context_policy"] = {"schema": "dynamic-context-store/v1",
                 "strategy": "lossless_catalog_lazy_disclosure/v1", "available_tools": available,
                 "granted_tools": sorted(self.granted), "scope_ref": digest(access.scope)}
+            if self._verification_disclosure_decoupled():
+                configuration["context_policy"]["strategy"] = "authorized_catalog_verification_disclosure/v1"
+                if self._phase_gated_disclosure():
+                    configuration["context_policy"].update(
+                        strategy="phase_gated_verification_brief/v1", view_schema="dynamic-context-disclosure-view/v2")
+                if self._window_enabled():
+                    configuration["context_policy"].update(strategy="bounded_context_window/v1",
+                        view_schema="dynamic-context-window/v1", window_store_schema="dynamic-window-store/v1")
+                    if self.spec.version == "dynamic-parent-parallel-v6.1":
+                        configuration["context_policy"].update(strategy="bounded_context_window_metadata/v1",
+                            view_schema="dynamic-context-window/v2", metadata_schema="exact_window_metadata/v1",
+                            admission_policy="legacy_envelope_then_compact_minimum/v1")
+                    elif self.spec.version == "dynamic-parent-parallel-v6.2":
+                        configuration["context_policy"].update(strategy="bounded_context_window_metadata/v1",
+                            view_schema="dynamic-context-window/v2", metadata_schema="exact_window_metadata/v1",
+                            admission_policy=REQUESTED_WINDOW_ADMISSION_POLICY)
         if isinstance(self.spec, (FinancialChildSpec, MarketChildSpec)):
             configuration["parent"] = {"run_id": self.parent_run_id, "deadline": self.inherited_deadline.isoformat()}
         if self.telemetry_lineage is not None:
@@ -705,6 +1123,10 @@ class DynamicRuntime(ResearchRuntime):
                     state["child_results"], state["source_origins"] = [], {}
                 if self._parallel_enabled():
                     state["parallel_groups"] = []
+                if self._analysis_enabled():
+                    state["domain_results"], state["analysis_operations"], state["analysis_receipts"] = {}, [], []
+                    from .domain_analysis_execution import initialize
+                    initialize(self, state, request, access)
                 # New runs collect telemetry across Single/direct/delegated paths.
                 # Old checkpoint reports contain no such field and replay unchanged.
                 state["context_telemetry"] = []
@@ -712,6 +1134,10 @@ class DynamicRuntime(ResearchRuntime):
                     state["context_store"] = {"schema": "dynamic-context-store/v1",
                         "binding": digest({"scope": access.scope, "run_id": run, "request": request.to_dict()}),
                         "catalogs": {}, "disclosures": [], "requested_refs": []}
+                if self._window_enabled():
+                    state["schema"] = "dynamic-window-state/v1"
+                    state["window_store"] = {"schema": "dynamic-window-store/v1",
+                        "windows": [], "receipts": [], "selection": None, "coverage": []}
                 self.checkpoints.append(access.scope, run, state)
             remaining = (datetime.fromisoformat(state["deadline"]) - self.now()).total_seconds()
             stop_at = self.monotonic() + max(0, remaining)
@@ -753,11 +1179,29 @@ class DynamicRuntime(ResearchRuntime):
                 decision["context_telemetry"] = record
                 event("context_telemetry_result", **record)
 
+            def reauthorize_sources(*, replay=False):
+                for name, saved in state["outputs"].items():
+                    if not replay:
+                        check()
+                    fresh, _ = executor.execute(name, wave="dynamic-revalidation")
+                    if not replay:
+                        check()
+                    if digest(fresh) != digest(saved):
+                        raise IntegrityError("dynamic pinned snapshot result changed")
+
             def revalidate(*, replay=False):
                 if self.cancelled():
                     raise BudgetExceeded("cancelled")
                 if self.authorize_parent is not None and not self.authorize_parent():
                     raise PermissionDenied("parent delegation was revoked")
+                if self._analysis_enabled():
+                    from .domain_analysis_execution import revalidate
+                    revalidate(self, state, request, access, executor, available,
+                        check=(lambda: None) if replay else check, replay=replay)
+                    if resume:
+                        self._validate_telemetry_history(self.checkpoints.history(access.scope, run), state,
+                                                         request, access, available)
+                    return
                 for summary in state.get("child_results", []):
                     domain = summary.get("domain", "financial") if isinstance(self.spec, DomainParentSpec) else "financial"
                     executor.registry.authorize(domain + "_child", self.spec, self.granted)
@@ -774,14 +1218,7 @@ class DynamicRuntime(ResearchRuntime):
                         domain=domain if isinstance(self.spec, DomainParentSpec) else None)
                     if expected != summary:
                         raise IntegrityError("child structured result differs from authorized checkpoint")
-                for name, saved in state["outputs"].items():
-                    if not replay:
-                        check()
-                    fresh, _ = executor.execute(name, wave="dynamic-revalidation")
-                    if not replay:
-                        check()
-                    if digest(fresh) != digest(saved):
-                        raise IntegrityError("dynamic pinned snapshot result changed")
+                reauthorize_sources(replay=replay)
                 # Derived permissions are also rechecked on reuse and recovery.
                 for name in ("calculation", "hypotheses", "verification"):
                     if name in state["observations"]:
@@ -805,13 +1242,22 @@ class DynamicRuntime(ResearchRuntime):
                 if resume:
                     self._validate_telemetry_history(self.checkpoints.history(access.scope, run), state,
                                                      request, access, available)
+                if self._verification_disclosure_decoupled():
+                    # Integrity reconstruction may itself outlive a revocation.
+                    # Recheck sources without recursively running the verifier.
+                    reauthorize_sources(replay=replay)
 
             if state["report"] is not None:
                 revalidate(replay=True)
                 saved = deepcopy(state["report"])
                 self._finish_dynamic(state, request, finish_reason=state.get("finish_reason"))
+                if self._verification_disclosure_decoupled():
+                    revalidate(replay=True)
                 # Trace in report is captured before the final checkpoint event.
                 state["report"]["trace"] = saved["trace"]
+                if self._analysis_child():
+                    state["report"]["result_digest"] = digest({k: v for k, v in state["report"].items()
+                                                              if k != "result_digest"})
                 if state["report"] != saved:
                     raise IntegrityError("dynamic completed report differs")
                 return saved
@@ -824,6 +1270,9 @@ class DynamicRuntime(ResearchRuntime):
                     state["decisions"][-1]["status"] = "unknown_outcome_no_replay"
                     state["model"] = {"status": "unknown_outcome_no_replay"}
                     raise BudgetExceeded("unknown_model_outcome_no_replay")
+                if self._analysis_enabled() and not self._analysis_child() and state.get("pending_tool"):
+                    from .domain_analysis_execution import resume_known_child
+                    resume_known_child(self, state, request, access, executor, event, check)
                 if state["pending_tool"]:
                     raise BudgetExceeded("unknown_tool_outcome_no_replay")
                 if state["decisions"] and state["decisions"][-1]["status"] in {"invalid_receipt", "unknown_outcome_no_replay"}:
@@ -845,11 +1294,24 @@ class DynamicRuntime(ResearchRuntime):
                                 "status": c["status"], "result_ref": c["result_ref"]} for c in state["child_results"]]}
                                 if isinstance(self.spec, DomainParentSpec) else {}),
                             **(self._context_arguments(state, access) if self._context_enabled() else {}))
+                        if self._window_enabled():
+                            message_kwargs["context_window_check"] = check
                         try:
-                            messages, context = dynamic_messages(request, available, list(state["observations"].values()),
-                                state["requirements"], state["plans"][-1]["steps"] if state["plans"] else [],
-                                self.spec.context_bytes, **message_kwargs)
-                        except ValidationError:
+                            messages, context = self._messages(state, request, available, **message_kwargs)
+                        except ValidationError as exc:
+                            if self._analysis_enabled() and isinstance(exc, BudgetExceeded):
+                                event("analysis_context_budget_exceeded", dispatched=False)
+                                raise
+                            if self._window_enabled():
+                                if isinstance(exc, BudgetExceeded):
+                                    raise
+                                from .dynamic_protocol import ContextMinimumViewExceeded
+                                if isinstance(exc, ContextMinimumViewExceeded):
+                                    event("context_minimum_view_exceeded", dispatched=False)
+                                    raise BudgetExceeded("context_minimum_view_exceeded") from None
+                                raise IntegrityError("invalid bounded window context") from None
+                            if self._verification_disclosure_decoupled() and not isinstance(exc, ContextViewBudgetExceeded):
+                                raise IntegrityError("invalid verification disclosure context") from None
                             if "context_telemetry" in state:
                                 from .context_telemetry import overflow_context_telemetry
                                 telemetry = overflow_context_telemetry(request, available, list(state["observations"].values()),
@@ -885,6 +1347,10 @@ class DynamicRuntime(ResearchRuntime):
                             catalog = self._build_catalog(state, request, access)
                             state["context_store"]["catalogs"][catalog["catalog_ref"]] = catalog
                             decision["context_catalog_ref"] = catalog["catalog_ref"]
+                            if self._window_enabled():
+                                window = {"turn": turn, "message_sha256": digest(messages), **context["window"]}
+                                state["window_store"]["windows"].append(window)
+                                decision["context_window_ref"] = window["window_ref"]
                         state["decisions"].append(decision)
                         state["tokens_reserved"] += reservation
                         state["tokens_accounted"] += reservation
@@ -895,10 +1361,15 @@ class DynamicRuntime(ResearchRuntime):
                             event("context_telemetry_prepared", **decision["context_telemetry"])
                         event("model_started", turn=turn, requested_model=self.spec.model,
                               token_reservation=reservation, message_sha256=digest(messages))
+                        if self._verification_disclosure_decoupled():
+                            revalidate()
+                            check()
                         try:
                             result = self.model.complete(messages, max_tokens=self.spec.output_tokens,
                                 timeout=min(120, max(0.001, stop_at - self.monotonic())))
                         except Exception as exc:
+                            if self.on_unknown_outcome is not None:
+                                self.on_unknown_outcome()
                             decision.update(status="unknown_outcome_no_replay", error_type=type(exc).__name__)
                             state["model"] = {"status": "unknown_outcome_no_replay", "error_type": type(exc).__name__}
                             if isinstance(self.spec, FinancialParentSpec):
@@ -910,6 +1381,8 @@ class DynamicRuntime(ResearchRuntime):
                         try:
                             validate_model_result(result, self.spec, reservation)
                         except ValidationError:
+                            if self.on_unknown_outcome is not None:
+                                self.on_unknown_outcome()
                             decision["status"] = "invalid_receipt"
                             state["model"] = {"status": "rejected"}
                             if isinstance(self.spec, FinancialParentSpec):
@@ -934,8 +1407,7 @@ class DynamicRuntime(ResearchRuntime):
                         if secret and secret in result.content:
                             raise BudgetExceeded("credential_reflection_rejected")
                         try:
-                            action = parse_action(result.content, available, state["observations"], version=self.spec.version,
-                                                  **self._context_parse_arguments(state, request, access))
+                            action = self._parse_action(result.content, available, state, request, access)
                         except (ValidationError, ValueError, TypeError, RecursionError):
                             decision.update(status="invalid_action", error_type="ActionSchemaError")
                             state["model"] = {"status": "rejected", "error_type": "ActionSchemaError"}
@@ -959,9 +1431,13 @@ class DynamicRuntime(ResearchRuntime):
                         record_context_result(decision)
                         event("plan_updated", turn=turn, steps=action["plan"])
                     action = state["pending_action"]
+                    if self._verification_disclosure_decoupled():
+                        # A paid decision can outlive its grants. Recheck the full
+                        # pinned source envelope before reusing any selected input.
+                        revalidate()
+                        check()
                     # Restored actions pass the same Schema/current-reference gate.
-                    action = parse_action(canonical_json(action), available, state["observations"], version=self.spec.version,
-                                          **self._context_parse_arguments(state, request, access))
+                    action = self._parse_action(canonical_json(action), available, state, request, access)
                     check()
                     if action["action"] == "parallel":
                         from .parallel import start_group, execute_group
@@ -994,8 +1470,85 @@ class DynamicRuntime(ResearchRuntime):
                         state["pending_action"] = None
                         self._finish_dynamic(state, request, finish_reason=action["reason"])
                         check()
+                        if self._verification_disclosure_decoupled():
+                            revalidate()
+                            check()
                         event("report_verified", status=state["report"]["status"], report_hash=digest(state["report"]))
                         return state["report"]
+                    if action["action"] == "context_read":
+                        from .context_window import (select_next, rebuild_selection, coverage_progress,
+                                                     merge_coverage, WINDOW_POLICY)
+                        catalog = self._build_catalog(state, request, access)
+                        issued = {k: v for k, v in state["window_store"]["windows"][-1].items()
+                                  if k not in {"turn", "message_sha256"}}
+                        selected = select_next(catalog, action, issued, scope=access.scope, run_id=run)
+                        budget = self._window_budget(state)
+                        pending = budget["required_actions_remaining"]
+                        if (budget["decisions_remaining"] < pending + 1
+                                or budget["tools_remaining"] < pending + 1
+                                or budget["root_remaining"]["decisions"] < pending + 1
+                                or budget["root_remaining"]["tools"] < pending + 1):
+                            raise BudgetExceeded("parent_completion_budget_unavailable")
+                        if state["tools_used"] >= self.spec.max_tools:
+                            raise BudgetExceeded("tool_budget_exceeded")
+                        call_id = f"{run}:{state['tools_used'] + 1}"
+                        from .root_budget import consume_parent_tool
+                        state["root_budget"] = consume_parent_tool(state["root_budget"], call_id)
+                        state["tools_used"] += 1
+                        state["pending_tool"] = {"tool": "context_read", "tool_call_id": call_id}
+                        event("tool_started", tool="context_read", tool_call_id=call_id, turn=state["model_attempts"])
+                        check()
+                        # Use the actual charged next-turn envelope and received plan.
+                        # Only this precommit compile may choose an end boundary.
+                        candidate_args = self._context_arguments(state, access)
+                        candidate_args["context_window_selection"] = selected
+                        try:
+                            _, prepared = dynamic_messages(request, available, list(state["observations"].values()),
+                                state["requirements"], action["plan"], self.spec.context_bytes,
+                                decision=state["model_attempts"] + 1, version=self.spec.version,
+                                protocol_error=state.get("protocol_error"), finish_rejection=state.get("finish_rejection"),
+                                delegation_results=[{"tool": c["domain"] + "_child", "domain": c["domain"],
+                                    "status": c["status"], "result_ref": c["result_ref"]} for c in state["child_results"]],
+                                context_window_check=check, **candidate_args)
+                        except ValidationError as exc:
+                            from .dynamic_protocol import ContextMinimumViewExceeded
+                            if isinstance(exc, ContextMinimumViewExceeded):
+                                raise BudgetExceeded("context_minimum_view_exceeded") from None
+                            raise
+                        selected = prepared["window_selection"]
+                        page = rebuild_selection(catalog, selected, scope=access.scope, run_id=run)
+                        check()
+                        revalidate()  # Read result may outlive a live SourceGrant.
+                        check()
+                        if not coverage_progress(catalog, selected, state["window_store"]["coverage"],
+                                                 scope=access.scope, run_id=run):
+                            state["pending_action"] = state["pending_tool"] = None
+                            state["no_progress"] += 1
+                            state["protocol_error"] = "duplicate_no_progress"
+                            event("tool_failed", tool="context_read", tool_call_id=call_id, error_type="RepeatedPage")
+                            event("repeated_action", tool="context_read", dispatched=False)
+                            if state["no_progress"] >= self.spec.no_progress_limit:
+                                raise BudgetExceeded("no_progress")
+                            continue
+                        receipt = {"scope_ref": digest(access.scope), "run_id": run,
+                            "request_ref": catalog["request_ref"], "catalog_ref": catalog["catalog_ref"],
+                            "policy_version": WINDOW_POLICY, "object_revision": selected["object_revision"],
+                            "collection_ref": selected["collection_ref"], "ordered_slice": [page["start"], page["end"]],
+                            "content_hash": page["content_hash"], "turn": state["model_attempts"], "tool_call_id": call_id,
+                            "issuing_window_ref": issued["window_ref"],
+                            "selection_before": deepcopy(state["window_store"]["selection"]), "selection_after": selected}
+                        state["window_store"]["coverage"] = merge_coverage(catalog, selected,
+                            state["window_store"]["coverage"], scope=access.scope, run_id=run)
+                        state["window_store"]["selection"] = selected
+                        state["window_store"]["receipts"].append(receipt)
+                        # Receipt and exact working-set replacement are one append.
+                        event("context_page_read", receipt=receipt)
+                        state["pending_action"] = state["pending_tool"] = None
+                        state["no_progress"] = 0
+                        state["phase"] = "observed"
+                        event("tool_finished", tool="context_read", tool_call_id=call_id,
+                              dedup=False, result_hash=page["content_hash"], catalog_ref=catalog["catalog_ref"])
+                        continue
                     if action["action"] == "disclose":
                         # Context retrieval reuses existing source/derived Registry
                         # grants. It is an accounted read, not a new business tool.
@@ -1059,7 +1612,9 @@ class DynamicRuntime(ResearchRuntime):
                         state["root_budget"] = consume_parent_tool(state["root_budget"], call_id)
                     state["tools_used"] += 1
                     state["pending_tool"] = {"tool": name, "tool_call_id": call_id}
-                    event("tool_started", tool=name, tool_call_id=call_id, turn=state["model_attempts"])
+                    event("tool_started", tool=name, tool_call_id=call_id, turn=state["model_attempts"],
+                        **({"analysis_input_revision": revision,
+                            "analysis_computed_ref": digest(state.get("calculated"))} if self._analysis_enabled() else {}))
                     try:
                         observation_name = name
                         if name in SOURCE_TOOLS:
@@ -1069,6 +1624,13 @@ class DynamicRuntime(ResearchRuntime):
                             state.get("source_origins", {}).pop(name, None)
                             for derived in ("calculation", "hypotheses", "verification"):
                                 state["observations"].pop(derived, None)
+                            if self._verification_disclosure_decoupled():
+                                state.pop("verification_execution", None)
+                        elif self._analysis_enabled() and name in {"financial_analysis_tool", "market_analysis_tool"}:
+                            from .domain_analysis_execution import composite_tool
+                            output = composite_tool(self, state, request, access, executor, event, check,
+                                                    name.removesuffix("_analysis_tool"), call_id)
+                            observation_name, reused = name.removesuffix("_analysis_tool"), False
                         elif name in AGENT_TOOLS:
                             if not isinstance(self.spec, FinancialParentSpec):
                                 raise PermissionDenied("only the dynamic parent can spawn a financial child")
@@ -1079,7 +1641,7 @@ class DynamicRuntime(ResearchRuntime):
                             child_run = uuid.uuid4().hex
                             limits = {"decisions": child_spec.max_decisions,
                                       "tools": child_spec.max_tools, "tokens": child_spec.max_tokens}
-                            headroom = self._parent_headroom(state) if self._parallel_enabled() else None
+                            headroom = self._parent_headroom(state) if self._parallel_enabled() or self._analysis_enabled() else None
                             state["root_budget"] = reserve_child(state["root_budget"], child_run, limits,
                                 **({"headroom": headroom} if headroom is not None else {}))
                             state["pending_child"] = {"run_id": child_run, "tool_call_id": call_id,
@@ -1088,7 +1650,14 @@ class DynamicRuntime(ResearchRuntime):
                                   request_ref=digest(child_request.to_dict()), root_deadline=state["deadline"],
                                   **({"headroom": headroom} if headroom is not None else {}),
                                   **({"domain": domain} if isinstance(self.spec, DomainParentSpec) else {}))
-                            child_report = child.run(child_request, child_access, run_id=child_run)
+                            try:
+                                child_report = child.run(child_request, child_access, run_id=child_run)
+                            except (PermissionDenied, IntegrityError):
+                                raise
+                            except Exception:
+                                if self._analysis_enabled():
+                                    raise BudgetExceeded("unknown_child_result_no_replay") from None
+                                raise
                             check()  # A late/cancelled child never enters the parent's evidence.
                             usage = child_report["usage"]
                             state["root_budget"] = settle_child(state["root_budget"], child_run,
@@ -1101,33 +1670,52 @@ class DynamicRuntime(ResearchRuntime):
                             event("child_finished", child_run_id=child_run, status=child_report["status"],
                                   result_ref=summary["result_ref"],
                                   **({"domain": domain} if isinstance(self.spec, DomainParentSpec) else {}))
+                            if self._analysis_enabled() and usage["unknown_usage_calls"]:
+                                raise BudgetExceeded("unknown_child_paid_outcome_no_replay")
                             if child_report["status"] not in {"completed", "insufficient"}:
                                 raise ValidationError("domain child did not complete its required read")
                             output = child_report["source_results"]
                             # Validate before importing: same bound sources, same authorization.
                             fresh, _ = executor.execute(domain, wave="child-import")
                             delegated = {key: result for key, result in fresh.items() if key in self.delegated_datasets}
-                            if digest(delegated) != child_report["source_result_ref"] or delegated != output:
+                            if (digest(delegated) != child_report["source_result_ref"]
+                                    or (digest(delegated) != digest(output) if self._analysis_enabled() else delegated != output)):
                                 raise IntegrityError("financial child source result differs from parent binding")
                             check()
+                            if self._analysis_enabled():
+                                from .domain_analysis_execution import import_result
+                                import_result(self, state, request, child_report, domain, access)
                             # Partial delegated datasets cannot satisfy an aggregate financial read.
                             if set(output) != set(fresh):
                                 raise ValidationError("financial child delegation does not cover the bound financial read")
                             state["outputs"][domain] = output
                             child_calls = [e["tool_call_id"] for e in child_report["trace"] if e["event"] == "tool_finished"]
-                            state["source_origins"][domain] = child_calls[-1]
+                            state["source_origins"][domain] = (child_report["source_tool_call_id"]
+                                if self._analysis_enabled() else child_calls[-1])
                             for derived in ("calculation", "hypotheses", "verification"):
                                 state["observations"].pop(derived, None)
+                            if self._verification_disclosure_decoupled():
+                                state.pop("verification_execution", None)
                             observation_name, reused = domain, False
                         elif name == "calculation":
                             if self._parallel_enabled():
                                 from .parallel import gate_stage
                                 gate_stage(state, name)
-                            output = calculate_study_claims(self._datasets(state), request,
-                                profit_change="absolute_profit_change" in request.hypotheses)
+                            if self._analysis_enabled():
+                                from .domain_analysis_execution import calculate_result
+                                output = calculate_result(self, state, request, action, event, check)
+                            else:
+                                output = calculate_study_claims(self._datasets(state), request,
+                                    profit_change="absolute_profit_change" in request.hypotheses)
                             output["hypotheses"] = []
-                            checking = {**output, "hypotheses": test_hypotheses(output, self._datasets(state), request)}
-                            output["insufficiency_diagnostics"] = diagnose_insufficiency(checking, self._datasets(state), request)
+                            if not self._analysis_child():
+                                if self._analysis_enabled():
+                                    from .domain_analysis_execution import diagnostic_hypotheses
+                                    checked_hypotheses = diagnostic_hypotheses(self, state, request, output)
+                                else:
+                                    checked_hypotheses = test_hypotheses(output, self._datasets(state), request)
+                                checking = {**output, "hypotheses": checked_hypotheses}
+                                output["insufficiency_diagnostics"] = diagnose_insufficiency(checking, self._datasets(state), request)
                             for source in output["evidence"].values():
                                 domain = DOMAINS[next(dataset for dataset, result in self._datasets(state).items()
                                                      if any(DataRecord.from_dict(r).record_id == source["record_id"] for r in result["records"]))]
@@ -1140,9 +1728,15 @@ class DynamicRuntime(ResearchRuntime):
                             state["calculated_revision"] = revision
                             state.pop("hypotheses_revision", None)
                             state.pop("verified_revision", None)
+                            if self._verification_disclosure_decoupled():
+                                state.pop("verification_execution", None)
                             state["observations"].pop("hypotheses", None)
                             state["observations"].pop("verification", None)
                             self._verify_computed(state, request)
+                            reused = False
+                        elif self._analysis_child() and name == "domain_review":
+                            from .domain_analysis_execution import review_result
+                            output = review_result(self, state, request, event, check)
                             reused = False
                         else:
                             if self._parallel_enabled():
@@ -1152,22 +1746,55 @@ class DynamicRuntime(ResearchRuntime):
                                 raise ValidationError("calculation must use all current bound results")
                             if name == "hypotheses":
                                 output = state["calculated"]
-                                output["hypotheses"] = test_hypotheses(output, self._datasets(state), request)
+                                if self._analysis_enabled():
+                                    from .domain_analysis_execution import remaining_hypotheses
+                                    output["hypotheses"] = remaining_hypotheses(self, state, request, event, check)
+                                else:
+                                    output["hypotheses"] = test_hypotheses(output, self._datasets(state), request)
                                 output["insufficiency_diagnostics"] = diagnose_insufficiency(output, self._datasets(state), request)
                                 state["hypotheses_revision"] = revision
                             else:
                                 if state.get("hypotheses_revision") != revision:
                                     raise ValidationError("hypotheses must precede verification")
-                                output = self._verify_computed(state, request)
-                                state["verified_revision"] = revision
+                                output = self._verify_computed(state, request,
+                                    **({"execution": True} if self._analysis_enabled() else {}))
+                                if self._analysis_enabled():
+                                    event("final_verification", production_calculations=0, fraction_verifications=1,
+                                          elapsed_ms=self.analysis_metrics["root_full_execution"]["elapsed_ms"],
+                                          input_revision=revision, computed_ref=digest(state["calculated"]),
+                                          tool_call_id=call_id)
+                                if not self._verification_disclosure_decoupled():
+                                    state["verified_revision"] = revision
                             reused = False
                         check()
-                        state["observations"][observation_name] = observe_tool(observation_name, output)
+                        if self._verification_disclosure_decoupled() and name in {"calculation", "hypotheses", "verification"}:
+                            revalidate()
+                            check()
+                        if self._analysis_child() and name == "domain_review":
+                            from .domain_analysis_execution import observe_review
+                            state["observations"][observation_name] = observe_review(output)
+                        elif self._analysis_enabled() and name in {"financial_analysis_tool", "market_analysis_tool"}:
+                            state["observations"][observation_name] = observe_tool(observation_name, state["outputs"][observation_name])
+                        else:
+                            state["observations"][observation_name] = observe_tool(observation_name, output)
+                        if name == "verification" and self._verification_disclosure_decoupled():
+                            # Only the actually selected, successful business tool commits
+                            # this receipt; automatic integrity revalidation does not.
+                            state["verified_revision"] = revision
+                            state["verification_execution"] = {"source_revision": revision,
+                                "calculated_revision": state["calculated_revision"],
+                                "hypotheses_revision": state["hypotheses_revision"],
+                                "computed_ref": digest(state["calculated"]),
+                                "datasets_ref": digest(self._datasets(state, state["computed_sources"])),
+                                "tool_call_id": call_id, "turn": state["model_attempts"],
+                                "result_ref": digest(output)}
                         if self._parallel_enabled():
                             from .parallel import complete_stage
                             complete_stage(state, name)
                         if self._context_enabled():
                             state["context_store"]["requested_refs"] = []
+                        if self._window_enabled():
+                            state["window_store"]["selection"] = None
                         state["completed_actions"].append(signature)
                         state["pending_tool"] = state["pending_action"] = None
                         state["no_progress"] = 0
@@ -1175,6 +1802,13 @@ class DynamicRuntime(ResearchRuntime):
                         state["phase"] = "observed"
                         event("tool_finished", tool=name, tool_call_id=call_id, dedup=reused,
                               result_hash=digest(output), observation=state["observations"][observation_name])
+                        if self._analysis_enabled() and "pending_analysis_join" in state:
+                            event("domain_join", **state.pop("pending_analysis_join"))
+                        if self._analysis_child() and name == "domain_review":
+                            from .domain_analysis_execution import seal_local_execution
+                            seal_local_execution(self, state, request)
+                            event("local_verification_committed", attestation_ref=state["local_attestation"]["attestation_ref"],
+                                  production_calculations=0, fraction_verifications=0)
                     except ValidationError as exc:
                         if isinstance(exc, BudgetExceeded):
                             raise

@@ -108,6 +108,22 @@ def add_profit_change_claim(computed, datasets, request):
     return computed
 
 
+def calculate_profit_change(datasets, request):
+    """Produce only the explicitly frozen amount operator, with source lineage.
+
+    This does not rerun snapshot or percentage YoY production. It uses the same
+    source serialization and amount producer as the legacy opt-in wrapper.
+    """
+    from .calculation import _Calculation, FINANCIAL_DATASETS
+    calculation = _Calculation({k: v for k, v in datasets.items() if k in FINANCIAL_DATASETS})
+    inputs, _ = _production_inputs(datasets, request)
+    if inputs is not None:
+        prior, current, _, _ = inputs
+        calculation.source(prior.to_dict(), "net_income_parent")
+        calculation.source(current.to_dict(), "net_income_parent")
+    return add_profit_change_claim(calculation.output(), datasets, request)
+
+
 def profit_change_hypothesis(computed, datasets, request):
     """A positive signed amount supports improvement; zero/decrease are counterfacts."""
     if not _requested(request):

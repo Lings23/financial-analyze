@@ -1,8 +1,48 @@
 # 股票研究 Agent 架构
 
+2026-10-09 最终交付：工程①–④及限定真实Child闭环完成；原603207正常和688184合法不足的A/B/C最终canonical结果均与原完整oracle等价，6格覆盖6/6。原新窗口评分保留初始4/6、复验1/2；用户另授权688184/B独立一次v4补验，6决策/20074 Token、真实Final后insufficient通过；共9次运行6/9通过，失败未删除。C每例实际域计算2次/4算子、局部Fraction2次、Join重复生产/Fraction0、原完整Final1、独立完整性审计19保留。全部当前58 API请求用量已知139565 Token；A24841/B55656/C59068含失败修正，C较B高6.13%、较更强A高137.78%，无实用收益或有意义自主检查增量证明，保持显式实验及原默认。core1159门禁哈希一致、隔离PG16通过，旧39与新8＋补验1＋前轮3只读回放一致。全历史旧API未知22338＋局部Root4095预留保留，实际总费用未知。详见[最终报告](DOMAIN_CHILD_ANALYSIS_FINAL_REPORT_20261009.md)；没有发布、部署、来源扩张或下一阶段。
+
+2026-10-09 新独立窗口已获明确授权：原2案例/6初始＋最多2有据复验/128父子决策/768000记账Token/首次freeze起2400秒。上轮16:27:09–17:07:09（+08:00）实际外发11次全部已知17900 Token；正常A实际Final完成，B两次非法parallel按no_progress停止，C入口将Financial在途预留误判为terminal unknown，Market未HTTP外发即拒绝，原Root4095预留不释放。修复已离线通过，待启动续验因自动审批usage limit未执行；原窗口已过期。新入口对全部A/B/C统一legal-action-selection/v2，修复在途/terminal区分；传输12＋新入口11离线通过，core保持原1159门禁。保留旧API未知22338＋旧局部Root4095合计26433预留、全部deadline和失败。当前准备新正式freeze，尚无本窗口新paid。详见[验收报告](DOMAIN_CHILD_ANALYSIS_ACCEPTANCE_20261009.md)。
+
+2026-10-09 verification数据续验实际结果：15:49:29冻结、16:29:29绝对截止（+08:00），原两案例、六A/B/C槽及质量标准不变。前三次DeepSeek请求成功，财务/行情/计算已执行并生成7 Fact/12 Evidence；第4次于15:50:13–15:50:34连接失败、用量未知，立即停止新增paid（3/4=75%，无重试）。实际hypotheses/Final未执行，B/C等五槽未启动、复验0，第二轮和goal仍未完成。新known3659/accounted12203/未知8544保留；全历史加独立探针known10090/accounted32428/unknown3，未知预留22338不释放。工程本地门禁保持1159＋隔离PG16、传输8、driver9；只读partial1/1回放无模型/Provider/Checkpoint追加。无真实Child/强基线收益结论，继续保留显式实验模式；详见[验收报告](DOMAIN_CHILD_ANALYSIS_ACCEPTANCE_20261009.md)。
+
+2026-10-09 最新用户授权“直接使用verification中的数据发给deepseek，完成原来第二轮实验”，覆盖此前本实验的停止重试指令。沿用已完成工作包和原两案例A/B/C同题标准；只复用verification绑定的合法不可变源与完整计算输入，通过原授权Tool Observation披露，不把verified元数据当最终执行。旧campaign/续验已过期，旧两个未知请求及13794 Token预留、失败和截止时间保持；同范围续验另冻结新身份、账本与2400秒起点，仍2案例/6初始＋最多2有据修复/128决策/768000记账Token。只显式使用同端点同模型direct-ipv4/v1传输实例，默认和源码身份不变。当前在离线门禁及续验准备，尚未产生新的真实闭环证据。
+
+2026-10-09最新用户停止条件已满足：续验网络请求4/5成功（80%），两业务campaign合计4/6成功（66.7%），当前可见失败均为ModelConnectionError。按“超过60%就不要再重试”停止所有进一步paid重试/新campaign；此前重试草案授权由最新指令覆盖，第三目录未创建、第三轮paid0。未知2次及13794 Token预留不释放。HTTP/模型请求成功率不等于业务闭环：实际Final/B/C/Child仍未完成，goal未完成；详见[报告](DOMAIN_CHILD_ANALYSIS_ACCEPTANCE_20261009.md)。
+
+2026-10-09续验结果：新campaign已于14:24:43正式冻结（截止15:04:43，+08:00），603207/A前四模型动作/Tool成功，第5连接失败且用量未知；Root partial、实际Final0，B/C五槽未启动、修复0。新known6417/保守记账15387（含8970未知预留）；加旧4824未知记账与独立14已知Token，跨批known6431/accounted20225/unknown2，实际总费用仍未知。已停止所有新paid、不重发、不释放；partial1/1零追加回放。六个无凭据代理TLS样本1次SSLEOF支持间歇性连接故障，不能证明未计费。完整业务闭环、Child自主选择与强基线收益仍未验证，goal未完成；详细证据见[本轮报告](DOMAIN_CHILD_ANALYSIS_ACCEPTANCE_20261009.md)。
+
+## 当前领域分析接入与验证职责（2026-10-09，本地已验证，真实验收阻塞）
+
+当前goal已授权 [领域分析方案](DOMAIN_CHILD_ANALYSIS_DESIGN_20261008.md) 五包，沿用既有DynamicRuntime/Registry/Executor/Checkpoint/root-budget-v3。新分析Spec/请求/动作/结果与旧v1–v6身份分开，三条显式路线为普通Tool、确定性领域组合Tool、分析Child；默认不变。Child内Read → Calculation → Domain Review实际执行独立Fraction局部核验并提交完整Claim/Evidence、缺口、反证与绑定版本/ownership/实际调用的凭据。
+
+Parent Validated Join从真实持久执行核对身份/task/Spec、授权/PIT/cutoff/snapshot、输入revision、内容哈希、血缘、必需输出manifest和调用回执；可信凭据完整时直接消费，移除Join逐项Fraction与重复业务生产。无效/缺失/失效/不可重建凭据拒绝。两个域内分支可并行，Join后Composition仅生产跨域或未委派项；汇合checks后仍由Parent实际选择并成功执行原完整最终verifier。12000、根16/18/96000、no_progress=2、原绝对deadline、原子预留/Parent headroom及未知/取消/迟到/恢复契约保持。
+
+Child局部、Join、最终全量和恢复审计各自记录实际次数与耗时。本地六路径完整结果等价，每个双域Child案例局部Fraction2次、Join0次、实际Final1次；保留的Root完整integrity audit另列19次。完整回归1159项0失败/错误，16数据库跳过项另在隔离实例全部通过，历史39份零追加回放一致。上述模型动作是合成机制验证，不证明Token或延迟收益。
+
+原真实A/B/C已独立冻结，但首请求连接失败且用量未知，根停止新增付费派发并保留预留，余5槽未启动；该campaign已过11:19:12（+08:00）的绝对期限。之后独立连通性请求和无凭据分阶段检查证实当前代理/IPv4 TLS可用，两个IPv6地址超时发生在TCP阶段，不能把旧未分段TimeoutError确定归为TLS握手故障。用户已明确授权同范围新独立campaign，复用原控制器与Spec，使用新run/账本/绝对deadline，旧未知结果与4824预留不改；新驱动及门禁核对中，尚未正式冻结/付费。
+
+真实闭环、自主检查选择与实用收益仍未验证，goal未完成，默认不变，新能力仅显式实验启用。源码、测试、阶段计数与失败/预算证据见[本轮报告](DOMAIN_CHILD_ANALYSIS_ACCEPTANCE_20261009.md)。下文早期“仅设计/未实施”等文字是对应历史轮次，不能替代本段现状。
+
 状态：设计基线 v1；2026-09-28。实现进展以 [STATUS.md](STATUS.md) 为准。
 
-2026-10-06当前明确授权Phase6首轮：基于真实Trace/Telemetry/账本先选一个有依据的最小无损优化；继续复用DynamicRuntime、Registry/Executor、Evidence、Trace和Checkpoint，不引入新Runtime/Provider/Dataset/领域Agent/Router。12000字节与默认/历史身份/恢复、安全和根预算机制冻结；模型输入变更需显式新协议。先机制/权限/PIT/兼容/历史只读回放，再冻结最多3已有案例的版本配对和独立预算后真实验收，最后零网络/零Checkpoint追加回放。不作正式阈值调参、LLM摘要、事实裁剪、扩大并行或下一阶段。后续旧“Phase6未启动”均保持各轮历史事实。
+2026-10-08 用户授权优化 v6 Token 与去重，新增显式 `dynamic-parent-parallel-v6.1` / `dynamic-context-window/v2` / `exact_window_metadata/v1`。纯 `context_window_metadata.py` 对当前消息精确 metadata 使用盈利符号/完整列表/白名单列记录，保留金融 value 和 O/C/E/H scalar atom literal，严格 canonical 回解原 window-v1；小窗口 fallback literal。旧 envelope 优先选择工作集、实际 encoded render 绑定 paid SHA/window/cursor；只有类型化 minimum-view 超限可 compact fallback。原 catalog/window_store/coverage 去重、授权、实际工具检查与完整 verifier 保持；默认/旧 v5/v6/12000/原预算不改。1036离线与新PG4/4通过，真实质量/恢复4/4，实测总Token少0.93%、Runtime增加；仅显式限定验收，真实读页仍未验证，细节见[本包记录](CONTEXT_WINDOW_METADATA_V6_1_20261008.md)。
+
+2026-10-08 用户要求设计领域 Child 的实用化，完成[领域分析职责方案](DOMAIN_CHILD_ANALYSIS_DESIGN_20261008.md)，仅设计、未实施。拟议独立 `financial-analysis-child-v1`/`market-analysis-child-v1` 与 `dynamic-parent-domain-analysis-v1` 以可信子任务/算子目录完成领域计算和检验，Runtime 生成完整 Claim/Evidence/缺口/反证与真实执行回执；Parent 在原授权/源/revision核对后消费结果，只生产跨域/未委派部分，保留原完整独立 verifier 及实际 Parent verification。先提取现有纯算子和确定性领域 Tool，再评估模型自主检查选择；单次读源无需 Child。旧 Child v3/Parent v1–v6/默认/12000/历史与原根边界保持，新局部分配仅候选，不引另一套 Runtime/Router 或新领域/来源。本轮零业务模型/金融 Provider 外发，不启动新验收或 W3。
+
+2026-10-07 当前用户要求执行 v6，新增显式 `dynamic-parent-parallel-v6` / `dynamic-context-window/v1`，纯 `context_window.py` 负责确定性窗口和页协议，DynamicRuntime 负责原授权/预算/事务/恢复。完整 catalog 与 v5 audit/brief、原 verifier 不变。当前付费窗口登记允许 refs/cursors；dispatch/window 绑定真实头部、scope/run/request/catalog、完整内容版本，页回执绑定精确范围/hash/intent。`dynamic-window-store/v1` 保存 windows/receipts/selection/成员覆盖，使用原 Checkpoint/Run 锁；已提交片段严格回建，未知读取不重放，重复成员不算进展，保留业务和 finish 余量。12000/默认/Child v3/历史与原局部根预算保持，实际验收见[本包记录](CONTEXT_WINDOW_V6_20261007.md)，W3 不实施。下文“v6未实施”是历史轮次。
+
+2026-10-08限定收口：982离线968通过/14数据库跳过、另行17/17隔离数据库通过，历史31与新4份报告零追加回放、真实4/4完整质量与实际verification保持。三处实证恢复问题已通过paid/read intent账本核对及确定性预提交边界重编修复。真实context_read为0、超限恢复未验证；同状态字节与实测Token增加，不声称通用无限续跑或性能收益。只接受显式窗口与执行过的真实case，不改变默认，不启动W3。
+
+2026-10-07 用户追加“阅读方案后，执行v5”，已完成 W1b 显式 `dynamic-parent-parallel-v5` / `dynamic-context-disclosure-view/v2` 限定验收。沿用 v4 完整 catalog、真实 verification 凭据、全源/授权/PIT/恢复门禁。完整 audit 存每笔 prepared Checkpoint metadata，包含完整 typed manifest 和原 computed/datasets 内容哈希，恢复随 paid wire 从原状态重建核对。`phase_gated_verification_brief/v1` 同时核实际 read、calculation/hypotheses checks、完整 computed_sources、source revision 和 DAG，就绪且 verification 未完成时才附 brief。当前消息 `state_versions` 使用排序唯一完整 digest 表及严格 `{"h":index}` 槽位；不授予权限或证明执行，不跨轮复用。v5 不加动作/分页，不改全量 verifier、默认、12000、原预算或旧 wire/identity。真实4/4与零追加回放4/4，实测Token少11.40%而Runtime增加；实际结果见[本包记录](CONTEXT_DISCLOSURE_V5_20261007.md)，下文“仅设计”为此前历史。
+
+2026-10-07后续仅设计[持续上下文整合方案](CONTEXT_CONTINUATION_DESIGN_20261006.md)：同一权威 RunState/catalog 保留完整 audit/证据/实际工具凭据，模型每轮独立接收完整任务、范围、checks 和当前状态。W1a/v4 已完成；W1b 拟议 Parent v5/disclosure-view/v2 将 audit 留程序侧，仅权威 verification 就绪且未成功时发完整集合引用/准确数量，当前消息 revision 精确去重；原事实/假设/缺口/反证与旧 disclose 保持。W2 再以拟议 v6/window/v1/context_read 做精确分页与工作集替换，游标绑定完整对象版本/当前已发窗口，不绑定短表索引。v5/v6 未实施，不把字节样例当实际 Token 收益；详细 schema 见[去重设计](CONTEXT_DISCLOSURE_DEDUP_DESIGN_20261007.md)。全部新分支应继承 v4 真实 verification 凭据、完整源集合及授权/恢复检查；旧 wire/身份/默认/12000/全部预算不变，Child 显式 v3。
+
+2026-10-07实施[W1首个最小包](CONTEXT_VERIFICATION_DECOUPLING_20261007.md)：显式 Parent v4 / `dynamic-context-disclosure-view/v1` 取消 verification 阶段自动展开全 Evidence。原 catalog 保存完整对象，新 manifest 绑定范围/请求/revision/完整集合引用与准确计数，现有事实/假设/缺口/反证和合法动作保留；manifest 不是执行凭据。模型实际选择 verification 后，同一 Runtime 对完整已授权 computed/datasets 调用原 verifier，成功提交绑定实际动作的 `verification_execution`，恢复重核 paid wire/权限/快照与工具执行。旧 codec/wire/default/Spec/Checkpoint 不升级，12000 和全部预算保持。W2 通用分页/context_read、重复窗口和 W3 批处理仍只是[原持续上下文设计](CONTEXT_CONTINUATION_DESIGN_20261006.md)，本包不能称为无限或通用续跑。
+
+本包限定真实4/4及零追加回放4/4通过，完整事实/证据与执行检查保持；新实际集合凭据和完整源集合校验、防止Model/工具/恢复复用期间撤权的末尾源复核均属于v4安全分支。总Token和Runtime实测增加，真实超限恢复及W2仍未验证，不据本包扩大并行或修改默认。
+
+2026-10-06此前明确授权Phase6首轮：基于真实Trace/Telemetry/账本先选一个有依据的最小无损优化；继续复用DynamicRuntime、Registry/Executor、Evidence、Trace和Checkpoint，不引入新Runtime/Provider/Dataset/领域Agent/Router。12000字节与默认/历史身份/恢复、安全和根预算机制冻结；模型输入变更需显式新协议。先机制/权限/PIT/兼容/历史只读回放，再冻结最多3已有案例的版本配对和独立预算后真实验收，最后零网络/零Checkpoint追加回放。不作正式阈值调参、LLM摘要、事实裁剪、扩大并行或下一阶段。后续旧“Phase6未启动”均保持各轮历史事实。
 
 路线修订（2026-10-04/05）：Dynamic Single、P4.3串行Financial Child、P4.4串行Financial/Market委派与无损上下文已交付。同日后续P4.5请求新增独立版本ParallelParentSpec，在同一DynamicRuntime内调度两领域Child；同一Parent模型仍可选直接/串行路径，没有独立Router模型或ParallelRuntime。取消 Fixed/Dynamic、Agent/workflow 对照门槛；历史失败及分数保留，实际验收见 [STATUS.md](STATUS.md)，范围见 [PLAN.md](PLAN.md)。
 
@@ -340,3 +380,11 @@ Evidence Verification、Domain Isolation、Single/Multi、Hypothesis Verificatio
 - [Tushare HTTP](https://tushare.pro/document/1?doc_id=130)、[日线](https://tushare.pro/document/2?doc_id=27)、[利润表](https://tushare.pro/document/2?doc_id=33)、[复权因子](https://tushare.pro/document/2?doc_id=28)。
 - [Psycopg 使用文档](https://www.psycopg.org/psycopg3/docs/basic/usage.html)。
 - [阿里云百炼 DeepSeek 接口](https://help.aliyun.com/zh/model-studio/deepseek-api)：本项目用户配置的实际网关支持该模型标识与 Chat Completions；不将 DeepSeek 官方直连的模型别名规则套用到百炼。
+
+## 2026-10-12 业务阶段四解释研究设计（未实施）
+
+新增[多因素解释研究最小实现方案](STAGE4_EXPLANATION_RESEARCH_IMPLEMENTATION_20261012.md)。这里的阶段四是业务综合研究与可能原因分析，不是研发 Phase 4；本文档不改变既有实现和当前默认路线。
+
+拟议分工为：模型提出、比较和调整解释，现有工具与程序核对数字、引用、时间和真实完成条件。优先通过显式新 Single 协议复用 DynamicRuntime、Registry/Executor、Evidence、Trace 和 Checkpoint；新增解释层与薄检查适配，不建设另一套 Runtime 或领域 Agent。普通证据缺口限制对应解释，权限/PIT/完整性等既有停止条件保持。
+
+文档同时规定公开机构研究与原始披露的案例整理方法、Agent 输入与评审参考的分离、有用比较的验收要求。所有新增字段、工具、模块和案例规模均为设计；12000 字节上限、默认值、历史身份、结果和失败分母保持。

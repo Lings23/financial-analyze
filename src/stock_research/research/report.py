@@ -300,12 +300,26 @@ def financial_child_sections(report):
     if children is None and root is None and not domains:
         return []
     lines = domain_routes_sections(report)
+    analysis = report.get("domain_analysis")
+    if analysis:
+        intro = {"direct": "普通 Tool 路线：Parent 直接完成领域分析。",
+                 "tool": "确定性领域 Tool 路线：完整领域计算及局部验证由有界组合工具完成，没有 Child 模型循环。",
+                 "child": "分析 Child 路线：每域最多一个 Child，按冻结配置串行或并行执行领域计算及局部验证，Parent 核回执后消费结果。"}
+        lines += ["## 领域分析结果与预算", "", text(intro.get(analysis["mode"], analysis["mode"])), "",
+                  "Join 核验来源、版本、权限、血缘与真实执行凭据；最终仍执行完整独立验证。局部数值核对通过不等于假设获得支持，缺口和反证保留在假设表与 JSON 中。", "",
+                  "| 领域 | 领域 Fact | Evidence | 局部验证 |", "|---|---:|---:|---|"]
+        for domain, result in sorted(analysis.get("results", {}).items()):
+            computed = result["computed"]
+            lines.append(f"| {text(domain)} | {len(computed['facts'])} | {len(computed['evidence'])} | {text(result['local_verification']['status'])} |")
+        lines.append("")
     lines += ["## 领域 Child 与父子证据关联" if domains else "## Financial Child 与父子证据关联", "",
-             ("本入口允许 Financial、Market 两个领域各最多一个受限 Child，严格串行。" if domains else
+             ((text(intro.get(analysis["mode"], analysis["mode"]))
+               if analysis else "本入口允许 Financial、Market 两个领域各最多一个受限 Child，严格串行。") if domains else
               "本入口允许一个串行、受限的 Financial Child。") + "父子运行沿用绑定的证券、窗口、cutoff、PIT 和快照；"
              "Child 的状态与来源引用不替代父运行的必需检查或独立数值校验。", ""]
     if not children:
-        lines += ["尚无已返回的领域 Child 结果。" if domains else "尚无已返回的 Financial Child 结果。", ""]
+        lines += [("本路线没有 Child 模型循环。" if analysis and analysis["mode"] != "child" else
+                   "尚无已返回的领域 Child 结果。" if domains else "尚无已返回的 Financial Child 结果。"), ""]
     for child in children or []:
         domain = {"financial": "Financial", "market": "Market"}.get(child.get("domain"), child.get("domain"))
         heading = text(domain) + " Child" if domain is not None else "Child"
@@ -350,11 +364,13 @@ def domain_routes_sections(report):
     if "routes" not in report:
         return []
     lines = ["## Parent 领域路由", "",
-             "同一 Parent 从已授权的 Financial / Market 工具或 AgentTool 中选择取证路径；"
-             "路由记录来自 Runtime，领域委派按顺序执行。", "",
+             ("同一 Parent 使用冻结的普通 Tool、确定性领域 Tool 或分析 Child 路线；结果所有权与最终完整验证保持。"
+              if report.get("domain_analysis") else "同一 Parent 从已授权的 Financial / Market 工具或 AgentTool 中选择取证路径；")
+             + ("路由记录来自 Runtime，分析分支按冻结的依赖图执行。" if report.get("domain_analysis")
+                else "路由记录来自 Runtime，领域委派按顺序执行。"), "",
              "| 决策轮 | 领域 | 执行方式 | 工具 | 工具调用 | Child 运行 |", "|---|---|---|---|---|---|"]
     domains = {"financial": "Financial / 财务", "market": "Market / 行情", "research": "研究计算与校验"}
-    modes = {"direct": "直接工具", "delegated": "AgentTool 委派"}
+    modes = {"direct": "直接工具", "delegated": "AgentTool 委派", "deterministic_domain": "确定性领域 Tool"}
     for route in report["routes"]:
         lines.append(f"| {text(route['turn'])} | {text(domains.get(route['domain'], route['domain']))} | "
                      f"{text(modes.get(route['mode'], route['mode']))} | {text(route['tool'])} | "

@@ -62,9 +62,9 @@ def add_command(commands):
                          help="opt into the dynamic v2 parent routing serial Financial/Market direct tools or AgentTools")
     command.add_argument("--parallel-domains", action="store_true",
                          help="opt into P4.5 bounded DAG Financial/Market parallel Children on the shared Runtime")
-    command.add_argument("--parallel-version", choices=("dynamic-parent-parallel-v1", "dynamic-parent-parallel-v2", "dynamic-parent-parallel-v3"),
+    command.add_argument("--parallel-version", choices=("dynamic-parent-parallel-v1", "dynamic-parent-parallel-v2", "dynamic-parent-parallel-v3", "dynamic-parent-parallel-v4", "dynamic-parent-parallel-v5", "dynamic-parent-parallel-v6", "dynamic-parent-parallel-v6.1", "dynamic-parent-parallel-v6.2"),
                          default="dynamic-parent-parallel-v1", action=ParallelVersionAction,
-                         help="explicit Parent execution feedback v2 or lossless metadata representation v3; default v1 preserves legacy inputs; requires --parallel-domains")
+                         help="explicit Parent feedback v2, metadata v3, disclosure v4, phase-gated dedup v5, windows v6, exact metadata v6.1, or requested-page capacity v6.2; default v1 preserves legacy inputs; requires --parallel-domains")
     command.set_defaults(parallel_version_explicit=False)
     command.add_argument("--child-protocol-version", choices=("v1", "v2", "v3"), default="v1",
                          help="explicit Child protocol; v1 preserves legacy inputs, v2 shows read execution, v3 adds exact current action schema; requires a Child parent mode")
@@ -72,6 +72,12 @@ def add_command(commands):
                          default="dynamic-parent-domains-v2", action=DomainVersionAction,
                          help="domain parent context version (default v2); pin v1 for original checkpoint replay; requires --domain-agents")
     command.set_defaults(domain_version_explicit=False)
+    command.add_argument("--domain-analysis-mode", choices=("direct", "tool", "child"),
+                         help="explicit experimental analysis Parent: ordinary tools, deterministic domain tools, or analysis Children")
+    command.add_argument("--domain-analysis-execution", choices=("serial", "parallel"), default="parallel",
+                         help="analysis Child scheduling on the existing Runtime; requires --domain-analysis-mode")
+    command.add_argument("--domain-analysis-profile", choices=("core/v1", "profit-amount/v1"), default="core/v1",
+                         help="freeze canonical goals; amount requires an already explicit profit-change/v1 request")
     command.add_argument("--preview-model", action="store_true", help="save exact outbound messages locally without calling a model")
     command.add_argument("--study-version", choices=("single-research-v1", "single-research-v2", "single-research-v3", "single-research-v4", "single-research-v5"),
                          default="single-research-v4", help="v4 structured diagnostics; opt into v5 signed profit amounts; pin legacy versions for replay")
@@ -90,12 +96,20 @@ def run(args, repository):
     domain_version = getattr(args, "domain_version", "dynamic-parent-domains-v2")
     domain_version_explicit = getattr(args, "domain_version_explicit", hasattr(args, "domain_version"))
     dynamic_version = getattr(args, "dynamic_version", "single-dynamic-v2")
+    analysis_mode = getattr(args, "domain_analysis_mode", None)
+    analysis_execution = getattr(args, "domain_analysis_execution", "parallel")
+    analysis_profile = getattr(args, "domain_analysis_profile", "core/v1")
     if preview and args.with_model:
         raise ValidationError("model preview and live model execution are mutually exclusive")
     if question is not None and workflow != "dynamic":
         raise ValidationError("--question requires --workflow dynamic")
     if sum((financial_child, domain_agents, parallel_domains)) > 1:
         raise ValidationError("--financial-child, --domain-agents and --parallel-domains are mutually exclusive")
+    if analysis_mode and (workflow != "dynamic" or any((financial_child, domain_agents, parallel_domains))
+            or child_protocol_version != "v1" or domain_version_explicit or parallel_version_explicit):
+        raise ValidationError("domain analysis requires dynamic and its independent explicit protocol")
+    if not analysis_mode and (analysis_execution != "parallel" or analysis_profile != "core/v1"):
+        raise ValidationError("analysis execution/profile requires --domain-analysis-mode")
     if child_protocol_version not in {"v1", "v2", "v3"}:
         raise ValidationError("invalid Child protocol version")
     if child_protocol_version != "v1" and not any((financial_child, domain_agents, parallel_domains)):
@@ -144,7 +158,11 @@ def run(args, repository):
     runtime_options = {}
     if workflow == "dynamic":
         from .dynamic_contracts import DynamicSpec
-        if parallel_domains:
+        if analysis_mode:
+            from .domain_analysis_contracts import DomainAnalysisParentSpec
+            runtime_options["spec"] = DomainAnalysisParentSpec(mode=analysis_mode,
+                execution=analysis_execution, profile_id=analysis_profile)
+        elif parallel_domains:
             from .dynamic_contracts import ParallelParentSpec
             runtime_options["spec"] = ParallelParentSpec(version=parallel_version)
         elif domain_agents:
@@ -179,6 +197,9 @@ def run(args, repository):
                           "usage": {"tool_calls": 0, "model_attempts": 0, "tokens_reserved": 0,
                                     "total_tokens": 0, "tokens_accounted": 0, "unknown_usage_calls": 0,
                                     "financial_provider_network_calls": 0}}
+        if analysis_mode:
+            preview_report["domain_analysis"] = {"mode": analysis_mode, "execution": analysis_execution,
+                                                "profile_id": analysis_profile, "experimental": True}
         if domain_agents or parallel_domains:
             preview_report["domain_agents_enabled"] = True
         if parallel_domains:

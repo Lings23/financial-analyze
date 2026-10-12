@@ -4,6 +4,7 @@ from datetime import timedelta
 import json
 from pathlib import Path
 import sys
+import time
 from tempfile import TemporaryDirectory
 from threading import Barrier
 from types import SimpleNamespace
@@ -34,6 +35,10 @@ class EnvelopeTransport:
         if domain:
             if turn == 1:
                 self.barrier.wait()
+                # Keep scripted I/O observably open after the rendezvous. An
+                # instantaneous fixture may otherwise share a coarse UTC tick.
+                # This is bounded synthetic timing, never live overlap evidence.
+                time.sleep(0.02)
             action = ({"action": "tool", "tool": domain, "refs": [], "plan": ["Fixture read"]}
                       if turn == 1 or domain == "financial" and self.repeated_financial
                       else {"action": "finish", "reason": "completed", "plan": ["Fixture finish"]})

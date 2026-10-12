@@ -18,6 +18,7 @@ from .dynamic_contracts import (DYNAMIC_TOOLS, SOURCE_TOOLS, AGENT_TOOLS, PARALL
                                 required_checks as bound_required_checks, text_bytes)
 from .profit_change import PROFIT_FORMULA
 from .verification import FORMULAS, IDENTITY, YOY
+from .context_window import ContextMinimumViewExceeded
 
 
 MAX_ACTION_BYTES = 8192
@@ -30,6 +31,12 @@ PROTOCOL_VERSIONS = frozenset({LEGACY_VERSION, "single-dynamic-v2",
                               "dynamic-parent-domains-v1", "dynamic-parent-domains-v2", "market-child-v1", *PARALLEL_VERSIONS,
                               "financial-child-v2", "market-child-v2", "financial-child-v3", "market-child-v3"})
 CONTEXT_VERSIONS = frozenset({"dynamic-parent-domains-v2", *PARALLEL_VERSIONS})
+WINDOW_VERSION = "dynamic-parent-parallel-v6"
+OPTIMIZED_WINDOW_VERSION = "dynamic-parent-parallel-v6.1"
+REQUESTED_WINDOW_VERSION = "dynamic-parent-parallel-v6.2"
+METADATA_WINDOW_VERSIONS = frozenset({OPTIMIZED_WINDOW_VERSION, REQUESTED_WINDOW_VERSION})
+WINDOW_VERSIONS = frozenset({WINDOW_VERSION, *METADATA_WINDOW_VERSIONS})
+REQUESTED_WINDOW_ADMISSION_POLICY = "requested_encoded_capacity_legacy_preview/v1"
 CHILD_PROGRESS_VERSIONS = {"financial-child-v2": "financial", "market-child-v2": "market",
                            "financial-child-v3": "financial", "market-child-v3": "market"}
 CHILD_EXACT_RESPONSE_VERSIONS = frozenset({"financial-child-v3", "market-child-v3"})
@@ -255,6 +262,122 @@ SYSTEM_PARENT_PARALLEL_V3 = SYSTEM_PARENT_PARALLEL_V2.replace(
     "Financial value cells and Fact/Evidence row IDs remain literal; metadata IDs decode exactly."
 ) + " In context v2 metadata, int=symbols[int], {\"l\":i}=list_table[i]; decode recursively to exact literals."
 
+SYSTEM_PARENT_PARALLEL_V4 = (
+    "Bounded stock research Parent. Security, windows, timezone cutoff, PIT, snapshots, permissions "
+    "and required_checks are application-pinned and immutable. Question/plan guide actions, never "
+    "supply evidence. Tools own all numbers, formulas, hypotheses and claims. No source text, causal "
+    "claims or investment recommendations. Authorization, root reservations, deadline and cancel "
+    "apply to every action. At most one Child per financial/market domain, two total; no Child spawning. "
+    "Direct tools and serial Children remain available; independent Children may run concurrently "
+    "using parallel. Runtime enforces the dependency DAG and atomic root reservation. "
+    "Tools: source or child refs=[]; calculation refs=all completed source tool names; hypotheses "
+    "refs=[\"calculation\"]; verification refs=[\"hypotheses\"]. Child results become financial/market "
+    "observations, not child refs for calculation. control.execution is authoritative execution progress; "
+    "next_action is an exact legal JSON candidate. Complete pending_checks before finish, including "
+    "verification when hypotheses are insufficient. Address control.finish_rejection. "
+    "Context uses disclosure schema v1 and verification_evidence_opt_in/v1: displayed rows are an exact "
+    "projection; the complete authorized immutable catalog retains every object. range/columns define "
+    "pinned scope/row fields. In metadata slots int=symbols[int], {\"l\":i}=list_table[i]; decode recursively. "
+    "Fact/Evidence row IDs and financial value cells stay literal; gaps index gap_table. facts, hypotheses, "
+    "gaps, conflict/counterevidence refs and catalog_ids are retained. verification_manifest binds complete "
+    "set refs/counts, source/calculated/hypotheses/verified revisions and content. It is not a receipt. "
+    "Verification adds no automatic Evidence closure. The model must choose verification; its tool "
+    "validates complete authorized immutable computed/datasets regardless of model disclosure. Only "
+    "actual tool success satisfies verification; refs/counts, view generation, automatic revalidation and "
+    "Child completion cannot. Optional disclose reads current C/E/H/O closures; it executes no required "
+    "business check. No pagination/context_read. Unknown refs or scope cannot be guessed. "
+    "Return one strict JSON object only. action is tool, parallel, disclose or finish; exact keys: "
+    "tool={action,tool,refs,plan}; parallel={action,tools,plan} with tools=[\"financial_child\",\"market_child\"]; "
+    "disclose={action,catalog_ref,refs,plan}; finish={action,reason,plan}, reason=completed or insufficient. "
+    "plan has one to five short strings. calculation/hypotheses/verification are tool names, never actions. "
+    "No extra keys, numeric literals, prose, markdown or tool_calls. Runtime checks full facts/evidence "
+    "and every required execution independently."
+)
+
+# Independent identity; the v4 prompt and every historic paid wire stay exact.
+SYSTEM_PARENT_PARALLEL_V5 = SYSTEM_PARENT_PARALLEL_V4.replace(
+    "Context uses disclosure schema v1 and verification_evidence_opt_in/v1:",
+    "Context uses disclosure schema v2 and phase_gated_verification_brief/v1:"
+).replace(
+    "verification_manifest binds complete "
+    "set refs/counts, source/calculated/hypotheses/verified revisions and content. It is not a receipt. ",
+    'state_versions refs {"h":i} decode to full digests[i] in this message; null means unexecuted. '
+    "A source digest alone never proves a read. When verification is ready, verification_brief "
+    "gives exact complete-set refs/counts; full audit stays in Runtime. These are not receipts. "
+).replace(
+    "plan has one to five short strings.",
+    "Use one short plan line for the current action; one to five strings remain permitted."
+)
+
+# Independent W2 identity. No historical prompt or disclosure contract changes.
+SYSTEM_PARENT_PARALLEL_V6 = (
+    "Bounded stock research Parent. Security, windows, timezone cutoff, PIT, snapshots, permissions "
+    "and every required check are application-pinned and immutable. Question/plan guide actions, "
+    "never evidence. Tools own all numbers, formulas, hypotheses and claims. No source text, causal "
+    "claims or investment recommendations. Authorization, root reservations, deadline and cancel "
+    "apply to every action. At most one Child per financial/market domain, two total; no Child spawning. "
+    "Direct tools and serial Children remain available; independent Children may use parallel. Runtime "
+    "enforces the dependency DAG and atomic root reservation. Source/child refs=[]; calculation "
+    "refs=all completed source tool names; hypotheses refs=[\"calculation\"]; verification "
+    "refs=[\"hypotheses\"]. Child results become ordinary financial/market observations. "
+    "control.execution is authoritative. Complete pending_checks before finish, including verification "
+    "when hypotheses are insufficient. Address control.finish_rejection. Runtime independently "
+    "verifies complete authorized immutable computed/datasets. Only actual tool success satisfies "
+    "checks; counts, refs, window generation, page reading, automatic revalidation or Child completion "
+    "cannot. Context is dynamic-context-window/v1: every window repeats pinned range, original "
+    "requirements and current authoritative state. Full immutable objects stay in Runtime. Pages "
+    "contain exact ordered members or object paths with explicit total, range and has_more; missing "
+    "pages mean undisplayed, never absent. Digest refs decode only in this window. verification_brief "
+    "appears only when ready; the complete audit stays in Runtime. Read detail only using a ref or "
+    "cursor registered in the current window and its current catalog_ref. context_read refs contains "
+    "1 to 16 unique registered object refs, or cursor is one registered continuation token; these "
+    "forms are mutually exclusive. Never guess hidden refs, cursors, paths or scope. context_read "
+    "uses one decision and one tool attempt, requires remaining business/finish headroom, and "
+    "repeated members are rejected without progress. Return one strict JSON object. Exact keys: "
+    "tool={action,tool,refs,plan}; parallel={action,tools,plan}, tools=[\"financial_child\",\"market_child\"]; "
+    "context_read={action,catalog_ref,refs,plan} OR {action,catalog_ref,cursor,plan}; "
+    "finish={action,reason,plan}, reason=completed or insufficient. Use one short plan line; one to "
+    "five short strings remain permitted. No disclose, extra keys, numeric literals, prose, markdown "
+    "or tool_calls. calculation/hypotheses/verification are tool names, never action values."
+)
+
+# Independent compact instruction text; historical v6 remains byte-for-byte exact.
+SYSTEM_PARENT_PARALLEL_V6_1 = (
+    "Bounded stock research Parent. App pins security, windows, timezone cutoff, PIT, snapshots, grants "
+    "and every required check. Question/plan control actions, never evidence. Tools own all numbers, "
+    "formulas, hypotheses and claims. No source text, causal claims or investment advice. All actions "
+    "obey authorization, root reservations, deadline, cancel and 12000 UTF-8 bytes for system+user. "
+    "Financial/Market allow one Child per domain, two total, no recursion. Choose direct tools, serial "
+    "Children or parallel independent Children; Runtime enforces DAG and atomic reservation. "
+    "Source/Child refs=[]; calculation refs=all completed source names; hypotheses refs=[\"calculation\"]; "
+    "verification refs=[\"hypotheses\"]. Child results become financial/market source Observations. "
+    "control.execution is authoritative; follow pending_checks, next_action and control.finish_rejection. "
+    "Pending checks cannot finish even with insufficient evidence. Choose verification explicitly: "
+    "Runtime checks full authorized immutable computed/datasets. Only actual tool success satisfies "
+    "checks; refs/counts, views/page reads, automatic revalidation or Child completion do not. "
+    "Each window repeats pinned range, all required_checks and current authoritative state; full immutable "
+    "objects stay in Runtime. Pages preserve exact order, total/range/has_more; undisplayed is not absent. "
+    "verification_brief appears only when ready; full audit stays in Runtime. Context is literal window/v1 "
+    "or compact window/v2. Compact.view restores v1: {\"s\":i}=symbols[i], {\"l\":i}=list_table[i], "
+    "{\"r\":i,\"v\":cells} maps layouts[i] columns to cells; decode recursively. Revision "
+    "{\"h\":i}=state_versions.digests[i]. Tables apply only this message; financial values stay literal. "
+    "Actions must emit decoded literal refs/catalog_ref/cursors, never tags/indexes. "
+    "Read only refs/cursors registered in the current paid window with its catalog_ref: 1-16 unique refs "
+    "OR one issued cursor, never both. Never guess hidden refs, cursors, paths or scope. context_read uses "
+    "one decision and one tool attempt, preserves business/finish headroom, and repeated members make "
+    "no progress. Return one strict JSON object. Exact keys: tool={action,tool,refs,plan}; "
+    "parallel={action,tools,plan}, tools=[\"financial_child\",\"market_child\"]; "
+    "context_read={action,catalog_ref,refs,plan} OR {action,catalog_ref,cursor,plan}; "
+    "finish={action,reason,plan}, reason=completed or insufficient. Use one short plan line; "
+    "1-5 strings allowed. No disclose, extra keys, numeric literals, prose, markdown or tool_calls. "
+    "calculation/hypotheses/verification are tool names, never actions."
+)
+SYSTEM_PARENT_PARALLEL_V6_2 = SYSTEM_PARENT_PARALLEL_V6_1
+
+
+class ContextViewBudgetExceeded(ValidationError):
+    """Explicit v4 wire-size failure, distinct from schema/integrity rejection."""
+
 
 def _protocol_tools(version):
     if type(version) is not str or version not in PROTOCOL_VERSIONS:
@@ -302,7 +425,7 @@ def _tool_names(value, *, version=LEGACY_VERSION):
 
 
 def parse_action(content, available_tools, completed_tools, *, version=LEGACY_VERSION,
-                 context_catalog_ref=None, context_known_refs=()):
+                 context_catalog_ref=None, context_known_refs=(), context_known_cursors=()):
     """Validate one decision against effective grants and current typed references.
 
     Permission errors are distinct from correctable formatting/dependency errors,
@@ -322,6 +445,25 @@ def parse_action(content, available_tools, completed_tools, *, version=LEGACY_VE
     if type(action) is not dict or type(action.get("action")) is not str:
         raise ValidationError("invalid dynamic action object")
     kind = action["action"]
+    if kind == "context_read":
+        if (version not in WINDOW_VERSIONS or not _hash(context_catalog_ref)
+                or action.get("catalog_ref") != context_catalog_ref):
+            raise ValidationError("context read requires the current authorized window catalog")
+        if set(action) == {"action", "catalog_ref", "refs", "plan"}:
+            refs = action["refs"]
+            if (type(refs) is not list or not 1 <= len(refs) <= 16
+                    or any(type(ref) is not str for ref in refs)
+                    or len(set(refs)) != len(refs) or not set(refs) <= set(context_known_refs)):
+                raise ValidationError("context read references must be registered in the current window")
+            return {"action": kind, "catalog_ref": context_catalog_ref,
+                    "refs": sorted(refs), "plan": _plan(action["plan"])}
+        if set(action) == {"action", "catalog_ref", "cursor", "plan"}:
+            cursor = action["cursor"]
+            if not _hash(cursor) or cursor not in context_known_cursors:
+                raise ValidationError("context read cursor must be registered in the current window")
+            return {"action": kind, "catalog_ref": context_catalog_ref,
+                    "cursor": cursor, "plan": _plan(action["plan"])}
+        raise ValidationError("context read requires exactly refs or cursor")
     if kind == "parallel":
         if (version not in PARALLEL_VERSIONS or set(action) != {"action", "tools", "plan"}
                 or type(action["tools"]) is not list or len(action["tools"]) != 2
@@ -334,7 +476,8 @@ def parse_action(content, available_tools, completed_tools, *, version=LEGACY_VE
             raise ValidationError("parallel branches cannot restart completed domain work")
         return {"action": kind, "tools": sorted(AGENT_TOOLS), "plan": _plan(action["plan"])}
     if kind == "disclose":
-        if (version not in CONTEXT_VERSIONS or set(action) != {"action", "catalog_ref", "refs", "plan"}
+        if (version not in CONTEXT_VERSIONS or version in WINDOW_VERSIONS
+                or set(action) != {"action", "catalog_ref", "refs", "plan"}
                 or not _hash(context_catalog_ref) or action["catalog_ref"] != context_catalog_ref
                 or type(action["refs"]) is not list or not 1 <= len(action["refs"]) <= 16
                 or any(type(ref) is not str for ref in action["refs"])
@@ -727,7 +870,9 @@ def dynamic_messages(request, available_tools, observations, required_checks, pl
                      max_bytes, *, decision=1, protocol_error=None,
                      version=LEGACY_VERSION, finish_rejection=None, delegation_results=None,
                      context_scope=None, context_run_id=None, context_refs=(), context_stage=None,
-                     parent_execution_checks=None):
+                     parent_execution_checks=None, parent_execution_revisions=None,
+                     parent_computed_sources=None, parent_dependency_ready=None, parent_verification_inputs=None,
+                     context_window_selection=None, context_window_budget=None, context_window_check=None):
     """Return an exact outbound view; overflow never silently drops required facts.
 
     The Runtime supplies its current typed Observations, not unbounded chat history.
@@ -760,10 +905,74 @@ def dynamic_messages(request, available_tools, observations, required_checks, pl
             or list(required_checks) != bound_required_checks(request)):
         raise ValidationError("invalid immutable dynamic required checks")
     control = {"question": request.question, "plan": _plan(plan) if plan else [], "decision": decision}
-    if version in {"dynamic-parent-parallel-v2", "dynamic-parent-parallel-v3"}:
+    if version in {"dynamic-parent-parallel-v2", "dynamic-parent-parallel-v3", "dynamic-parent-parallel-v4", "dynamic-parent-parallel-v5", *WINDOW_VERSIONS}:
         control["execution"] = _parent_execution(observations, required_checks, tools, parent_execution_checks)
     elif parent_execution_checks is not None:
         raise ValidationError("legacy protocol has no parent execution feedback")
+    if version in {"dynamic-parent-parallel-v4", "dynamic-parent-parallel-v5", *WINDOW_VERSIONS}:
+        from .dynamic_context import validate_execution_revisions
+        parent_execution_revisions = validate_execution_revisions(parent_execution_revisions)
+        statuses = {check["id"]: check["status"] for check in parent_execution_checks or []}
+        source = parent_execution_revisions["source"]
+        for check, revision in (("calculation", "calculated"), ("hypotheses", "hypotheses"),
+                                ("verification", "verified")):
+            if statuses.get(check) == "passed" and (
+                    source is None or parent_execution_revisions[revision] != source):
+                raise ValidationError("parent execution revision does not satisfy its required check")
+    elif parent_execution_revisions is not None:
+        raise ValidationError("legacy protocol has no verification disclosure revision contract")
+    verification_ready = target_prepared = False
+    if version in {"dynamic-parent-parallel-v5", *WINDOW_VERSIONS}:
+        if (type(parent_computed_sources) is not list
+                or any(type(name) is not str or name not in SOURCE_TOOLS for name in parent_computed_sources)
+                or parent_computed_sources != sorted(set(parent_computed_sources))
+                or type(parent_dependency_ready) is not bool):
+            raise ValidationError("phase-gated disclosure requires authoritative sources and DAG readiness")
+        statuses = {item["id"]: item["status"] for item in parent_execution_checks or []}
+        completed_sources = sorted(item["tool"] for item in observations if item["kind"] == "source_read")
+        if statuses.get("calculation") == "passed" and parent_computed_sources != completed_sources:
+            raise ValidationError("current calculation omits an executed source")
+        source = parent_execution_revisions["source"]
+        target_prepared = (bool(completed_sources) and source is not None
+            and all(statuses.get(item) == "passed" for item in required_checks if item.startswith("read:"))
+            and statuses.get("calculation") == statuses.get("hypotheses") == "passed"
+            and source == parent_execution_revisions["calculated"] == parent_execution_revisions["hypotheses"]
+            and parent_computed_sources == completed_sources and parent_dependency_ready)
+        verification_ready = target_prepared and statuses.get("verification") == "not_completed"
+        if parent_verification_inputs is not None:
+            if (type(parent_verification_inputs) is not dict or set(parent_verification_inputs) != {
+                    "computed_ref", "datasets_ref"} or any(type(value) is not str
+                    or not re.fullmatch(r"[0-9a-f]{64}", value) for value in parent_verification_inputs.values())):
+                raise ValidationError("invalid authoritative raw verification inputs")
+        if target_prepared and parent_verification_inputs is None:
+            raise ValidationError("prepared verification target has no raw input binding")
+    elif parent_computed_sources is not None or parent_dependency_ready is not None or parent_verification_inputs is not None:
+        raise ValidationError("legacy protocol has no phase-gated source contract")
+    if version in WINDOW_VERSIONS:
+        if context_refs:
+            raise ValidationError("context windows do not use legacy disclosure selections")
+        if context_window_check is not None and not callable(context_window_check):
+            raise ValidationError("invalid context window compilation check")
+        if context_window_budget is not None:
+            budget = context_window_budget
+            if (type(budget) is not dict or set(budget) != {"decisions_remaining", "tools_remaining",
+                    "tokens_remaining", "deadline", "context_read_available", "root_remaining", "required_actions_remaining"}
+                    or any(type(budget[key]) is not int or budget[key] < 0 for key in
+                           ("decisions_remaining", "tools_remaining", "tokens_remaining", "required_actions_remaining"))
+                    or type(budget["root_remaining"]) is not dict
+                    or set(budget["root_remaining"]) != {"decisions", "tools", "tokens"}
+                    or any(type(value) is not int or value < 0 for value in budget["root_remaining"].values())
+                    or type(budget["context_read_available"]) is not bool
+                    or type(budget["deadline"]) is not str):
+                raise ValidationError("invalid authoritative context window budget")
+            try:
+                aware(datetime.fromisoformat(budget["deadline"]))
+            except (ValueError, TypeError):
+                raise ValidationError("invalid context window absolute deadline") from None
+            control["context_budget"] = dict(budget)
+    elif (context_window_selection is not None or context_window_budget is not None
+            or context_window_check is not None):
+        raise ValidationError("legacy protocol has no context window contract")
     if finish_rejection is not None:
         if version == LEGACY_VERSION:
             raise ValidationError("legacy dynamic protocol has no finish rejection feedback")
@@ -813,8 +1022,66 @@ def dynamic_messages(request, available_tools, observations, required_checks, pl
         catalog = build_catalog(request, sorted(observations, key=lambda item: item["tool"]), list(required_checks),
                                 scope=context_scope, run_id=context_run_id)
         stage = context_stage or context_next_stage(observations, required_checks)
-        view = view_catalog(catalog, scope=context_scope, run_id=context_run_id,
-                            refs=context_refs, current_stage=stage)
+        if version in {"dynamic-parent-parallel-v5", *WINDOW_VERSIONS}:
+            # Observation names alone cannot make stale revisions ready.
+            pending = control["execution"]["pending_checks"]
+            authoritative_stage = ("before_sources" if any(item.startswith("read:") for item in pending) else
+                next((item for item in ("calculation", "hypotheses", "verification") if item in pending), "finish"))
+            if context_stage is not None and context_stage != authoritative_stage:
+                raise ValidationError("context stage differs from authoritative execution")
+            stage = authoritative_stage
+            if version in WINDOW_VERSIONS:
+                from .context_window import compile_window
+                window_payload = {"protocol_version": version, "control": control,
+                    "available_tools": tools, "completed_tools": payload["completed_tools"],
+                    "delegation_results": payload["delegation_results"],
+                    "coverage": "not_verified", "causal_claim": False}
+                def render(window_view):
+                    window_system = SYSTEM_PARENT_PARALLEL_V6
+                    if version in METADATA_WINDOW_VERSIONS:
+                        from .context_window_metadata import encode_window_metadata_view
+                        window_view = encode_window_metadata_view(window_view,
+                            header_mode="window_ref" not in window_view)
+                        window_system = SYSTEM_PARENT_PARALLEL_V6_1
+                    return [{"role": "system", "content": window_system},
+                            {"role": "user", "content": canonical_json({**window_payload, "context": window_view})}]
+                window_arguments = dict(scope=context_scope, run_id=context_run_id,
+                    stage=stage, execution_revisions=parent_execution_revisions,
+                    verification_ready=verification_ready, render=render,
+                    selection=context_window_selection, max_bytes=max_bytes,
+                    read_enabled=bool(context_window_budget and context_window_budget["context_read_available"]),
+                    check=context_window_check)
+                if version in METADATA_WINDOW_VERSIONS:
+                    def admission_render(window_view):
+                        return [{"role": "system", "content": SYSTEM_PARENT_PARALLEL_V6},
+                            {"role": "user", "content": canonical_json({**window_payload,
+                                "protocol_version": WINDOW_VERSION, "context": window_view})}]
+                    if version == REQUESTED_WINDOW_VERSION:
+                        view, window_metadata = compile_window(catalog, admission_render=admission_render,
+                            requested_capacity="actual", **window_arguments)
+                        window_metadata["window_admission_mode"] = REQUESTED_WINDOW_ADMISSION_POLICY
+                    else:
+                        try:
+                            view, window_metadata = compile_window(catalog,
+                                admission_render=admission_render, **window_arguments)
+                            window_metadata["window_admission_mode"] = "legacy_window_envelope/v1"
+                        except ContextMinimumViewExceeded:
+                            view, window_metadata = compile_window(catalog, **window_arguments)
+                            window_metadata["window_admission_mode"] = "compact_capacity_fallback/v1"
+                else:
+                    view, window_metadata = compile_window(catalog, **window_arguments)
+            else:
+                from .dynamic_context import view_phase_gated_catalog
+                view = view_phase_gated_catalog(catalog, scope=context_scope, run_id=context_run_id,
+                    refs=context_refs, current_stage=stage, execution_revisions=parent_execution_revisions,
+                    verification_ready=verification_ready)
+        elif version == "dynamic-parent-parallel-v4":
+            from .dynamic_context import view_verification_catalog
+            view = view_verification_catalog(catalog, scope=context_scope, run_id=context_run_id,
+                refs=context_refs, current_stage=stage, execution_revisions=parent_execution_revisions)
+        else:
+            view = view_catalog(catalog, scope=context_scope, run_id=context_run_id,
+                                refs=context_refs, current_stage=stage)
         if version == "dynamic-parent-parallel-v3":
             from .dynamic_context_metadata import encode_metadata_view
             view = encode_metadata_view(view)
@@ -823,6 +1090,9 @@ def dynamic_messages(request, available_tools, observations, required_checks, pl
                    "available_tools": tools, "completed_tools": payload["completed_tools"],
                    "context": view, "delegation_results": payload["delegation_results"],
                    "coverage": "not_verified", "causal_claim": False}
+        if version in METADATA_WINDOW_VERSIONS:
+            from .context_window_metadata import encode_window_metadata_view
+            payload["context"] = encode_window_metadata_view(view)
     elif any(value is not None for value in (context_scope, context_run_id, context_stage)) or context_refs:
         raise ValidationError("legacy protocol has no lossless context catalog")
     system = {LEGACY_VERSION: SYSTEM, "single-dynamic-v2": SYSTEM_V2,
@@ -835,6 +1105,11 @@ def dynamic_messages(request, available_tools, observations, required_checks, pl
               PARALLEL_VERSION: SYSTEM_PARENT_PARALLEL,
               "dynamic-parent-parallel-v2": SYSTEM_PARENT_PARALLEL_V2,
               "dynamic-parent-parallel-v3": SYSTEM_PARENT_PARALLEL_V3,
+              "dynamic-parent-parallel-v4": SYSTEM_PARENT_PARALLEL_V4,
+              "dynamic-parent-parallel-v5": SYSTEM_PARENT_PARALLEL_V5,
+              WINDOW_VERSION: SYSTEM_PARENT_PARALLEL_V6,
+              OPTIMIZED_WINDOW_VERSION: SYSTEM_PARENT_PARALLEL_V6_1,
+              REQUESTED_WINDOW_VERSION: SYSTEM_PARENT_PARALLEL_V6_2,
               "market-child-v1": SYSTEM_MARKET_CHILD,
               "market-child-v2": SYSTEM_MARKET_CHILD_V2,
               "market-child-v3": None}[version]
@@ -843,6 +1118,10 @@ def dynamic_messages(request, available_tools, observations, required_checks, pl
     messages = [{"role": "system", "content": system}, {"role": "user", "content": canonical_json(payload)}]
     size = sum(text_bytes(message["content"]) for message in messages)
     if size > max_bytes:
+        if version in WINDOW_VERSIONS:
+            raise ContextMinimumViewExceeded("dynamic minimum context window exceeds byte budget")
+        if version in {"dynamic-parent-parallel-v4", "dynamic-parent-parallel-v5"}:
+            raise ContextViewBudgetExceeded("dynamic disclosure context exceeds byte budget")
         raise ValidationError("dynamic context exceeds lossless byte budget")
     facts = len(derived_state["facts"]) if derived_state else 0
     evidence = len(derived_state["evidence"]) if derived_state else 0
@@ -851,8 +1130,34 @@ def dynamic_messages(request, available_tools, observations, required_checks, pl
                       "facts_included": facts, "evidence_included": evidence,
                       "source_bodies_included": 0, "omitted_claims": 0}
     if version in CONTEXT_VERSIONS:
+        if version in WINDOW_VERSIONS:
+            metadata.update(strategy="deterministic_context_window/v1", catalog_ref=catalog["catalog_ref"],
+                context_stage=stage, claims_preserved=facts, evidence_preserved=evidence,
+                facts_included=window_metadata["visible_fact_count"],
+                evidence_included=window_metadata["visible_evidence_count"],
+                evidence_details_disclosed=window_metadata["visible_evidence_count"],
+                observations_externalized=len(view["observations"]), disclosed_refs=[],
+                verification_ready=verification_ready,
+                verification_brief_bytes=text_bytes(canonical_json(view["verification_brief"])) if verification_ready else 0,
+                state_versions_bytes=text_bytes(canonical_json(view["state_versions"])), **window_metadata)
+            if version in METADATA_WINDOW_VERSIONS:
+                metadata.update(strategy="deterministic_context_window_metadata/v1",
+                    window_wire_schema=payload["context"]["schema"],
+                    window_metadata_schema=("exact_window_metadata/v1"
+                        if payload["context"]["schema"] == "dynamic-context-window/v2" else None),
+                    window_codec_applied=payload["context"]["schema"] == "dynamic-context-window/v2",
+                    window_literal_bytes=text_bytes(canonical_json(view)),
+                    window_encoded_bytes=text_bytes(canonical_json(payload["context"])))
+            if target_prepared:
+                from .dynamic_context import build_verification_audit
+                metadata["verification_audit"] = build_verification_audit(catalog, scope=context_scope,
+                    run_id=context_run_id, execution_revisions=parent_execution_revisions,
+                    input_refs=parent_verification_inputs)
+            return messages, metadata
         from .dynamic_context import expand_view
-        disclosed_refs = expand_view(view)["disclosed_refs"] if version == "dynamic-parent-parallel-v3" else view["disclosed_refs"]
+        disclosed_refs = (expand_view(view)["disclosed_refs"]
+                          if version in {"dynamic-parent-parallel-v3", "dynamic-parent-parallel-v4", "dynamic-parent-parallel-v5"}
+                          else view["disclosed_refs"])
         metadata.update(strategy="lossless_catalog_lazy_disclosure/v1", catalog_ref=catalog["catalog_ref"],
                         context_stage=stage, claims_preserved=facts, evidence_preserved=evidence,
                         evidence_included=len(view["evidence"]), evidence_details_disclosed=len(view["evidence"]),
@@ -860,6 +1165,17 @@ def dynamic_messages(request, available_tools, observations, required_checks, pl
                         disclosed_refs=list(disclosed_refs))
         if version == "dynamic-parent-parallel-v3":
             metadata["strategy"] = "lossless_catalog_lazy_disclosure_metadata/v2"
+        elif version == "dynamic-parent-parallel-v4":
+            metadata["strategy"] = "authorized_catalog_verification_disclosure/v1"
+        elif version == "dynamic-parent-parallel-v5":
+            metadata.update(strategy="phase_gated_verification_brief/v1", verification_ready=verification_ready,
+                verification_brief_bytes=text_bytes(canonical_json(view["verification_brief"])) if verification_ready else 0,
+                state_versions_bytes=text_bytes(canonical_json(view["state_versions"])))
+            if target_prepared:
+                from .dynamic_context import build_verification_audit
+                metadata["verification_audit"] = build_verification_audit(catalog, scope=context_scope,
+                    run_id=context_run_id, execution_revisions=parent_execution_revisions,
+                    input_refs=parent_verification_inputs)
     return messages, metadata
 
 

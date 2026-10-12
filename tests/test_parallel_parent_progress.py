@@ -88,7 +88,8 @@ class ParallelParentProgressTests(unittest.TestCase):
 
     def test_versioned_parent_preserves_defaults_legacy_identity_and_limits(self):
         legacy, revised = ParallelParentSpec(), ParallelParentSpec(version=VERSION)
-        self.assertEqual(PARALLEL_VERSIONS, frozenset({"dynamic-parent-parallel-v1", VERSION, "dynamic-parent-parallel-v3"}))
+        self.assertEqual(PARALLEL_VERSIONS, frozenset({"dynamic-parent-parallel-v1", VERSION,
+            "dynamic-parent-parallel-v3", "dynamic-parent-parallel-v4", "dynamic-parent-parallel-v5", "dynamic-parent-parallel-v6", "dynamic-parent-parallel-v6.1", "dynamic-parent-parallel-v6.2"}))
         self.assertEqual(legacy.version, "dynamic-parent-parallel-v1")
         self.assertEqual(legacy.identity, "5120ebab68444745152040f21bdf1e21e65a73cc3d8da085ea1c4def453ebf00")
         self.assertNotEqual(legacy.identity, revised.identity)

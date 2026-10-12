@@ -16,7 +16,9 @@ FINANCIAL_DATASETS = frozenset({"financial_income", "financial_balance", "financ
 MARKET_DATASETS = frozenset({"market_daily", "trade_calendar", "adjustment_factor"})
 AGENT_TOOLS = frozenset({"financial_child", "market_child"})
 PARALLEL_VERSION = "dynamic-parent-parallel-v1"
-PARALLEL_VERSIONS = frozenset({PARALLEL_VERSION, "dynamic-parent-parallel-v2", "dynamic-parent-parallel-v3"})
+PARALLEL_VERSIONS = frozenset({PARALLEL_VERSION, "dynamic-parent-parallel-v2", "dynamic-parent-parallel-v3",
+                             "dynamic-parent-parallel-v4", "dynamic-parent-parallel-v5", "dynamic-parent-parallel-v6",
+                             "dynamic-parent-parallel-v6.1", "dynamic-parent-parallel-v6.2"})
 MAX_QUESTION_BYTES = 2000
 
 
